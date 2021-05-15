@@ -20,6 +20,7 @@ var wall_jump = 500
 var jump_Wall = 60
 var jumps = 2
 
+
 func _ready():
 	grapple.grapple_indicator = get_node(grapple_indicator_path)
 
@@ -27,21 +28,23 @@ func _input(event):
 	#if next_to_wall() and velocity.y > 30:
 		#velocity.y = 25
 		#meant to do wall sliding but doesnt work
-	if is_on_floor() or next_to_wall():
-		jumps = 2
-	if not is_on_floor() and next_to_right_wall():
-		velocity.x += wall_jump
-		velocity.y -= jump_Wall
-	if not is_on_floor() and next_to_left_wall():
-		velocity.x -= wall_jump
-		velocity.y -= jump_Wall
-	else:
-		if event.is_action_released("jump") and velocity.y < -jump_strength/2:
-			velocity.y = -jump_strength/2
+
+
 	if event.is_action_pressed("jump") and jumps > 0:
 		velocity.y = -jump_strength
 		jumps -= 1 
 		print(jumps)
+		if not is_on_floor() and next_to_right_wall():
+			velocity.x += wall_jump
+			velocity.y -= jump_Wall
+			jumps -= 1
+		if not is_on_floor() and next_to_left_wall():
+			velocity.x -= wall_jump
+			velocity.y -= jump_Wall
+			jumps -= 1
+		else:
+			if event.is_action_released("jump") and velocity.y < -jump_strength/2:
+				velocity.y = -jump_strength/2
 
 func _physics_process(delta):
 	var input_x = Input.get_action_strength("right") - Input.get_action_strength("left")	
@@ -64,6 +67,9 @@ func _physics_process(delta):
 		
 	if is_on_ceiling():
 		velocity.y = 0
+	
+	if is_on_floor():
+		jumps = 2
 	
 	
 	move_and_slide(velocity, Vector2.UP)

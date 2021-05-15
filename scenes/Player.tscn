@@ -40,6 +40,7 @@ anims/WalkLeft = SubResource( 2 )
 
 [node name="GrapplingHook" parent="Items" instance=ExtResource( 3 )]
 player_path = NodePath("../..")
+
 [node name="WallRaycasts" type="Node2D" parent="."]
 
 [node name="LeftWalls" type="Node2D" parent="WallRaycasts"]
