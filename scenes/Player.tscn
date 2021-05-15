@@ -4,7 +4,7 @@
 [ext_resource path="res://tempassets/Main Characters/Ninja Frog/Run (32x32).png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.0273, 11.9178 )
+extents = Vector2( 11, 11 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "WalkLeft"
@@ -23,6 +23,8 @@ tracks/0/keys = {
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+acceleration = 40.0
+decelleartion = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
