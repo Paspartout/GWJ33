@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/GrapplingHook.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.0273, 11.9178 )
+extents = Vector2( 11, 11 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "WalkLeft"
