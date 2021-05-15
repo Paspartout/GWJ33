@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://tempassets/Main Characters/Ninja Frog/Run (32x32).png" type="Texture" id=2]
 [ext_resource path="res://scenes/GrapplingHook.tscn" type="PackedScene" id=3]
+[ext_resource path="res://omzNL.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11, 11 )
+extents = Vector2( 11.0273, 11.9178 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "WalkLeft"
@@ -60,3 +61,10 @@ rotation = 1.5708
 enabled = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 2
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 6.67572e-06, 6.19888e-06 )
+scale = Vector2( 0.6875, 0.6875 )
+texture = ExtResource( 4 )
+energy = 0.7
+shadow_enabled = true
