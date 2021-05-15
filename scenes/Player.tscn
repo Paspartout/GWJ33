@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://tempassets/Main Characters/Ninja Frog/Run (32x32).png" type="Texture" id=2]
+[ext_resource path="res://scenes/GrapplingHook.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11, 11 )
+extents = Vector2( 11.0273, 11.9178 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "WalkLeft"
@@ -23,8 +24,6 @@ tracks/0/keys = {
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
-acceleration = 40.0
-decelleartion = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
@@ -36,3 +35,28 @@ hframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/WalkLeft = SubResource( 2 )
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="GrapplingHook" parent="Items" instance=ExtResource( 3 )]
+player_path = NodePath("../..")
+
+[node name="WallRaycasts" type="Node2D" parent="."]
+
+[node name="LeftWalls" type="Node2D" parent="WallRaycasts"]
+
+[node name="RayCast2D2" type="RayCast2D" parent="WallRaycasts/LeftWalls"]
+position = Vector2( 8, 1 )
+rotation = 4.71238
+enabled = true
+cast_to = Vector2( 0, 5 )
+collision_mask = 2
+
+[node name="RightWalls" type="Node2D" parent="WallRaycasts"]
+
+[node name="RayCast2D2" type="RayCast2D" parent="WallRaycasts/RightWalls"]
+position = Vector2( -8, 1 )
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 5 )
+collision_mask = 2
