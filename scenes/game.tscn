@@ -1,17 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 326.569, 10 )
+[ext_resource path="res://scenes/World.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 
 [node name="Game" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 136.845, 111.874 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 122.805, 295 )
 
-[node name="TempFloor" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TempFloor"]
-position = Vector2( 320.655, 350.286 )
-shape = SubResource( 1 )
+[node name="World" parent="." instance=ExtResource( 1 )]

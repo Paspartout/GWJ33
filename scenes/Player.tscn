@@ -4,7 +4,7 @@
 [ext_resource path="res://tempassets/Main Characters/Ninja Frog/Run (32x32).png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11, 11 )
+extents = Vector2( 11.0273, 11.9178 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "WalkLeft"
