@@ -17,7 +17,6 @@ func _physics_process(delta):
 	
 	velocity.x = speed
 	
-	
 	if is_on_floor():
 		pass
 	else:
@@ -36,6 +35,5 @@ func _physics_process(delta):
 
 func _on_MoveTimer_timeout():
 	speed *= -1
-	print(detectionArea.position)
 	$CollisionShape2D.position.x *= -1
 	detectionArea.get_node("CollisionShape2D").position.x *= -1

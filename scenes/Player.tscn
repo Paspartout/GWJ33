@@ -158,7 +158,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "Run"
-frame = 10
+frame = 8
 playing = true
 
 [node name="Items" type="Node2D" parent="."]
@@ -169,22 +169,49 @@ max_grapple_distance = 500.0
 
 [node name="WallRaycasts" type="Node2D" parent="."]
 
-[node name="Right" type="RayCast2D" parent="WallRaycasts"]
-position = Vector2( 8, 1 )
-rotation = -1.57081
-enabled = true
-cast_to = Vector2( 0, 5 )
-collision_mask = 4
+[node name="Left" type="Node2D" parent="WallRaycasts"]
 
-[node name="Left" type="RayCast2D" parent="WallRaycasts"]
-position = Vector2( -8, 1 )
+[node name="Top" type="RayCast2D" parent="WallRaycasts/Left"]
+position = Vector2( -8, -11 )
 rotation = 1.5708
 enabled = true
-cast_to = Vector2( 0, 5 )
+cast_to = Vector2( 0, 10 )
+collision_mask = 4
+
+[node name="Bottom" type="RayCast2D" parent="WallRaycasts/Left"]
+position = Vector2( -8, 15 )
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 4
+
+[node name="Right" type="Node2D" parent="WallRaycasts"]
+
+[node name="Top" type="RayCast2D" parent="WallRaycasts/Right"]
+position = Vector2( 8, -11 )
+rotation = -1.57081
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 4
+
+[node name="Bottom" type="RayCast2D" parent="WallRaycasts/Right"]
+position = Vector2( 8, 15 )
+rotation = -1.57081
+enabled = true
+cast_to = Vector2( 0, 10 )
 collision_mask = 4
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( -0.0992126, -2.0504 )
+position = Vector2( -0.169285, -1.3307 )
 texture = ExtResource( 4 )
 energy = 0.7
 shadow_enabled = true
+
+[node name="DebugLabel" type="Label" parent="."]
+margin_left = -20.167
+margin_top = -26.9554
+margin_right = 19.833
+margin_bottom = -12.9554
+__meta__ = {
+"_edit_use_anchors_": false
+}
