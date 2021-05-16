@@ -6,9 +6,9 @@
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -950.466
-margin_top = -464.56
+margin_top = -465.308
 margin_right = 1750.53
-margin_bottom = 1086.44
+margin_bottom = 1085.69
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

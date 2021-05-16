@@ -85,10 +85,10 @@ func _update_animation(input_x):
 		sprite.animation = "Run" if input_x != 0 else "Idle"
 	elif next_to_right_wall():
 		sprite.animation = "WallJump"
-		sprite.flip_h = false
+		sprite.flip_h = true
 	elif next_to_left_wall():
 		sprite.animation = "WallJump"
-		sprite.flip_h = true
+		sprite.flip_h = false
 	else:
 		sprite.animation = "Jump"
 
