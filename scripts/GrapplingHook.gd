@@ -7,10 +7,8 @@ export var grapple_indicator_path: NodePath
 export var max_grapple_distance: float = 1000
 export var grapple_speed: float = 100
 
-
 enum GrappleState {Loose, Shooting, Hooked, Pulling}
 var grapple_state = GrappleState.Loose
-
 var grapple_pos: Vector2
 
 onready var player = get_node(player_path)
@@ -36,8 +34,6 @@ func pull() -> Vector2:
 		GrappleState.Pulling:
 			var grapple_direction = (grapple_pos - player.position).normalized()
 			var grapple_velocity = grapple_direction * grapple_speed
-			# TODO: Different way to apply velocity?
-			# player.velocity += grapple_velocity
 			return grapple_velocity
 	return Vector2.ZERO
 
@@ -49,7 +45,6 @@ func shoot():
 	if grapple_state == GrappleState.Pulling:
 		stop()
 		return
-	print(player.get_node("Camera2D").global_position)
 	var mouse_pos = get_global_mouse_position()
 	var direction = (mouse_pos - player.position).normalized() * max_grapple_distance
 	#print("Mouse pos", mouse_pos)
