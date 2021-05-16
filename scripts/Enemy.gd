@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
 var velocity: Vector2 = Vector2.ZERO
-var follow = Vector2.ZERO
-var moveLeft = false
+var idle = false
 export var speed = 50
 export var gravity: float = 10
-onready var timer = $MoveTimer
+onready var moveTimer = $MoveTimer
+onready var idleTimer = $IdleTimer
 onready var sprite = $Sprite
 onready var detectionArea = $DetectionArea
 
@@ -13,9 +13,11 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
-	var input_x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	
-	velocity.x = speed
+	print(idle)
+	if idle:
+		velocity.x = 0
+	else:
+		velocity.x = speed
 	
 	if is_on_floor():
 		pass
@@ -34,6 +36,14 @@ func _physics_process(delta):
 
 
 func _on_MoveTimer_timeout():
+	idle = true
+	moveTimer.stop()
+	idleTimer.start()
+
+func _on_IdleTimer_timeout():
+	idle = false
 	speed *= -1
 	$CollisionShape2D.position.x *= -1
 	detectionArea.get_node("CollisionShape2D").position.x *= -1
+	moveTimer.start()
+	idleTimer.stop()
