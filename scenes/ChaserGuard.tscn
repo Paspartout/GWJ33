@@ -27,6 +27,7 @@ hframes = 12
 
 [node name="Detection" type="Area2D" parent="ChaserGuard"]
 collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaserGuard/Detection"]
 position = Vector2( 7.62939e-06, 0.44545 )
