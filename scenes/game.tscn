@@ -9,8 +9,10 @@
 [node name="Game" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1232.0
-margin_bottom = 384.0
+margin_left = 10.463
+margin_top = -8.89954
+margin_right = 2270.46
+margin_bottom = 375.1
 color = Color( 0.466667, 0.466667, 0.466667, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -27,7 +29,7 @@ grapple_indicator_path = NodePath("../GrappleIndicator")
 current = true
 limit_left = 0
 limit_top = 0
-limit_right = 1232
+limit_right = 2250
 limit_bottom = 384
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
@@ -48,13 +50,19 @@ color = Color( 0.301961, 0.301961, 0.301961, 1 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="PatrollerGaurd" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 1009.53, 304.889 )
+position = Vector2( 929.011, 320.781 )
 
 [node name="PatrollerGaurd2" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 333.709, 320.591 )
 
+[node name="PatrollerGaurd3" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 189.296, 207.798 )
+
 [node name="ChaserGuard" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 473.901, 322.209 )
+position = Vector2( 595.901, 323.209 )
+
+[node name="ChaserGuard3" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 1738.87, 161.363 )
 
 [node name="ChaserGuard2" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 712.153, 99.7475 )
+position = Vector2( 744.107, 132.542 )
