@@ -7,7 +7,6 @@ export var air_resistance: float = 0.85
 export var gravity: float = 10
 export var jump_strength: float = 300
 export var number_of_jumps: int = 2
-export var grapple_indicator_path: NodePath
 
 # wall_jump_vertical_force is the pushback and wall_jump_vertical_force is the actual jump height
 export var wall_jump_vertical_force: float = 60
@@ -16,14 +15,13 @@ var jumps = 2
 # movement vars
 var velocity: Vector2 = Vector2.ZERO
 
-
 onready var grapple: GrapplingHook = $Items/GrapplingHook
 #wall jump vars
 onready var left_wall_raycast = $WallRaycasts/LeftWalls
 onready var right_wall_raycast = $WallRaycasts/RightWalls
 
 func _ready():
-	grapple.grapple_indicator = get_node(grapple_indicator_path)
+	pass
 
 func _input(event):
 	#if next_to_wall() and velocity.y > 30:

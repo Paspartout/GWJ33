@@ -12,12 +12,20 @@ var grapple_state = GrappleState.Loose
 var grapple_pos: Vector2
 
 onready var player = get_node(player_path)
-onready var grapple_indicator: Node2D
+
 onready var grapple_timer: Timer = $Timer
 onready var grapple_cast: RayCast2D = $GrappleRayCast
 
+var grapple_indicator: Node2D
+
 func _ready():
 	grapple_timer.connect("timeout", self, "stop", [], CONNECT_ONESHOT)
+
+	# Setup temporary grapple indicator
+	grapple_indicator = Sprite.new()
+	grapple_indicator.scale = Vector2(0.2, 0.2)
+	grapple_indicator.texture = preload("res://icon.png")
+	player.get_parent().call_deferred("add_child", grapple_indicator)
 
 func _input(event):
 	# TODO: Maybe move somewhere different
