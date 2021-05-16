@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Idle.png-4c259d6ef325ec19f29f7f8c54bbbb14.stex"
+path="res://.import/omzNL.png-5cc1ef2ac6a5e358563f795b927d324b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Idle.png"
-dest_files=[ "res://.import/Idle.png-4c259d6ef325ec19f29f7f8c54bbbb14.stex" ]
+source_file="res://tempassets/omzNL.png"
+dest_files=[ "res://.import/omzNL.png-5cc1ef2ac6a5e358563f795b927d324b.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
