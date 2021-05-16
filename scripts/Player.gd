@@ -66,7 +66,7 @@ func _physics_process(delta):
 	if is_on_ceiling():
 		velocity.y = 0
 
-	move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP)
 
 
 func next_to_wall():
