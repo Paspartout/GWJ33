@@ -24,7 +24,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 24.9944, 15.5744 )
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="PatrollerGaurd" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -49,3 +49,5 @@ position = Vector2( 36.7572, 1.37825 )
 shape = SubResource( 3 )
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_DetectionArea_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_DetectionArea_body_exited"]
