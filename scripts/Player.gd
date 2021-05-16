@@ -13,6 +13,7 @@ export var wall_jump_vertical_force: float = 175
 export var wall_jump_horizontal_bounce: float = 500
 
 var jumps = 1
+var movement_velocity: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 
 onready var grapple: GrapplingHook = $Items/GrapplingHook
@@ -45,8 +46,10 @@ func _input(event):
 			if event.is_action_released("jump") and velocity.y < -jump_strength/2:
 				velocity.y = -jump_strength/2
 
+var walk_velocity: Vector2 = Vector2.ZERO
+
 func _physics_process(delta):
-	var input_x = Input.get_action_strength("right") - Input.get_action_strength("left")	
+	var input_x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
 	if input_x != 0.0:
 		velocity.x += acceleration * input_x
@@ -54,11 +57,13 @@ func _physics_process(delta):
 		velocity.x *= decelleartion
 
 	# TODO: More generic item system
-	velocity += grapple.pull()
+	if grapple.is_in_use():
+		velocity += grapple.pull()
+		velocity = velocity.clamped(700)
+	else:
+		velocity.x = clamp(velocity.x, -max_speed, max_speed)
+		velocity.y = clamp(velocity.y, -500, 500)	
 
-	velocity.x = clamp(velocity.x, -max_speed, max_speed)
-	velocity.y = clamp(velocity.y, -500, 500)
-	
 	if next_to_wall() and velocity.y > 30:
 		velocity.y = 30
 
