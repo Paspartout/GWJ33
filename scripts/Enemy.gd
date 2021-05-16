@@ -13,7 +13,6 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
-	print(idle)
 	if idle:
 		velocity.x = 0
 	else:
