@@ -54,7 +54,7 @@ position = Vector2( 1009.53, 304.889 )
 position = Vector2( 333.709, 320.591 )
 
 [node name="ChaserGuard" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 632, 324.097 )
+position = Vector2( 473.901, 322.209 )
 
 [node name="ChaserGuard2" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 712.153, 99.7475 )
