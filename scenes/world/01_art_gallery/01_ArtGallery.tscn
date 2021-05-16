@@ -19,7 +19,7 @@ current = true
 [node name="Enemeis" type="Node2D" parent="."]
 
 [node name="ChaserGuard" parent="Enemeis" instance=ExtResource( 3 )]
-position = Vector2( -299.697, 467.431 )
+position = Vector2( -499.033, 467.431 )
 
 [node name="ChaserGuard4" parent="Enemeis" instance=ExtResource( 3 )]
 position = Vector2( -372.69, 241.53 )
