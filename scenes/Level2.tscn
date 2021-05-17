@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://graphics/WoodTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://graphics/StoneTiles.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/PatrollerGaurd.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/ChaserGuard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Laser.tscn" type="PackedScene" id=7]
 
 [node name="Level2" type="Node2D"]
 
@@ -81,7 +82,7 @@ position = Vector2( 1116.91, -142.024 )
 position = Vector2( 1298.77, 162.661 )
 
 [node name="ChaserGuard3" parent="enemies" instance=ExtResource( 5 )]
-position = Vector2( 140.134, 34.5167 )
+position = Vector2( 176.644, 145.635 )
 
 [node name="ChaserGuard4" parent="enemies" instance=ExtResource( 5 )]
 position = Vector2( 400.427, 354.878 )
@@ -123,3 +124,6 @@ editor_draw_drag_margin = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
+
+[node name="Laser" parent="." instance=ExtResource( 7 )]
+position = Vector2( 258.636, -405.39 )

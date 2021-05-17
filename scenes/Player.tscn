@@ -30,7 +30,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "WallJump"
-frame = 3
+frame = 5
 playing = true
 
 [node name="Items" type="Node2D" parent="."]
@@ -72,6 +72,7 @@ cast_to = Vector2( 0, 10 )
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -1.66411, -1.17374 )
 texture = ExtResource( 4 )
+texture_scale = 0.8
 energy = 0.7
 shadow_enabled = true
 
