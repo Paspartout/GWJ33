@@ -79,6 +79,9 @@ func _physics_process(delta):
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
 	
 	_update_animation(input_x)
+	
+	if Input.is_action_pressed("Action") && $KillOptions/RichTextLabel.visible == true:
+		print ("Stealth Attack Detected")
 
 
 func _update_animation(input_x):
@@ -108,3 +111,17 @@ func next_to_left_wall():
 	return left_top_wall_raycast.is_colliding() or left_bottom_wall_raycast.is_colliding()
 
 
+
+	
+
+
+
+func _on_Area2D_body_entered(body):
+	$KillOptions/RichTextLabel.visible = true 
+	$"KillOptions/Action Key".visible = true
+
+
+
+func _on_Area2D_body_exited(body):
+	$KillOptions/RichTextLabel.visible = false
+	$"KillOptions/Action Key".visible = false
