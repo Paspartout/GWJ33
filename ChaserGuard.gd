@@ -11,9 +11,24 @@ func _physics_process(delta):
 		velocity.x = player_direction.x
 	velocity.y += gravity
 	velocity = move_and_slide(velocity)
+	
 func _on_Detection_body_entered(body):
 	player = body
+	print(body.name)
+	$SuspicionTimer.start()
+
+		
 
 func _on_Detection_body_exited(body):
 	player = null
 	velocity = Vector2.ZERO
+	$SuspicionTimer.stop()
+	
+
+
+func _on_SuspicionTimer_timeout():
+	var Players = get_tree().get_nodes_in_group("Players")
+	if !Players.empty():
+		Players[0].kill()
+
+

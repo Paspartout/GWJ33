@@ -8,6 +8,8 @@ export var gravity: float = 10
 export var jump_strength: float = 300
 export var number_of_double_jumps: int = 1
 
+signal death
+
 # wall_jump_vertical_force is the pushback and wall_jump_vertical_force is the actual jump height
 export var wall_jump_vertical_force: float = 175
 export var wall_jump_horizontal_bounce: float = 500
@@ -110,6 +112,10 @@ func next_to_right_wall():
 func next_to_left_wall():
 	return left_top_wall_raycast.is_colliding() or left_bottom_wall_raycast.is_colliding()
 
+
+func kill():
+	emit_signal("death")
+	queue_free()
 
 
 	

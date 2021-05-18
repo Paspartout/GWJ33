@@ -59,9 +59,5 @@ func _on_SuspicionTimer_timeout():
 	if !Players.empty():
 		Players[0].kill()
 	
-
-
-
-
 func _on_DetectionArea_body_exited(body):
 	$SuspicionTimer.stop()
