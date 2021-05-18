@@ -37,7 +37,6 @@ playing = true
 
 [node name="GrapplingHook" parent="Items" instance=ExtResource( 3 )]
 player_path = NodePath("../..")
-max_grapple_distance = 500.0
 
 [node name="WallRaycasts" type="Node2D" parent="."]
 
