@@ -13,11 +13,10 @@ func _physics_process(delta):
 		end.global_position = raycast.cast_to
 	beam.rotation = raycast.cast_to.angle()
 	beam.region_rect.end.x = end.position.length()
-	var mouse_position = get_local_mouse_position()
-	var max_cast_to = mouse_position.normalized() * MAX_LENGTH
+	var max_cast_to = raycast.cast_to.normalized() * MAX_LENGTH
 	raycast.cast_to = max_cast_to
 	
 
 
-#func _ready():
-	#$AnimationPlayer.play("Rotation")
+func _ready():
+	$AnimationPlayer.play("Rotation")
