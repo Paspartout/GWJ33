@@ -7,7 +7,7 @@
 extents = Vector2( 10.9649, 12.6934 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 74.1506, 12.5977 )
+extents = Vector2( 115.737, 23.3037 )
 
 [node name="ChaserGuard" type="Node2D"]
 
@@ -27,9 +27,10 @@ hframes = 12
 
 [node name="Detection" type="Area2D" parent="ChaserGuard"]
 collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaserGuard/Detection"]
-position = Vector2( 7.62939e-06, 0.44545 )
+position = Vector2( 0.0680923, -9.87267 )
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="ChaserGuard/Detection" to="ChaserGuard" method="_on_Detection_body_entered"]

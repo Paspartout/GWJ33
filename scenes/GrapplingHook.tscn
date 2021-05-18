@@ -11,4 +11,9 @@ wait_time = 3.0
 [node name="GrappleRayCast" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 10 )
-collision_mask = 4
+collision_mask = 3
+
+[node name="Rope" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 2.0
+default_color = Color( 0.337255, 0.223529, 0.223529, 1 )

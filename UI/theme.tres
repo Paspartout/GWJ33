@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=10 format=2]
+
+[ext_resource path="res://UI/EquipmentPro.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/box_normal.tres" type="StyleBox" id=2]
+[ext_resource path="res://UI/box_hover.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/box_focus.tres" type="StyleBox" id=4]
+[ext_resource path="res://UI/box_pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://UI/FontMid32.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UI/grabber.tres" type="Texture" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 1 )
+
+[resource]
+default_font = SubResource( 2 )
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/constants/hseparation = 5
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = ExtResource( 4 )
+Button/styles/hover = ExtResource( 3 )
+Button/styles/normal = ExtResource( 2 )
+Button/styles/pressed = ExtResource( 5 )
+HSlider/icons/grabber = ExtResource( 7 )
+HSlider/icons/grabber_disabled = ExtResource( 7 )
+HSlider/icons/grabber_highlight = ExtResource( 7 )
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = ExtResource( 3 )
+HSlider/styles/grabber_area_highlight = ExtResource( 5 )
+HSlider/styles/slider = ExtResource( 2 )
+Panel/styles/panel = ExtResource( 2 )
+PanelContainer/styles/panel = ExtResource( 2 )
+TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/fonts/font = ExtResource( 6 )

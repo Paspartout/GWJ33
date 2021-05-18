@@ -1,15 +1,25 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://graphics/thief_animations.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://scenes/GrapplingHook.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tempassets/omzNL.png" type="Texture" id=4]
+[ext_resource path="res://UI/EquipmentPro.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://graphics/Action Key.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.5221, 13.9916 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 21
+font_data = ExtResource( 5 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 72.0642
+
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 30
+collision_layer = 4
+collision_mask = 27
 collision/safe_margin = 0.01
 script = ExtResource( 1 )
 
@@ -20,6 +30,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "WallJump"
+frame = 3
 playing = true
 
 [node name="Items" type="Node2D" parent="."]
@@ -37,14 +48,12 @@ position = Vector2( -8, -11 )
 rotation = 1.5708
 enabled = true
 cast_to = Vector2( 0, 10 )
-collision_mask = 4
 
 [node name="Bottom" type="RayCast2D" parent="WallRaycasts/Left"]
 position = Vector2( -8, 15 )
 rotation = 1.5708
 enabled = true
 cast_to = Vector2( 0, 10 )
-collision_mask = 4
 
 [node name="Right" type="Node2D" parent="WallRaycasts"]
 
@@ -53,18 +62,17 @@ position = Vector2( 8, -11 )
 rotation = -1.57081
 enabled = true
 cast_to = Vector2( 0, 10 )
-collision_mask = 4
 
 [node name="Bottom" type="RayCast2D" parent="WallRaycasts/Right"]
 position = Vector2( 8, 15 )
 rotation = -1.57081
 enabled = true
 cast_to = Vector2( 0, 10 )
-collision_mask = 4
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( -0.169285, -1.3307 )
+position = Vector2( -1.66411, -1.17374 )
 texture = ExtResource( 4 )
+texture_scale = 0.8
 energy = 0.7
 shadow_enabled = true
 
@@ -76,3 +84,34 @@ margin_bottom = -12.9554
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="KillOptions" type="Node2D" parent="."]
+
+[node name="Action Key" type="Sprite" parent="KillOptions"]
+visible = false
+position = Vector2( -43.4256, -25.5877 )
+scale = Vector2( 0.619082, 0.637664 )
+texture = ExtResource( 6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="KillOptions"]
+visible = false
+margin_left = -30.6618
+margin_top = -36.3405
+margin_right = 59.3382
+margin_bottom = -15.3405
+custom_fonts/normal_font = SubResource( 2 )
+text = "Stealth Kill"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="KillOptions"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillOptions/Area2D"]
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="KillOptions/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="KillOptions/Area2D" to="." method="_on_Area2D_body_exited"]
