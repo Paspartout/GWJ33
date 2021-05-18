@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://graphics/WoodTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://graphics/StoneTiles.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/ChaserGuard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Laser.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Spotlight.tscn" type="PackedScene" id=8]
 
 [node name="Level2" type="Node2D"]
 
@@ -127,3 +128,13 @@ color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="Laser" parent="." instance=ExtResource( 7 )]
 position = Vector2( 258.636, -405.39 )
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="Spotlight" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 886.796, -137.216 )
+scale = Vector2( 0.5, 2 )
+
+[node name="Spotlight2" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 567.557, 101.325 )
+scale = Vector2( 0.5, 1 )

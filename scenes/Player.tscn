@@ -10,11 +10,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.5221, 13.9916 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 21
 font_data = ExtResource( 5 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 radius = 72.0642
 
 [node name="Player" type="KinematicBody2D"]
@@ -30,7 +30,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "WallJump"
-frame = 5
+frame = 3
 playing = true
 
 [node name="Items" type="Node2D" parent="."]
@@ -99,7 +99,7 @@ margin_left = -30.6618
 margin_top = -36.3405
 margin_right = 59.3382
 margin_bottom = -15.3405
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "Stealth Kill"
 scroll_active = false
 __meta__ = {
@@ -111,7 +111,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillOptions/Area2D"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [connection signal="body_entered" from="KillOptions/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="KillOptions/Area2D" to="." method="_on_Area2D_body_exited"]
