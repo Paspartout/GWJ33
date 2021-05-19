@@ -48,9 +48,17 @@ tile_data = PoolIntArray( -196476, 0, 0, -196475, 0, 1, -196474, 0, 1, -196473, 
 position = Vector2( 296, 312 )
 
 [node name="PatrollerGaurd" parent="." instance=ExtResource( 5 )]
-position = Vector2( 396.084, 318.579 )
+position = Vector2( 582.962, 314.574 )
 
-[node name="Laser" parent="." instance=ExtResource( 7 )]
+[node name="Lasers" type="Node" parent="."]
+
+[node name="Laser" parent="Lasers" instance=ExtResource( 7 )]
 position = Vector2( 349.924, 222.646 )
+rotation = -4.46638e-06
+animation = "Rotation"
+
+[node name="Laser2" parent="Lasers" instance=ExtResource( 7 )]
+position = Vector2( 508.844, 224.235 )
+rotation = -4.46638e-06
 
 [connection signal="body_entered" from="Idle/Area2D" to="Idle/Area2D" method="_on_Area2D_body_entered"]

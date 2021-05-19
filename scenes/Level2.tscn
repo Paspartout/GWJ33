@@ -124,9 +124,6 @@ editor_draw_drag_margin = true
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
-[node name="Laser" parent="." instance=ExtResource( 7 )]
-position = Vector2( 258.636, -405.39 )
-
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="Spotlight" parent="Lights" instance=ExtResource( 8 )]
@@ -136,3 +133,14 @@ scale = Vector2( 0.5, 1 )
 [node name="Spotlight2" parent="Lights" instance=ExtResource( 8 )]
 position = Vector2( 522.608, 308.091 )
 scale = Vector2( 0.3, 0.5 )
+
+[node name="Lasers" type="Node" parent="."]
+
+[node name="Laser" parent="Lasers" instance=ExtResource( 7 )]
+position = Vector2( 258.636, -405.39 )
+rotation = -4.46638e-06
+animation = "Rotation"
+
+[node name="Laser2" parent="Lasers" instance=ExtResource( 7 )]
+position = Vector2( 773.488, 261.523 )
+rotation = -4.46638e-06

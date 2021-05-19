@@ -5,6 +5,7 @@ const MAX_LENGTH = 2080
 onready var beam = $Beam
 onready var end = $End
 onready var raycast = $RayCast2D
+export (String, "Rotation", "On - Off") var animation
 
 func _physics_process(delta):
 	if raycast.is_colliding():
@@ -19,4 +20,4 @@ func _physics_process(delta):
 
 
 func _ready():
-	$AnimationPlayer.play("Rotation")
+	$AnimationPlayer.play(animation)
