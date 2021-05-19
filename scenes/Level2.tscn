@@ -130,9 +130,9 @@ position = Vector2( 258.636, -405.39 )
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="Spotlight" parent="Lights" instance=ExtResource( 8 )]
-position = Vector2( 865.366, -101.499 )
-scale = Vector2( 0.5, 2 )
+position = Vector2( 895.653, 279.697 )
+scale = Vector2( 0.5, 1 )
 
 [node name="Spotlight2" parent="Lights" instance=ExtResource( 8 )]
-position = Vector2( 567.557, 101.325 )
-scale = Vector2( 0.5, 1 )
+position = Vector2( 522.608, 308.091 )
+scale = Vector2( 0.3, 0.5 )
