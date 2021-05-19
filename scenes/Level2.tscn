@@ -12,10 +12,10 @@
 [node name="Level2" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -17.0
-margin_top = -591.0
-margin_right = 1812.0
-margin_bottom = 402.0
+margin_left = -17.1324
+margin_top = -590.868
+margin_right = 1811.87
+margin_bottom = 402.132
 color = Color( 0.537255, 0.537255, 0.537255, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
