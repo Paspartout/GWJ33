@@ -7,3 +7,4 @@ func _ready():
 	
 func game_over():
 	print("game over")
+	

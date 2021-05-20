@@ -5,6 +5,7 @@
 [node name="Spotlight" type="Node2D"]
 
 [node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0.0318596, 200.647 )
 rotation = -1.5708
 scale = Vector2( 7.34636, 9.62021 )
 texture = ExtResource( 1 )

@@ -49,13 +49,7 @@ func _input(event):
 
 func _physics_process(_delta):
 	
-	var input_vec = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up")
-	)
-	
-	if input_vec != Vector2.ZERO:
-		grapple_direction = input_vec.normalized()
+	grapple_direction = get_local_mouse_position().normalized()
 
 	grapple_cast.cast_to = grapple_direction * max_grapple_distance
 	direction_indicator.position = grapple_direction.normalized() * 20

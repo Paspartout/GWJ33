@@ -12,10 +12,10 @@
 [node name="Level2" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -17.0
-margin_top = -591.0
-margin_right = 1812.0
-margin_bottom = 402.0
+margin_left = -17.1324
+margin_top = -590.868
+margin_right = 1811.87
+margin_bottom = 402.132
 color = Color( 0.537255, 0.537255, 0.537255, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,9 +124,6 @@ editor_draw_drag_margin = true
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
-[node name="Laser" parent="." instance=ExtResource( 7 )]
-position = Vector2( 258.636, -405.39 )
-
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="Spotlight" parent="Lights" instance=ExtResource( 8 )]
@@ -136,3 +133,14 @@ scale = Vector2( 0.5, 1 )
 [node name="Spotlight2" parent="Lights" instance=ExtResource( 8 )]
 position = Vector2( 522.608, 308.091 )
 scale = Vector2( 0.3, 0.5 )
+
+[node name="Lasers" type="Node" parent="."]
+
+[node name="Laser" parent="Lasers" instance=ExtResource( 7 )]
+position = Vector2( 258.636, -405.39 )
+rotation = -4.46638e-06
+animation = "Rotation"
+
+[node name="Laser2" parent="Lasers" instance=ExtResource( 7 )]
+position = Vector2( 773.488, 261.523 )
+rotation = -4.46638e-06
