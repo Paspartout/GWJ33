@@ -10,6 +10,7 @@ onready var sprite = $Sprite
 onready var detectionArea = $DetectionArea
 
 func _ready():
+	connect("death", self , "game_over")
 	pass
 	
 func _physics_process(delta):

@@ -17,6 +17,7 @@ export var wall_jump_horizontal_bounce: float = 500
 var jumps = 1
 var movement_velocity: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
+var last_enemy_found
 
 onready var grapple: GrapplingHook = $Items/GrapplingHook
 onready var sprite: AnimatedSprite = $Sprite
@@ -86,12 +87,11 @@ func _physics_process(delta):
 	_update_animation(input_x)
 	
 	if Input.is_action_pressed("Action") && $KillOptions/RichTextLabel.visible == true:
-		# NOTE: This is wrong! Have to determine enemy by using a DetectionArea infront of player
-		# instead of just picking a random forst one from the enemies group
-		# Can just set the enemy visible in _on_Area2D_body_entered or something
-		var enemies = get_tree().get_nodes_in_group("enemies")
-		if !enemies.empty():
-			enemies[0].death()
+		# FIXME: if there's a wall between player and enemy, the enemy is still killed
+		var enemy_to_kill = get_parent().get_node("Enemies").get_node(last_enemy_found)
+		if enemy_to_kill.is_in_group("enemies"):
+			print(enemy_to_kill.name)
+			enemy_to_kill.queue_free()
 
 
 func _update_animation(input_x):
@@ -127,7 +127,8 @@ func kill():
 
 
 func _on_Area2D_body_entered(body):
-	$KillOptions/RichTextLabel.visible = true 
+	last_enemy_found = body.name
+	$KillOptions/RichTextLabel.visible = true
 	$"KillOptions/Action Key".visible = true
 	$DebugLabel.visible = false
 
