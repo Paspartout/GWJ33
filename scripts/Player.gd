@@ -83,7 +83,10 @@ func _physics_process(delta):
 	_update_animation(input_x)
 	
 	if Input.is_action_pressed("Action") && $KillOptions/RichTextLabel.visible == true:
-		print ("Stealth Attack Detected")
+		var enemies = get_tree().get_nodes_in_group("enemies")
+		if !enemies.empty():
+			enemies[0].death()
+				
 
 
 func _update_animation(input_x):
