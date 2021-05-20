@@ -47,14 +47,12 @@ func _on_IdleTimer_timeout():
 	moveTimer.start()
 	idleTimer.stop()
 
-func death():
-	emit_signal("death")
+func kill():
 	queue_free()
 
 func _on_DetectionArea_body_entered(body):
 	if body.get_name() == "Player":
 		$SuspicionTimer.start()
-		
 
 func _on_SuspicionTimer_timeout():
 	var Players = get_tree().get_nodes_in_group("Players")
