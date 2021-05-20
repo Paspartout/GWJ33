@@ -41,7 +41,9 @@ func _input(event):
 			print("left jump")
 		else:
 			if jumps > 0:
+				print("jump")
 				velocity.y = -jump_strength
+				position.y -= 1 # Workaround https://godotengine.org/qa/49493/jumping-on-raising-platform
 				jumps -= 1
 
 			# Cancel jump if releasing jump key
@@ -73,7 +75,8 @@ func _physics_process(delta):
 		jumps = number_of_double_jumps
 	else:
 		velocity.y += gravity
-	$DebugLabel.text = "j: %d" % jumps
+	#$DebugLabel.text = "j: %d, g: %s" % [jumps, "true" if is_on_floor() else "false"]
+	$DebugLabel.text = "vel: (%d, %d)" % [velocity.x, velocity.y]
 	
 	if is_on_ceiling():
 		velocity.y = 0
@@ -83,7 +86,12 @@ func _physics_process(delta):
 	_update_animation(input_x)
 	
 	if Input.is_action_pressed("Action") && $KillOptions/RichTextLabel.visible == true:
-		print ("Stealth Attack Detected")
+		# NOTE: This is wrong! Have to determine enemy by using a DetectionArea infront of player
+		# instead of just picking a random forst one from the enemies group
+		# Can just set the enemy visible in _on_Area2D_body_entered or something
+		var enemies = get_tree().get_nodes_in_group("enemies")
+		if !enemies.empty():
+			enemies[0].death()
 
 
 func _update_animation(input_x):
@@ -118,15 +126,10 @@ func kill():
 	queue_free()
 
 
-	
-
-
-
 func _on_Area2D_body_entered(body):
 	$KillOptions/RichTextLabel.visible = true 
 	$"KillOptions/Action Key".visible = true
 	$DebugLabel.visible = false
-
 
 
 func _on_Area2D_body_exited(body):

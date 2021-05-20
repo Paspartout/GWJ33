@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://graphics/WoodTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://graphics/StoneTiles.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Laser.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Spotlight.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Platform.tscn" type="PackedScene" id=9]
 
 [node name="Level2" type="Node2D"]
 
@@ -144,3 +145,6 @@ animation = "Rotation"
 [node name="Laser2" parent="Lasers" instance=ExtResource( 7 )]
 position = Vector2( 773.488, 261.523 )
 rotation = -4.46638e-06
+
+[node name="Platform" parent="." instance=ExtResource( 9 )]
+position = Vector2( 490.653, 184.631 )

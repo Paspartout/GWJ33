@@ -24,7 +24,9 @@ func _on_Detection_body_exited(body):
 	velocity = Vector2.ZERO
 	$SuspicionTimer.stop()
 	
-
+func death():
+	emit_signal("death")
+	queue_free()
 
 func _on_SuspicionTimer_timeout():
 	var Players = get_tree().get_nodes_in_group("Players")
