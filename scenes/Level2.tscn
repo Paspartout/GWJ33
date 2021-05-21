@@ -1934,3 +1934,4 @@ rotation = -4.46638e-06
 
 [node name="Platform" parent="." instance=ExtResource( 9 )]
 position = Vector2( 490.653, 184.631 )
+animation = "Vertical"

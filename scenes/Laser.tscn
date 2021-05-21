@@ -132,7 +132,7 @@ position = Vector2( 100, 0 )
 rotation = 2.25403
 enabled = true
 cast_to = Vector2( 100, 0 )
-collision_mask = 31
+collision_mask = 29
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/On - Off" = SubResource( 3 )
