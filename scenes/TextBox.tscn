@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/EquipmentPro.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/DialogBox.gd" type="Script" id=2]
+[ext_resource path="res://UI/Arrow.png" type="Texture" id=3]
+[ext_resource path="res://UI/TextBoxArt.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Hover"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 560, 318.676 ), Vector2( 560, 304 ), Vector2( 560, 318.676 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogBox" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -320.0
+margin_top = -360.0
+margin_right = -280.0
+margin_bottom = -320.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DialogBox"]
+margin_left = 64.0
+margin_top = 224.0
+margin_right = 576.0
+margin_bottom = 333.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogBox/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Hello This is Temporary text"
+text = "Hello This is Temporary text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Indicator" type="Sprite" parent="DialogBox"]
+visible = false
+position = Vector2( 560, 310.637 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogBox/Indicator"]
+autoplay = "Hover"
+anims/Hover = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="DialogBox"]
+
+[connection signal="tween_completed" from="DialogBox/Tween" to="DialogBox" method="_on_Tween_tween_completed"]

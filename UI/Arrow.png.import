@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tileset_4.png-74a29337bd1c3660b3217c058d312109.stex"
+path="res://.import/Arrow.png-c01ae01b7b3da5c7ff2dda74f6c5a427.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Tileset_4.png"
-dest_files=[ "res://.import/Tileset_4.png-74a29337bd1c3660b3217c058d312109.stex" ]
+source_file="res://UI/Arrow.png"
+dest_files=[ "res://.import/Arrow.png-c01ae01b7b3da5c7ff2dda74f6c5a427.stex" ]
 
 [params]
 
