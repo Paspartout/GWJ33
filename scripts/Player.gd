@@ -35,10 +35,12 @@ func _input(event):
 		if not is_on_floor() and next_to_right_wall():
 			velocity.x -= wall_jump_horizontal_bounce
 			velocity.y -= wall_jump_vertical_force
+			grapple.stop()
 			print("right jump")
 		elif not is_on_floor() and next_to_left_wall():
 			velocity.x += wall_jump_horizontal_bounce
 			velocity.y -= wall_jump_vertical_force
+			grapple.stop()
 			print("left jump")
 		else:
 			if jumps > 0:
@@ -90,7 +92,6 @@ func _physics_process(delta):
 		# FIXME: if there's a wall between player and enemy, the enemy is still killed
 		var enemy_to_kill = get_parent().get_node("Enemies").get_node(last_enemy_found)
 		if enemy_to_kill.is_in_group("enemies"):
-			print(enemy_to_kill.name)
 			enemy_to_kill.queue_free()
 
 

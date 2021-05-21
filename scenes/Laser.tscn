@@ -10,7 +10,7 @@ blend_mode = 1
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "On - Off"
 length = 6.0
 loop = true
@@ -47,7 +47,7 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 2.5, 2.7, 2.9, 3.1, 4.6, 4.8, 5, 5.2, 5.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ true, true, false, true, false, true, false, true, false, true ]
 }
 tracks/3/type = "value"
@@ -59,7 +59,7 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 2.5, 2.7, 2.9, 3.1, 4.6, 4.8, 5, 5.2, 5.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ true, true, false, true, false, true, false, true, false, true ]
 }
 tracks/4/type = "value"
@@ -71,12 +71,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 2.5, 2.7, 2.9, 3.1, 4.6, 4.8, 5, 5.2, 5.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ true, true, false, true, false, true, false, true, false, true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Rotation"
+[sub_resource type="Animation" id=4]
 length = 14.0
 loop = true
 tracks/0/type = "value"
@@ -136,5 +135,5 @@ cast_to = Vector2( 100, 0 )
 collision_mask = 31
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/On - Off" = SubResource( 4 )
-anims/Rotation = SubResource( 3 )
+"anims/On - Off" = SubResource( 3 )
+anims/Rotation = SubResource( 4 )

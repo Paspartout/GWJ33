@@ -15,7 +15,7 @@ size = 21
 font_data = ExtResource( 5 )
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 72.0642
+radius = 23.7333
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 13.3552, 10 )
@@ -35,7 +35,6 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Run"
-frame = 3
 playing = true
 
 [node name="Items" type="Node2D" parent="."]

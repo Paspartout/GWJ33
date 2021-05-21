@@ -10,7 +10,7 @@ onready var sprite = $Sprite
 onready var detectionArea = $DetectionArea
 
 func _ready():
-	connect("death", self , "game_over")
+	# TODO: maybe connect a signal to manage death?
 	pass
 	
 func _physics_process(delta):
