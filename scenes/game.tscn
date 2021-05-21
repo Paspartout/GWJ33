@@ -17,7 +17,6 @@ __meta__ = {
 }
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color( 0.301961, 0.301961, 0.301961, 1 )
 
 [node name="Level2" parent="." instance=ExtResource( 1 )]
