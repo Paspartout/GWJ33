@@ -52,6 +52,7 @@ autostart = true
 [node name="FreezeTimer" type="Timer" parent="."]
 
 [node name="SuspicionTimer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [node name="DetectionArea" type="Area2D" parent="."]

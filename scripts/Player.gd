@@ -138,3 +138,6 @@ func _on_Area2D_body_exited(body):
 	$KillOptions/RichTextLabel.visible = false
 	$"KillOptions/Action Key".visible = false
 	$DebugLabel.visible = true
+
+
+	
