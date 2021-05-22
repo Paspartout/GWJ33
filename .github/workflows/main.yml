@@ -7,7 +7,7 @@ on:
       - '.import'
 
 env:
-  GODOT_VERSION: 3.3
+  GODOT_VERSION: 3.3.1
   EXPORT_NAME: GWJ33
 
 jobs:
