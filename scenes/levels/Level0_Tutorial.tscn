@@ -12,13 +12,9 @@
 [ext_resource path="res://scenes/levels/Level0_Tutorial.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 67.2871, 57.9166 )
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 169.685 )
+extents = Vector2( 29.106, 165.218 )
 
 [node name="Level0" type="Node2D"]
-
 script = ExtResource( 10 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -140,7 +136,7 @@ editor_draw_drag_margin = true
 [node name="Triggers" type="Node2D" parent="."]
 
 [node name="End" type="Area2D" parent="Triggers"]
-position = Vector2( 1745.54, 299.574 )
+position = Vector2( 1779.44, 186.211 )
 collision_layer = 0
 collision_mask = 4
 __meta__ = {

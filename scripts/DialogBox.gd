@@ -1,5 +1,7 @@
 extends Control
 
+onready var game: Game = get_tree().root.get_node("Game")
+
 var dialog = [
 	'You: This is a cutscene wow',
 	'Villan: yeah this is a cutscene',
@@ -29,7 +31,7 @@ func load_dialog():
 		$Tween.start()
 	else:
 		queue_free()
-		get_tree().change_scene("res://scenes/Level2.tscn")
+		game.load_next_level()
 	dialog_index += 1
 
 
