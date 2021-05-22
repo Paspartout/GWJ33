@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://UI/FontBig48.tres" type="DynamicFont" id=3]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Play" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -48.0
+margin_top = -192.0
+margin_right = 48.0
+margin_bottom = -136.0
+theme = ExtResource( 1 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -72.0
+margin_top = -128.0
+margin_right = 72.0
+margin_bottom = -72.0
+theme = ExtResource( 1 )
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -48.0
+margin_top = -64.0
+margin_right = 48.0
+margin_bottom = -8.0
+theme = ExtResource( 1 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -152.0
+margin_top = -172.0
+margin_right = 153.0
+margin_bottom = -27.0
+custom_fonts/font = ExtResource( 3 )
+text = "The
+ Rain Theif"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
