@@ -24,7 +24,6 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
-bus = "Music"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
