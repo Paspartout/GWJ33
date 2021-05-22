@@ -35,7 +35,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Run"
-frame = 4
+frame = 9
 playing = true
 
 [node name="Items" type="Node2D" parent="."]

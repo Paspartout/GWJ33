@@ -6,7 +6,7 @@ const CROSHAIR: Texture = preload("res://graphics/crosshair.png")
 
 export var player_path: NodePath
 export var grapple_indicator_path: NodePath
-export var max_grapple_distance: float = 350
+export var max_grapple_distance: float = 100
 export var grapple_acceleration: float = 100
 export var grapple_speed: float = 50
 

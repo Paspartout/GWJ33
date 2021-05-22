@@ -4,14 +4,14 @@ export var max_speed: float = 250
 export var acceleration: float = 20
 export var decelleartion: float = 0.7
 export var air_resistance: float = 0.6
-export var gravity: float = 10
+export var gravity: float = 15
 export var jump_strength: float = 300
 export var number_of_double_jumps: int = 1
 
 signal death
 
 # wall_jump_vertical_force is the pushback and wall_jump_vertical_force is the actual jump height
-export var wall_jump_vertical_force: float = 175
+export var wall_jump_vertical_force: float = 290
 export var wall_jump_horizontal_bounce: float = 500
 
 var jumps = 1
@@ -33,13 +33,13 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("jump"):
 		if not is_on_floor() and next_to_right_wall():
-			velocity.x -= wall_jump_horizontal_bounce
 			velocity.y -= wall_jump_vertical_force
+			velocity.x -= wall_jump_horizontal_bounce
 			grapple.stop()
 			print("right jump")
 		elif not is_on_floor() and next_to_left_wall():
-			velocity.x += wall_jump_horizontal_bounce
 			velocity.y -= wall_jump_vertical_force
+			velocity.x += wall_jump_horizontal_bounce
 			grapple.stop()
 			print("left jump")
 		else:
