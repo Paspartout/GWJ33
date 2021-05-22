@@ -40,6 +40,7 @@ func _input(event):
 			grapple.stop()
 		elif not is_on_floor() and next_to_left_wall():
 			velocity.y -= wall_jump_vertical_force
+			velocity.y -= wall_jump_vertical_force
 			velocity.x += wall_jump_horizontal_bounce
 			grapple.stop()
 		else:

@@ -7,7 +7,6 @@
 [ext_resource path="res://UI/EquipmentPro.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://graphics/other/Action Key.png" type="Texture" id=6]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.5221, 13.9916 )
 
@@ -36,7 +35,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Run"
-frame = 6
+frame = 4
 playing = true
 
 [node name="Items" type="Node2D" parent="."]

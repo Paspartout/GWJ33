@@ -11,11 +11,9 @@ func _ready():
 
 func load_next_level():
 	# TODO: Add transition here?
-	print("changing levels")
 	assert(levels.size() > 0)
 	for c in current_level_node.get_children():
 		c.queue_free()
-	print("Removed old one")
 	var next_level = levels[current_level].instance()
 	current_level_node.call_deferred("add_child", next_level)
 	current_level += 1
