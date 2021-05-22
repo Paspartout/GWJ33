@@ -1978,10 +1978,10 @@ __meta__ = {
 
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.01, 1 )
-motion_mirroring = Vector2( 1440, 0 )
+motion_mirroring = Vector2( 400, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer8"]
-position = Vector2( 620.051, 298.941 )
+position = Vector2( 700.686, 167.909 )
 texture = ExtResource( 15 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
