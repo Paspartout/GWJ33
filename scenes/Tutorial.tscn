@@ -1,9 +1,10 @@
-[gd_scene load_steps=290 format=2]
+[gd_scene load_steps=291 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://graphics/Tileset_4.png" type="Texture" id=2]
 [ext_resource path="res://graphics/Tileset_1.png" type="Texture" id=3]
 [ext_resource path="res://graphics/Tileset_2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Laser.tscn" type="PackedScene" id=5]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1813,3 +1814,30 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="Lasers" type="Node2D" parent="."]
+
+[node name="Laser" parent="Lasers" instance=ExtResource( 5 )]
+position = Vector2( 519.394, -351.905 )
+MAX_LENGTH = 20
+animation = "Full Rotation"
+
+[node name="Laser2" parent="Lasers" instance=ExtResource( 5 )]
+position = Vector2( 157.652, -562.81 )
+MAX_LENGTH = 20
+animation = "Full Rotation"
+
+[node name="Laser3" parent="Lasers" instance=ExtResource( 5 )]
+position = Vector2( 433.341, -937.386 )
+MAX_LENGTH = 20
+animation = "Full Rotation"
+
+[node name="Laser4" parent="Lasers" instance=ExtResource( 5 )]
+position = Vector2( 208.595, -863.969 )
+MAX_LENGTH = 20
+animation = "Full Rotation"
+
+[node name="Laser5" parent="Lasers" instance=ExtResource( 5 )]
+position = Vector2( 225.076, -956.864 )
+MAX_LENGTH = 20
+animation = "Full Rotation"

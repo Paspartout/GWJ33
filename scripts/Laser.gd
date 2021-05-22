@@ -1,11 +1,11 @@
 extends Node2D
 
-const MAX_LENGTH = 2080
+export var MAX_LENGTH = 50
 
 onready var beam = $Beam
 onready var end = $End
 onready var raycast = $RayCast2D
-export (String, "Rotation", "On - Off") var animation
+export (String, "Half Rotation", "Full Rotation", "On - Off") var animation
 
 func _physics_process(delta):
 	if raycast.is_colliding():
@@ -20,4 +20,6 @@ func _physics_process(delta):
 
 
 func _ready():
+	# FIXME: make lasers collide with new tiles
+	# TODO: add delay for animations to not play simultaneously
 	$AnimationPlayer.play(animation)

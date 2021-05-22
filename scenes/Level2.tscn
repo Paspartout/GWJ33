@@ -1513,7 +1513,7 @@ scale = Vector2( 0.4, 0.8 )
 [node name="Laser" parent="Lasers" instance=ExtResource( 7 )]
 position = Vector2( 258.636, -405.39 )
 rotation = -4.46638e-06
-animation = "Rotation"
+animation = "Half Rotation"
 
 [node name="Laser2" parent="Lasers" instance=ExtResource( 7 )]
 position = Vector2( 773.488, 261.523 )

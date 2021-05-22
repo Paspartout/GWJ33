@@ -55,7 +55,7 @@ position = Vector2( 582.962, 314.574 )
 [node name="Laser" parent="Lasers" instance=ExtResource( 7 )]
 position = Vector2( 349.924, 222.646 )
 rotation = -4.46638e-06
-animation = "Rotation"
+animation = "Half Rotation"
 
 [node name="Laser2" parent="Lasers" instance=ExtResource( 7 )]
 position = Vector2( 508.844, 224.235 )
