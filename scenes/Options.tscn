@@ -2,7 +2,7 @@
 
 [ext_resource path="res://UI/FontBig48.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/theme.tres" type="Theme" id=6]
-[ext_resource path="res://Scenes/Options.gd" type="Script" id=7]
+[ext_resource path="res://scenes/Options.gd" type="Script" id=7]
 
 [node name="Options" type="Control"]
 anchor_right = 1.0
