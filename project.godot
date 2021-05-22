@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Game",
+"language": "GDScript",
+"path": "res://scripts/Game.gd"
+}, {
 "base": "Node2D",
 "class": "GrapplingHook",
 "language": "GDScript",
 "path": "res://scripts/GrapplingHook.gd"
+}, {
+"base": "Node",
+"class": "Level",
+"language": "GDScript",
+"path": "res://scenes/levels/Level.gd"
 } ]
 _global_script_class_icons={
-"GrapplingHook": ""
+"Game": "",
+"GrapplingHook": "",
+"Level": ""
 }
 
 [application]

@@ -1,10 +1,25 @@
+class_name Game
 extends Node
 
+export(Array, PackedScene) var levels: Array
+export var current_level: int = 0
+
+onready var current_level_node = $Level
+
 func _ready():
-	var Player: Node2D = get_tree().get_nodes_in_group("Players")[0]
-	Player.connect("death", self , "game_over")
-	
-	
-func game_over():
-	print("game over")
-	
+	load_next_level()
+
+func load_next_level():
+	# TODO: Add transition here?
+	print("changing levels")
+	assert(levels.size() > 0)
+	for c in current_level_node.get_children():
+		c.queue_free()
+	print("Removed old one")
+	var next_level = levels[current_level].instance()
+	current_level_node.call_deferred("add_child", next_level)
+	current_level += 1
+
+func respawn():
+	# TODO
+	pass
