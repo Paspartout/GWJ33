@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tileset_4.png-74a29337bd1c3660b3217c058d312109.stex"
+path="res://.import/Gradient Sky 1.png-6bf1c650fdfb9aa3a1e78b7d22b52f5a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Tileset_4.png"
-dest_files=[ "res://.import/Tileset_4.png-74a29337bd1c3660b3217c058d312109.stex" ]
+source_file="res://graphics/background/Gradient Sky 1.png"
+dest_files=[ "res://.import/Gradient Sky 1.png-6bf1c650fdfb9aa3a1e78b7d22b52f5a.stex" ]
 
 [params]
 

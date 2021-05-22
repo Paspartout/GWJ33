@@ -7,6 +7,7 @@ export var air_resistance: float = 0.6
 export var gravity: float = 15
 export var jump_strength: float = 300
 export var number_of_double_jumps: int = 1
+export var show_debug_info: bool = false
 
 signal death
 
@@ -26,9 +27,10 @@ onready var left_top_wall_raycast: RayCast2D = $WallRaycasts/Left/Top
 onready var left_bottom_wall_raycast: RayCast2D = $WallRaycasts/Left/Bottom
 onready var right_top_wall_raycast: RayCast2D = $WallRaycasts/Right/Top
 onready var right_bottom_wall_raycast: RayCast2D = $WallRaycasts/Right/Bottom
+onready var debug_label = $DebugLabel
 
 func _ready():
-	pass
+	debug_label.visible = show_debug_info
 
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -36,15 +38,12 @@ func _input(event):
 			velocity.y -= wall_jump_vertical_force
 			velocity.x -= wall_jump_horizontal_bounce
 			grapple.stop()
-			print("right jump")
 		elif not is_on_floor() and next_to_left_wall():
 			velocity.y -= wall_jump_vertical_force
 			velocity.x += wall_jump_horizontal_bounce
 			grapple.stop()
-			print("left jump")
 		else:
 			if jumps > 0:
-				print("jump")
 				velocity.y = -jump_strength
 				position.y -= 1 # Workaround https://godotengine.org/qa/49493/jumping-on-raising-platform
 				jumps -= 1
@@ -78,8 +77,8 @@ func _physics_process(delta):
 		jumps = number_of_double_jumps
 	else:
 		velocity.y += gravity
-	#$DebugLabel.text = "j: %d, g: %s" % [jumps, "true" if is_on_floor() else "false"]
-	$DebugLabel.text = "vel: (%d, %d)" % [velocity.x, velocity.y]
+	#debug_label.text = "j: %d, g: %s" % [jumps, "true" if is_on_floor() else "false"]
+	debug_label.text = "vel: (%d, %d)" % [velocity.x, velocity.y]
 	
 	if is_on_ceiling():
 		velocity.y = 0
@@ -131,13 +130,10 @@ func _on_Area2D_body_entered(body):
 	last_enemy_found = body.name
 	$KillOptions/RichTextLabel.visible = true
 	$"KillOptions/Action Key".visible = true
-	$DebugLabel.visible = false
+	debug_label.visible = false
 
 
 func _on_Area2D_body_exited(body):
 	$KillOptions/RichTextLabel.visible = false
 	$"KillOptions/Action Key".visible = false
-	$DebugLabel.visible = true
-
-
-	
+	debug_label.visible = show_debug_info

@@ -2,13 +2,14 @@ class_name GrapplingHook
 
 extends Node2D
 
-const CROSHAIR: Texture = preload("res://graphics/crosshair.png")
+const CROSHAIR: Texture = preload("res://graphics/other/crosshair.png")
 
 export var player_path: NodePath
 export var grapple_indicator_path: NodePath
 export var max_grapple_distance: float = 100
 export var grapple_acceleration: float = 100
 export var grapple_speed: float = 50
+export var show_debug_info: bool = false
 
 enum GrappleState {Loose, Shooting, Hooked, Pulling}
 var grapple_state = GrappleState.Loose
@@ -40,6 +41,9 @@ func _ready():
 	direction_indicator.frame = 0
 	direction_indicator.texture = CROSHAIR
 	call_deferred("add_child", direction_indicator)
+	
+	
+		
 
 func _input(event):
 	# TODO: Maybe move somewhere different

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud 4.png-8133b57038888b5bc67d44a216b915a8.stex"
+path="res://.import/wood.png-de2961a0c3e8b426f656c8742ce4dcb7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Environment Sprites/cloud 4.png"
-dest_files=[ "res://.import/cloud 4.png-8133b57038888b5bc67d44a216b915a8.stex" ]
+source_file="res://graphics/tilesets/wood.png"
+dest_files=[ "res://.import/wood.png-de2961a0c3e8b426f656c8742ce4dcb7.stex" ]
 
 [params]
 

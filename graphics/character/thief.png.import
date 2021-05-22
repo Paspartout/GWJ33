@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Solid Greenish Sky.png-6e6c8887a440dbf30153cd867e4081a7.stex"
+path="res://.import/thief.png-d757cd33544b21d19eb9b08bd0005c75.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Environment Sprites/Solid Greenish Sky.png"
-dest_files=[ "res://.import/Solid Greenish Sky.png-6e6c8887a440dbf30153cd867e4081a7.stex" ]
+source_file="res://graphics/character/thief.png"
+dest_files=[ "res://.import/thief.png-d757cd33544b21d19eb9b08bd0005c75.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

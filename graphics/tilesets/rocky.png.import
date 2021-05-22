@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Smaller Tiles.png-535db00dc117ae87923dc5bc655692c1.stex"
+path="res://.import/rocky.png-6c46e75ac1be300e56ef5e76b387e22e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Smaller Tiles.png"
-dest_files=[ "res://.import/Smaller Tiles.png-535db00dc117ae87923dc5bc655692c1.stex" ]
+source_file="res://graphics/tilesets/rocky.png"
+dest_files=[ "res://.import/rocky.png-6c46e75ac1be300e56ef5e76b387e22e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cloud and Grass tile.png-cb4fae1367ab8e8092ea1fd51500f731.stex"
+path="res://.import/Full Silhouette Tile.png-39b1acfe9951d87b11bfdf37e6560ba2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Environment Sprites/Cloud and Grass tile.png"
-dest_files=[ "res://.import/Cloud and Grass tile.png-cb4fae1367ab8e8092ea1fd51500f731.stex" ]
+source_file="res://graphics/background/Full Silhouette Tile.png"
+dest_files=[ "res://.import/Full Silhouette Tile.png-39b1acfe9951d87b11bfdf37e6560ba2.stex" ]
 
 [params]
 
