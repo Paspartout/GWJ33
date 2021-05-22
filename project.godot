@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GWJ33"
-run/main_scene="res://Scenes/MainMenu.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [display]
