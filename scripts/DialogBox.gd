@@ -1,9 +1,9 @@
 extends Control
 
 var dialog = [
-	'Text line numeber 1',
-	'Text line number 2 ',
-	'This is longer text and it is very long remember that this text is very long btw'
+	'You: This is a cutscene wow',
+	'Villan: yeah this is a cutscene',
+	'This is a long Block of text in the cutscene and after this you will go to the next scene!'
 ]
 
 var dialog_index = 0
@@ -29,6 +29,7 @@ func load_dialog():
 		$Tween.start()
 	else:
 		queue_free()
+		get_tree().change_scene("res://scenes/Level2.tscn")
 	dialog_index += 1
 
 
