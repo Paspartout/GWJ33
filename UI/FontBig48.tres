@@ -3,5 +3,5 @@
 [ext_resource path="res://UI/EquipmentPro.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 70
+size = 65
 font_data = ExtResource( 1 )

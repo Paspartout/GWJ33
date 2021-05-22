@@ -1,84 +1,114 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/theme.tres" type="Theme" id=1]
-[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://UI/FontBig48.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/Options.tscn" type="PackedScene" id=4]
 
 [node name="MainMenu" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="Play" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -48.0
-margin_top = -192.0
-margin_right = 48.0
-margin_bottom = -136.0
-theme = ExtResource( 1 )
-text = "Play"
+margin_right = 640.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = "Music"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -72.0
-margin_top = -128.0
-margin_right = 72.0
-margin_bottom = -72.0
+margin_top = 122.0
+margin_right = 640.0
+margin_bottom = 360.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuPanel" type="PanelContainer" parent="CenterContainer"]
+margin_left = 170.0
+margin_right = 470.0
+margin_bottom = 238.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 2.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MenuPanel"]
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 294.0
+margin_bottom = 234.0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="CenterContainer/MenuPanel/VBoxContainer"]
+margin_right = 288.0
+margin_bottom = 74.0
 theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "  Play  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="CenterContainer/MenuPanel/VBoxContainer"]
+margin_top = 78.0
+margin_right = 288.0
+margin_bottom = 152.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Exit" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -48.0
-margin_top = -64.0
-margin_right = 48.0
-margin_bottom = -8.0
-theme = ExtResource( 1 )
-text = "Exit"
+[node name="Exit" type="Button" parent="CenterContainer/MenuPanel/VBoxContainer"]
+margin_top = 156.0
+margin_right = 288.0
+margin_bottom = 230.0
+custom_fonts/font = ExtResource( 3 )
+text = "  Exit  "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -152.0
-margin_top = -172.0
-margin_right = 153.0
-margin_bottom = -27.0
-custom_fonts/font = ExtResource( 3 )
+[node name="Label" type="Label" parent="."]
+margin_left = 224.0
+margin_right = 416.0
+margin_bottom = 99.0
 text = "The
- Rain Theif"
+Rain Thief"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[node name="Options" parent="." instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 320.0
+margin_top = 360.0
+margin_right = 320.0
+margin_bottom = 360.0
+
+[connection signal="pressed" from="CenterContainer/MenuPanel/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuPanel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuPanel/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
