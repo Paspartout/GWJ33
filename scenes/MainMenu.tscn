@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/theme.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://UI/FontBig48.tres" type="DynamicFont" id=3]
-[ext_resource path="res://scenes/Options.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sounds/menu_sound.WAV" type="AudioStream" id=4]
+[ext_resource path="res://scenes/Options.tscn" type="PackedScene" id=5]
 
 [node name="MainMenu" type="Control"]
 theme = ExtResource( 1 )
@@ -26,19 +27,21 @@ __meta__ = {
 autoplay = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 122.0
-margin_right = 640.0
-margin_bottom = 360.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 176.0
+margin_top = 96.0
+margin_right = 476.0
+margin_bottom = 342.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MenuPanel" type="PanelContainer" parent="CenterContainer"]
-margin_left = 170.0
-margin_right = 470.0
-margin_bottom = 238.0
+margin_right = 300.0
+margin_bottom = 246.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 2.0
@@ -51,7 +54,7 @@ __meta__ = {
 margin_left = 6.0
 margin_top = 4.0
 margin_right = 294.0
-margin_bottom = 234.0
+margin_bottom = 242.0
 size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,9 +71,9 @@ __meta__ = {
 }
 
 [node name="Options" type="Button" parent="CenterContainer/MenuPanel/VBoxContainer"]
-margin_top = 78.0
+margin_top = 82.0
 margin_right = 288.0
-margin_bottom = 152.0
+margin_bottom = 156.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Options"
@@ -79,9 +82,9 @@ __meta__ = {
 }
 
 [node name="Exit" type="Button" parent="CenterContainer/MenuPanel/VBoxContainer"]
-margin_top = 156.0
+margin_top = 164.0
 margin_right = 288.0
-margin_bottom = 230.0
+margin_bottom = 238.0
 custom_fonts/font = ExtResource( 3 )
 text = "  Exit  "
 __meta__ = {
@@ -99,7 +102,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" parent="." instance=ExtResource( 4 )]
+[node name="Sounds" type="Node" parent="."]
+
+[node name="OptionSelect" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 4 )
+
+[node name="Options" parent="." instance=ExtResource( 5 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0

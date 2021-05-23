@@ -7,7 +7,7 @@ onready var end = $End
 onready var raycast = $RayCast2D
 export (String, "Half Rotation", "Full Rotation", "On - Off") var animation
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if raycast.is_colliding():
 		end.global_position = raycast.get_collision_point()
 	else:

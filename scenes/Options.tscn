@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/FontBig48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://sounds/menu_sound.WAV" type="AudioStream" id=2]
 [ext_resource path="res://UI/theme.tres" type="Theme" id=6]
 [ext_resource path="res://scenes/Options.gd" type="Script" id=7]
 
-[node name="Options" type="Control"]
+[node name="Options2" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
@@ -127,6 +128,11 @@ margin_top = 104.0
 margin_right = 498.0
 margin_bottom = 152.0
 text = "100%"
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="OptionSelect" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 2 )
 
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
 [connection signal="value_changed" from="SoundSettings/MasterSlider" to="." method="_on_MasterSlider_value_changed"]

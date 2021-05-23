@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://graphics/character/thief_animations.tres" type="SpriteFrames" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://tempassets/luz_circular_gigante_2.png" type="Texture" id=4]
 [ext_resource path="res://UI/EquipmentPro.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://graphics/other/Action Key.png" type="Texture" id=6]
+[ext_resource path="res://sounds/player_walk_2.wav.tres" type="AudioStream" id=7]
+[ext_resource path="res://sounds/first_jump.WAV" type="AudioStream" id=8]
+[ext_resource path="res://sounds/second_jump.WAV" type="AudioStream" id=9]
+[ext_resource path="res://sounds/Death.WAV" type="AudioStream" id=10]
+[ext_resource path="res://sounds/Kill.WAV" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.5221, 13.9916 )
@@ -14,14 +19,15 @@ extents = Vector2( 10.5221, 13.9916 )
 size = 21
 font_data = ExtResource( 5 )
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 23.7333
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 27.5837, 16.2448 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 13.3552, 10 )
+extents = Vector2( 20, 20 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Players",
+"player",
 ]]
 collision_layer = 4
 collision_mask = 27
@@ -34,13 +40,15 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
-animation = "Run"
+animation = "Landing"
+frame = 3
 playing = true
 
 [node name="Items" type="Node2D" parent="."]
 
 [node name="GrapplingHook" parent="Items" instance=ExtResource( 3 )]
 player_path = NodePath("../..")
+max_grapple_distance = 250.0
 
 [node name="WallRaycasts" type="Node2D" parent="."]
 
@@ -89,15 +97,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KillOptions" type="Node2D" parent="."]
+[node name="StealthKillHint" type="Node2D" parent="."]
+visible = false
 
-[node name="Action Key" type="Sprite" parent="KillOptions"]
+[node name="Action Key" type="Sprite" parent="StealthKillHint"]
 visible = false
 position = Vector2( -43.4256, -25.5877 )
 scale = Vector2( 0.619082, 0.637664 )
 texture = ExtResource( 6 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="KillOptions"]
+[node name="RichTextLabel" type="RichTextLabel" parent="StealthKillHint"]
 visible = false
 margin_left = -30.6618
 margin_top = -36.3405
@@ -110,20 +119,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Area2D" type="Area2D" parent="KillOptions"]
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2( 38, 0 )
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillOptions/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource( 3 )
 
-[node name="AttackArea" type="Area2D" parent="."]
-visible = false
+[node name="ItemCollectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-visible = false
-position = Vector2( 20.0198, 1.125 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemCollectionArea"]
 shape = SubResource( 4 )
 
-[connection signal="body_entered" from="KillOptions/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="KillOptions/Area2D" to="." method="_on_Area2D_body_exited"]
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Walking" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 7 )
+volume_db = -2.0
+
+[node name="FirstJump" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 8 )
+volume_db = -2.0
+
+[node name="SecondJump" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 9 )
+volume_db = -2.0
+
+[node name="Kill" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 11 )
+volume_db = 6.0
+
+[node name="Death" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 10 )
+volume_db = 15.0
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
+[connection signal="area_entered" from="ItemCollectionArea" to="." method="_on_ItemCollectionArea_area_entered"]

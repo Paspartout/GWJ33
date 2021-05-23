@@ -47,6 +47,7 @@ func show():
 	visible = true
 
 func _on_Back_pressed():
+	$Sounds/OptionSelect.play(1.11)
 	visible = false
 	main_menu.visible = true
 

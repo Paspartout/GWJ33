@@ -18,7 +18,6 @@
 [ext_resource path="res://graphics/background/cloud 3.png" type="Texture" id=16]
 [ext_resource path="res://graphics/background/cloud 5.png" type="Texture" id=17]
 
-
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
@@ -822,11 +821,13 @@ scale = Vector2( 0.4, 0.8 )
 [node name="Laser" parent="Lasers" instance=ExtResource( 7 )]
 position = Vector2( 258.636, -405.39 )
 rotation = -4.46638e-06
+MAX_LENGTH = 500
 animation = "Half Rotation"
 
 [node name="Laser2" parent="Lasers" instance=ExtResource( 7 )]
 position = Vector2( 773.488, 261.523 )
 rotation = -4.46638e-06
+MAX_LENGTH = 200
 
 [node name="Platform" parent="." instance=ExtResource( 9 )]
 position = Vector2( 490.653, 184.631 )

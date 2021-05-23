@@ -3,11 +3,18 @@ extends Node
 
 export(Array, PackedScene) var levels: Array
 export var current_level: int = 0
+export var debug_enabled: bool = false
 
 onready var current_level_node = $Level
 
 func _ready():
 	load_next_level()
+	MusicPlayer.start_playing()
+
+func _input(event):
+	if debug_enabled:
+		if event.is_action_pressed("debug_skip_level"):
+			load_next_level()
 
 func load_next_level():
 	# TODO: Add transition here?
