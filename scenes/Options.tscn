@@ -1,0 +1,140 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/FontBig48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://sounds/menu_sound.WAV" type="AudioStream" id=2]
+[ext_resource path="res://UI/theme.tres" type="Theme" id=6]
+[ext_resource path="res://scenes/Options.gd" type="Script" id=7]
+
+[node name="Options2" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 6 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -320.0
+margin_top = -360.0
+margin_right = 320.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -304.0
+margin_top = -344.0
+margin_right = -216.0
+margin_bottom = -296.0
+theme = ExtResource( 6 )
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -66.0
+margin_top = -360.0
+margin_right = 66.0
+margin_bottom = -312.0
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundSettings" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -224.0
+margin_top = -256.0
+margin_right = 274.0
+margin_bottom = -104.0
+rect_scale = Vector2( 0.9, 1 )
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SoundSettings"]
+margin_right = 123.0
+margin_bottom = 48.0
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="SoundSettings"]
+margin_left = 127.0
+margin_right = 407.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+
+[node name="MasterValue" type="Label" parent="SoundSettings"]
+margin_left = 411.0
+margin_right = 498.0
+margin_bottom = 48.0
+text = "100%"
+
+[node name="Label2" type="Label" parent="SoundSettings"]
+margin_top = 52.0
+margin_right = 123.0
+margin_bottom = 100.0
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="SoundSettings"]
+margin_left = 127.0
+margin_top = 52.0
+margin_right = 407.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+
+[node name="MusicValue" type="Label" parent="SoundSettings"]
+margin_left = 411.0
+margin_top = 52.0
+margin_right = 498.0
+margin_bottom = 100.0
+text = "100%"
+
+[node name="Label3" type="Label" parent="SoundSettings"]
+margin_top = 104.0
+margin_right = 123.0
+margin_bottom = 152.0
+text = "Sounds"
+
+[node name="SoundSlider" type="HSlider" parent="SoundSettings"]
+margin_left = 127.0
+margin_top = 104.0
+margin_right = 407.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+
+[node name="SoundValue" type="Label" parent="SoundSettings"]
+margin_left = 411.0
+margin_top = 104.0
+margin_right = 498.0
+margin_bottom = 152.0
+text = "100%"
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="OptionSelect" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 2 )
+
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+[connection signal="value_changed" from="SoundSettings/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="value_changed" from="SoundSettings/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="SoundSettings/SoundSlider" to="." method="_on_SoundSlider_value_changed"]

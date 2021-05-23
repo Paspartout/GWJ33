@@ -12,8 +12,8 @@ export var show_debug_info: bool = false
 signal death
 
 # wall_jump_vertical_force is the pushback and wall_jump_vertical_force is the actual jump height
-export var wall_jump_vertical_force: float = 290
-export var wall_jump_horizontal_bounce: float = 500
+export var wall_jump_vertical_force: float = 180
+export var wall_jump_horizontal_bounce: float = 300
 
 var jumps = 1
 var movement_velocity: Vector2 = Vector2.ZERO
@@ -40,6 +40,7 @@ func _input(event):
 			grapple.stop()
 			$Sounds/SecondJump.play()
 		elif not is_on_floor() and next_to_left_wall():
+			velocity.y -= wall_jump_vertical_force
 			velocity.y -= wall_jump_vertical_force
 			velocity.x += wall_jump_horizontal_bounce
 			grapple.stop()

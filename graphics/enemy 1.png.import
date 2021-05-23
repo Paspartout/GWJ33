@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wall Jump (32x32).png-44c8b479247a255297e2524ca0cc9ae4.stex"
+path="res://.import/enemy 1.png-c9c58e2d69fa8c597f2500cfb4a5a6f2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tempassets/Main Characters/Mask Dude/Wall Jump (32x32).png"
-dest_files=[ "res://.import/Wall Jump (32x32).png-44c8b479247a255297e2524ca0cc9ae4.stex" ]
+source_file="res://graphics/enemy 1.png"
+dest_files=[ "res://.import/enemy 1.png-c9c58e2d69fa8c597f2500cfb4a5a6f2.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
