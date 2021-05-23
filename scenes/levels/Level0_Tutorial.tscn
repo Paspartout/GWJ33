@@ -23,7 +23,9 @@ level_bounds = Rect2( -16, 0, 1824, 400 )
 visible = false
 
 [node name="DialogBox" parent="UI/DialogBackground" index="0"]
-visible = false
+margin_left = -224.0
+margin_right = 226.0
+margin_bottom = -32.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]
 
