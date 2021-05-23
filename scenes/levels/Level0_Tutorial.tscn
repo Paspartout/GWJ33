@@ -11,11 +11,11 @@
 [ext_resource path="res://scenes/levels/Level0_Tutorial.gd" type="Script" id=10]
 [ext_resource path="res://scenes/levels/Level.tscn" type="PackedScene" id=11]
 
+[sub_resource type="StyleBoxFlat" id=1]
+
 [sub_resource type="StyleBoxFlat" id=2]
 
-[sub_resource type="StyleBoxFlat" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 29.106, 165.218 )
 
 [sub_resource type="StyleBoxFlat" id=4]
@@ -30,7 +30,7 @@ margin_left = 516.0
 margin_top = 127.0
 margin_right = 630.0
 margin_bottom = 173.0
-custom_styles/normal = SubResource( 2 )
+custom_styles/normal = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "You can jump
 mid air too!"
@@ -44,7 +44,7 @@ margin_left = 841.0
 margin_top = 160.0
 margin_right = 996.0
 margin_bottom = 228.0
-custom_styles/normal = SubResource( 3 )
+custom_styles/normal = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "If you are next to a wall,
 press Spacebar to do
@@ -179,7 +179,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/End" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Label" type="Label" parent="." index="9"]
 margin_left = 284.0
