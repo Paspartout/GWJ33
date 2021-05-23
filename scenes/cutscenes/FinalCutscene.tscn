@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/DialogBox.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/cutscenes/CutsceneBeforeVillage.gd" type="Script" id=2]
-[ext_resource path="res://graphics/village.jpg" type="Texture" id=3]
+[ext_resource path="res://scenes/cutscenes/FinalCutscene.gd" type="Script" id=2]
+[ext_resource path="res://graphics/cube.jpg" type="Texture" id=3]
 
 [node name="CutScene" type="TextureRect"]
 margin_right = 640.0
@@ -22,7 +22,7 @@ margin_right = 225.0
 margin_bottom = 84.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
-dialog = [ "Finally. This has to be the town guarding the temple of rain.", "They guard the artifact with all they have.", "Let's hope I can pass through it and steal the artifact." ]
+dialog = [ "This is the cube!", "Now I just have to escape and get back to my village.", "Thanks for playing!" ]
 autostart = true
 
 [connection signal="finished" from="DialogBox" to="." method="_on_DialogBox_finished"]

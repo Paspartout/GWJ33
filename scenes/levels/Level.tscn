@@ -41,9 +41,6 @@ script = ExtResource( 1 )
 pause_mode = 2
 layer = 2
 
-[node name="Pause" parent="UI" instance=ExtResource( 4 )]
-visible = false
-
 [node name="DialogBackground" type="ColorRect" parent="UI"]
 margin_right = 640.0
 margin_bottom = 360.0
@@ -59,13 +56,18 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -256.0
 margin_top = -112.0
-margin_right = 256.0
+margin_right = 250.0
+margin_bottom = -6.0
+
+[node name="Pause" parent="." instance=ExtResource( 4 )]
 
 [node name="Effects" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Effects"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.333313
+margin_right = 0.333313
 __meta__ = {
 "_edit_use_anchors_": false
 }

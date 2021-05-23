@@ -24,7 +24,3 @@ func load_next_level():
 	var next_level = levels[current_level].instance()
 	current_level_node.call_deferred("add_child", next_level)
 	current_level += 1
-
-func respawn():
-	# TODO
-	pass
