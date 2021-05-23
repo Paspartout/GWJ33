@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/DialogBox.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Lightning"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.3, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Level" type="Node2D" groups=[
 "level",
@@ -31,6 +46,22 @@ margin_right = 256.0
 
 [node name="Effects" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="Effects"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Effects/ColorRect"]
+autoplay = "Lightning"
+anims/Lightning = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Effects/ColorRect"]
+wait_time = 15.0
+autostart = true
+
 [node name="CPUParticles2D6" type="CPUParticles2D" parent="Effects"]
 position = Vector2( 320, -128 )
 amount = 300
@@ -44,3 +75,5 @@ gravity = Vector2( -20, 98 )
 angle = 396.9
 scale_amount = 2.0
 color = Color( 0.207843, 0.603922, 0.854902, 1 )
+
+[connection signal="timeout" from="Effects/ColorRect/Timer" to="." method="_on_Timer_timeout"]

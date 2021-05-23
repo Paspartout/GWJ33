@@ -15,7 +15,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.106, 165.218 )
 
-[node name="Level" instance=ExtResource( 11 )]
+[node name="Level2" instance=ExtResource( 11 )]
 script = ExtResource( 10 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]

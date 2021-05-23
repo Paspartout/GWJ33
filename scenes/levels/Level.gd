@@ -26,3 +26,9 @@ func _on_dialog_finished():
 
 func respawn():
 	push_warning("Not overriden!")
+
+
+func _on_Timer_timeout():
+	$Effects/ColorRect.visible = true
+	$Effects/ColorRect/AnimationPlayer.play("Lightning")
+
