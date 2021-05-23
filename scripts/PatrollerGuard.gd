@@ -8,6 +8,8 @@ onready var moveTimer = $MoveTimer
 onready var idleTimer = $IdleTimer
 onready var sprite = $Sprite
 onready var detectionArea = $DetectionArea
+enum PatrollerState {Idle, Walk, Death}
+var patroller_state = PatrollerState.Walk
 
 func _ready():
 	pass
@@ -27,17 +29,29 @@ func _physics_process(delta):
 		velocity.y = 0
 		
 	if speed < 0:
-		sprite.flip_h = true
-	else:
 		sprite.flip_h = false
+	else:
+		sprite.flip_h = true
 	
 	move_and_slide(velocity, Vector2.UP)
+	_upload_animation()
 
+func _upload_animation():
+	match patroller_state:
+		PatrollerState.Idle:
+			sprite.animation = "Idle"
+		PatrollerState.Walk:
+			sprite.animation = "Walk"
+		PatrollerState.Death:
+			# FIXME: guards aren't dying
+			sprite.animation = "Death"
+			
 
 func _on_MoveTimer_timeout():
 	idle = true
 	moveTimer.stop()
 	idleTimer.start()
+	patroller_state = PatrollerState.Idle
 
 func _on_IdleTimer_timeout():
 	idle = false
@@ -46,9 +60,10 @@ func _on_IdleTimer_timeout():
 	detectionArea.get_node("CollisionShape2D").position.x *= -1
 	moveTimer.start()
 	idleTimer.stop()
+	patroller_state = PatrollerState.Walk
 
 func death():
-	queue_free()
+	patroller_state = PatrollerState.Death
 
 
 func _on_DetectionArea_body_entered(body):
@@ -62,3 +77,8 @@ func _on_SuspicionTimer_timeout():
 	
 func _on_DetectionArea_body_exited(body):
 	$SuspicionTimer.stop()
+
+
+func _on_Sprite_animation_finished():
+	if patroller_state == PatrollerState.Death:
+		queue_free()

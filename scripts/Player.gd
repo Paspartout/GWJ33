@@ -96,7 +96,7 @@ func _physics_process(delta):
 		var enemy_to_kill = get_parent().get_node("Enemies").get_node(last_enemy_found)
 		if enemy_to_kill.is_in_group("enemies"):
 			$Sounds/Kill.play()
-			enemy_to_kill.queue_free()
+			enemy_to_kill.death()
 
 
 func _update_animation(input_x):
@@ -121,8 +121,12 @@ func _update_animation(input_x):
 		sprite.flip_h = false
 		$Sounds/Walking.stop()
 	else:
-		sprite.animation = "Jump"
-		$Sounds/Walking.stop()
+		if velocity.y <= 0:
+			sprite.animation = "Jump"
+			$Sounds/Walking.stop()
+		else:
+			sprite.animation = "Landing"
+			$Sounds/Walking.stop()
 
 
 func next_to_wall():
