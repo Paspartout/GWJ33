@@ -1,4 +1,4 @@
-extends ColorRect
+extends TextureRect
 
 onready var game: Game = get_tree().root.get_node_or_null("Game")
 
