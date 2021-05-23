@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://UI/FontBig48.tres" type="DynamicFont" id=3]
 [ext_resource path="res://sounds/menu_sound.WAV" type="AudioStream" id=4]
 [ext_resource path="res://scenes/Options.tscn" type="PackedScene" id=5]
+[ext_resource path="res://graphics/background/Solid Greenish Sky.png" type="Texture" id=6]
+[ext_resource path="res://graphics/background/cloud 3.png" type="Texture" id=7]
+[ext_resource path="res://graphics/background/Cloud 2.png" type="Texture" id=8]
 
 [node name="MainMenu" type="Control"]
 theme = ExtResource( 1 )
@@ -13,7 +16,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Solid Greenish Sky" type="Sprite" parent="."]
+position = Vector2( 320, 180 )
+scale = Vector2( 0.401003, 0.146639 )
+texture = ExtResource( 6 )
+
+[node name="Cloud 2" type="Sprite" parent="."]
+position = Vector2( 160, 96 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="Cloud 3" type="Sprite" parent="."]
+position = Vector2( 496, 280 )
+rotation = -1.74846e-07
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="cloud 4" type="Sprite" parent="."]
+position = Vector2( 448, 96 )
+scale = Vector2( 0.871134, 0.892157 )
+texture = ExtResource( 7 )
+
+[node name="cloud 3" type="Sprite" parent="."]
+position = Vector2( 144, 280 )
+texture = ExtResource( 7 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_right = 640.0
 margin_bottom = 360.0
 size_flags_horizontal = 3
@@ -92,6 +121,7 @@ __meta__ = {
 margin_left = 224.0
 margin_right = 416.0
 margin_bottom = 99.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "The
 Rain Thief"
 align = 1
@@ -112,6 +142,17 @@ margin_left = 320.0
 margin_top = 360.0
 margin_right = 320.0
 margin_bottom = 360.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 320, -80 )
+emitting = false
+amount = 300
+lifetime = 3.0
+preprocess = 10.0
+emission_shape = 2
+emission_rect_extents = Vector2( 300, 1 )
+scale_amount = 2.0
+color = Color( 0.176471, 0.458824, 0.858824, 1 )
 
 [connection signal="pressed" from="CenterContainer/MenuPanel/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuPanel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
