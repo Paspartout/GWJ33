@@ -16,45 +16,52 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.106, 165.218 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 128, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=8]
 
 [node name="Level2_RainTemple" instance=ExtResource( 11 )]
 script = ExtResource( 1 )
 level_bounds = Rect2( 0, -1832, 4768, 2224 )
 
-[node name="DialogBackground" parent="UI" index="1"]
-visible = false
+[node name="Pause" parent="UI" index="0"]
+visible = true
 
 [node name="DialogBox" parent="UI/DialogBackground" index="0"]
-visible = false
+margin_left = -224.0
+margin_right = 226.0
+margin_bottom = -32.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]
 
@@ -198,10 +205,10 @@ __meta__ = {
 }
 
 [node name="Sprite" type="AnimatedSprite" parent="Items/FinalItem" index="0"]
-frames = SubResource( 8 )
+frames = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/FinalItem" index="1"]
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 
 [node name="PatrollerGuard2" parent="Enemies" index="0" instance=ExtResource( 10 )]
 position = Vector2( 1481.18, -403.457 )

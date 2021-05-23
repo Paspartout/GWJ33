@@ -54,11 +54,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DialogBackground" parent="UI" index="1"]
-visible = false
+[node name="Pause" parent="UI" index="0"]
+visible = true
 
 [node name="DialogBox" parent="UI/DialogBackground" index="0"]
-visible = false
+margin_left = -224.0
+margin_right = 226.0
+margin_bottom = -32.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="3"]
 
