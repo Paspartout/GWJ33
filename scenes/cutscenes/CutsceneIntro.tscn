@@ -1,16 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/DialogBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/cutscenes/CutsceneBeforeVillage.gd" type="Script" id=2]
+[ext_resource path="res://graphics/desert concept.jpg" type="Texture" id=3]
 
-[node name="CutScene" type="ColorRect"]
+[node name="CutScene" type="TextureRect"]
 margin_right = 640.0
 margin_bottom = 360.0
-color = Color( 1, 0.866667, 0.529412, 1 )
+texture = ExtResource( 3 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DialogBox" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.5

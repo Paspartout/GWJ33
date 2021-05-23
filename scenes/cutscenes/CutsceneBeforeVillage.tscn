@@ -6,11 +6,8 @@
 [node name="CutScene" type="ColorRect"]
 margin_right = 640.0
 margin_bottom = 360.0
-color = Color( 0.196078, 0.184314, 0.266667, 1 )
+color = Color( 0.0196078, 0.435294, 0.466667, 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DialogBox" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.5
