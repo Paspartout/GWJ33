@@ -175,6 +175,7 @@ func _on_AttackArea_body_exited(_body):
 	kill_hint.visible = false
 
 func _on_ItemCollectionArea_area_entered(area):
+	$Sounds/Pickup.play()
 	level.show_dialog([
 		"Congratulations! You stole the grapling hook!",
 		"Aim using the mouse and shoot using the left mouse button.",
