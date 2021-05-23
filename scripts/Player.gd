@@ -1,3 +1,4 @@
+class_name Player
 extends KinematicBody2D
 
 export var max_speed: float = 250
@@ -8,7 +9,7 @@ export var gravity: float = 15
 export var jump_strength: float = 300
 export var number_of_double_jumps: int = 1
 export var show_debug_info: bool = false
-export var has_grappling_hook: bool = false
+export var has_grappling_hook: bool = false setget _set_has_grappling_hook
 
 signal death
 
@@ -178,5 +179,9 @@ func _on_ItemCollectionArea_area_entered(area):
 		"Congratulations! You stole the grapling hook!",
 		"Aim using the mouse and shoot using the left mouse button.",
 		])
-	has_grappling_hook = true
+	self.has_grappling_hook = true
 	area.queue_free()
+
+func _set_has_grappling_hook(is_equipped: bool):
+	has_grappling_hook = is_equipped
+	grapple.enabled = is_equipped

@@ -27,6 +27,7 @@ extents = Vector2( 20, 20 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Players",
+"player",
 ]]
 collision_layer = 4
 collision_mask = 27
@@ -40,7 +41,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Landing"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Items" type="Node2D" parent="."]

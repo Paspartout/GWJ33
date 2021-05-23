@@ -9,6 +9,7 @@ onready var current_level_node = $Level
 
 func _ready():
 	load_next_level()
+	MusicPlayer.start_playing()
 
 func _input(event):
 	if debug_enabled:
@@ -20,7 +21,7 @@ func load_next_level():
 	assert(levels.size() > 0)
 	for c in current_level_node.get_children():
 		c.queue_free()
-	var next_level = levels[current_level].instance()
+ 	var next_level = levels[current_level].instance()
 	current_level_node.call_deferred("add_child", next_level)
 	current_level += 1
 

@@ -20,7 +20,6 @@ var grapple_direction: Vector2 = Vector2.ZERO
 var grapple_indicator: Node2D
 var direction_indicator: Node2D
 
-
 onready var player = get_node(player_path)
 
 onready var grapple_timer: Timer = $Timer
