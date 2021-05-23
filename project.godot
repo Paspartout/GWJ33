@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/enemies/ChaserGuard.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://scenes/enemies/Enemy.gd"
+}, {
 "base": "Node",
 "class": "Game",
 "language": "GDScript",
@@ -29,13 +34,14 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/levels/Level.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Enemy",
 "class": "PatrollerGuard",
 "language": "GDScript",
 "path": "res://scenes/enemies/PatrollerGuard.gd"
 } ]
 _global_script_class_icons={
 "ChaserGuard": "",
+"Enemy": "",
 "Game": "",
 "GrapplingHook": "",
 "Level": "",
@@ -45,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GWJ33"
-run/main_scene="res://scenes/MainMenu.tscn"
+run/main_scene="res://scenes/levels/Level1_GrappleSteal.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -143,4 +149,5 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+batching/precision/uv_contract=true
 environment/default_environment="res://default_env.tres"

@@ -121,7 +121,6 @@ tile_data = PoolIntArray( -2, 0, 4, -1, 0, 196609, -65536, 0, 196609, -65535, 0,
 
 [node name="Player" parent="." index="3" instance=ExtResource( 7 )]
 position = Vector2( 34.4469, 277.769 )
-show_debug_info = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" index="10"]
 current = true

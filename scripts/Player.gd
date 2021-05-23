@@ -156,10 +156,11 @@ func next_to_left_wall():
 
 
 func kill():
-	$Sounds/Death.play()
-	emit_signal("death")
-	yield($Sounds/Death, "finished")
-	queue_free()
+	return
+	# $Sounds/Death.play()
+	#emit_signal("death")
+	#yield($Sounds/Death, "finished")
+	#queue_free()
 
 func get_jumps():
 	return jumps

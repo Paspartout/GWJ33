@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/enemies/ChaserGuard.gd" type="Script" id=1]
-[ext_resource path="res://tempassets/Main Characters/Pink Man/Idle (32x32).png" type="Texture" id=2]
+[ext_resource path="res://graphics/enemies/small_guard.tres" type="SpriteFrames" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.9649, 12.6934 )
@@ -15,6 +15,7 @@ extents = Vector2( 115.737, 23.3037 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
+speed = 75.0
 
 [node name="SuspicionTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -24,19 +25,19 @@ one_shot = true
 position = Vector2( 0.331081, 0.3973 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.49831, -3.37119 )
-texture = ExtResource( 2 )
-hframes = 12
+frames = ExtResource( 2 )
+animation = "Death"
 
-[node name="Detection" type="Area2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2( 0.0680923, -9.87267 )
 shape = SubResource( 2 )
 
 [connection signal="timeout" from="SuspicionTimer" to="." method="_on_SuspicionTimer_timeout"]
-[connection signal="body_entered" from="Detection" to="." method="_on_Detection_body_entered"]
-[connection signal="body_exited" from="Detection" to="." method="_on_Detection_body_exited"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_Detection_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_Detection_body_exited"]
