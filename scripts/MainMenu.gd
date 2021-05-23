@@ -16,3 +16,7 @@ func _on_Options_pressed():
 	options.show()
 	main_menu.hide()
 	$Sounds/OptionSelect.play(1.11)
+
+
+func _on_Timer_timeout():
+	$CPUParticles2D.emitting = true

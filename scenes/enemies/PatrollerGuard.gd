@@ -9,13 +9,16 @@ export var gravity: float = 10
 onready var move_timer = $MoveTimer
 onready var idle_timer = $IdleTimer
 onready var sus_timer = $SuspicionTimer
+onready var tween = $Tween
 
 onready var sprite = $Sprite
 onready var detection_area = $DetectionArea
 onready var light_cone: Sprite = $DetectionArea/LightCone
+onready var sus_indicator: CanvasItem = $SusLabel
 
 enum PatrollerState {Idle, Walk, Death}
 var patroller_state = PatrollerState.Walk
+var player
 
 func _ready():
 	pass
@@ -82,16 +85,21 @@ func _turn_around():
 	light_cone.flip_h = !light_cone.flip_h
 
 func _on_DetectionArea_body_entered(body):
-	if body.get_name() == "Player":
-		sus_timer.start()
-
-func _on_SuspicionTimer_timeout():
-	var Players = get_tree().get_nodes_in_group("Players")
-	if !Players.empty():
-		Players[0].kill()
+	sus_indicator.visible = true
+	player = body
+	sus_timer.start()
+	tween.interpolate_property(
+		sus_indicator, "modulate", Color.white, Color.red, sus_timer.wait_time,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+	)
+	tween.start()
 
 func _on_DetectionArea_body_exited(_body):
+	sus_indicator.visible = false
 	sus_timer.stop()
+
+func _on_SuspicionTimer_timeout():
+	player.kill()
 
 func _on_Sprite_animation_finished():
 	if patroller_state == PatrollerState.Death:

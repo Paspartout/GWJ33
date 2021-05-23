@@ -23,7 +23,7 @@ margin_right = 256.0
 rect_scale = Vector2( 1.03613, 0.996709 )
 size_flags_horizontal = 5
 size_flags_vertical = 5
-dialog = [ "Rain.", "Water falling from the heavens. I never experienced it myself.", "Our village is slowly dying because of the lack of water.", "There is an artifact that our neighbours have. It attracts all the water in heavens to their lands.", "I have only one choice and have to steal that artifact.", "This will probably kill a lot of innocent people, but this has to change.", "But this has to change. Almost all of us are dead.", "I don't consider myself a savior or a hero. I am only a thief.", "I have to do it. I have to steal the rain." ]
+dialog = [ "Rain.", "Water falling from the sky. I never experienced it myself.", "Our village is slowly dying because of the lack of water. No crop will grow anymore.", "There is an artifact that our neighbours have. It attracts all the water in heavens to their lands.", "I have only one choice and have to steal that artifact.", "This will probably kill a lot of innocent people, but I can't take it anymore.", "Almost all of us are dead. I am the only one left in my family.", "I don't consider myself a savior or a hero. I am only a thief.", "A thief of the rain." ]
 autostart = true
 
 [connection signal="finished" from="DialogBox" to="." method="_on_DialogBox_finished"]
