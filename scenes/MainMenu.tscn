@@ -231,7 +231,7 @@ scale_amount = 2.0
 color = Color( 0.176471, 0.458824, 0.858824, 1 )
 
 [node name="Timer" type="Timer" parent="CPUParticles2D"]
-wait_time = 0.1
+wait_time = 3.0
 one_shot = true
 autostart = true
 
