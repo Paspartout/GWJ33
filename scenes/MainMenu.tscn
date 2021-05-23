@@ -29,17 +29,18 @@ autoplay = true
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 122.0
+margin_top = 88.0
 margin_right = 640.0
-margin_bottom = 360.0
+margin_bottom = 368.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MenuPanel" type="PanelContainer" parent="CenterContainer"]
 margin_left = 170.0
+margin_top = 17.0
 margin_right = 470.0
-margin_bottom = 246.0
+margin_bottom = 263.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 2.0

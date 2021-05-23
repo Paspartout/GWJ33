@@ -28,3 +28,19 @@ anchor_bottom = 1.0
 margin_left = -256.0
 margin_top = -112.0
 margin_right = 256.0
+
+[node name="Effects" type="CanvasLayer" parent="."]
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="Effects"]
+position = Vector2( 320, -128 )
+amount = 300
+lifetime = 4.0
+preprocess = 5.0
+speed_scale = 1.5
+randomness = 0.1
+emission_shape = 2
+emission_rect_extents = Vector2( 1000, 100 )
+gravity = Vector2( -20, 98 )
+angle = 396.9
+scale_amount = 2.0
+color = Color( 0.207843, 0.603922, 0.854902, 1 )
