@@ -62,6 +62,16 @@ region = Rect2( 384, 64, 64, 64 )
 atlas = ExtResource( 1 )
 region = Rect2( 448, 64, 64, 64 )
 
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 64, 64 )
+
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
 region = Rect2( 512, 64, 64, 64 )
@@ -192,7 +202,6 @@ collision_mask = 4
 position = Vector2( 77.8708, 1.68851 )
 shape = SubResource( 31 )
 
-[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
 [connection signal="timeout" from="SuspicionTimer" to="." method="_on_SuspicionTimer_timeout"]

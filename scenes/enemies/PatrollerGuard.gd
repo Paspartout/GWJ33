@@ -15,25 +15,26 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
-	if idle:
-		velocity.x = 0
-	else:
-		velocity.x = speed
-	
-	if is_on_floor():
-		pass
-	else:
-		velocity.y += gravity
+	if not patroller_state == PatrollerState.Death:
+		if idle:
+			velocity.x = 0
+		else:
+			velocity.x = speed
 		
-	if is_on_ceiling():
-		velocity.y = 0
+		if is_on_floor():
+			pass
+		else:
+			velocity.y += gravity
+			
+		if is_on_ceiling():
+			velocity.y = 0
+			
+		if speed < 0:
+			sprite.flip_h = false
+		else:
+			sprite.flip_h = true
 		
-	if speed < 0:
-		sprite.flip_h = false
-	else:
-		sprite.flip_h = true
-	
-	move_and_slide(velocity, Vector2.UP)
+		move_and_slide(velocity, Vector2.UP)
 	_upload_animation()
 
 func _upload_animation():
@@ -43,8 +44,16 @@ func _upload_animation():
 		PatrollerState.Walk:
 			sprite.animation = "Walk"
 		PatrollerState.Death:
-			# FIXME: guards aren't dying
+			idle = true
 			sprite.animation = "Death"
+			moveTimer.stop()
+			idleTimer.stop()
+			$SuspicionTimer.stop()
+			yield(sprite,"animation_finished")
+			sprite.hide()
+			$CollisionShape2D.hide()
+			$DetectionArea/CollisionShape2D.hide()
+			queue_free()
 			
 
 func _on_MoveTimer_timeout():
