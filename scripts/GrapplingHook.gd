@@ -19,6 +19,7 @@ var grapple_direction: Vector2 = Vector2.ZERO
 
 var grapple_indicator: Node2D
 var direction_indicator: Node2D
+var grapple_valid: bool = false
 
 onready var player = get_node(player_path)
 
@@ -55,11 +56,17 @@ func _physics_process(_delta):
 	direction_indicator.position = grapple_direction.normalized() * 20
 	
 	if grapple_cast.is_colliding():
-		direction_indicator.frame = 1
-		grapple_indicator.frame = 1
+		var collider: TileMap = grapple_cast.get_collider()
+		if !collider.get_collision_layer_bit(4):
+			direction_indicator.frame = 1
+			grapple_indicator.frame = 1
+			grapple_valid = true
+		else:
+			grapple_valid = false
 	else:
 		direction_indicator.frame = 0
 		grapple_indicator.frame = 0
+		grapple_valid = false
 
 func pull() -> Vector2:
 	match grapple_state:
@@ -85,7 +92,7 @@ func shoot():
 		stop()
 		return
 
-	if grapple_cast.is_colliding():
+	if grapple_valid:
 		grapple_pos = grapple_cast.get_collision_point()
 		$Sounds/GrappleShoot.play()
 		#print("Hit", grapple_pos)

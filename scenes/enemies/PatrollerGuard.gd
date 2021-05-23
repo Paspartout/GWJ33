@@ -21,7 +21,7 @@ var patroller_state = PatrollerState.Walk
 var player
 
 func _ready():
-	pass
+	sus_indicator.visible = false
 
 func _physics_process(_delta):
 	_update_animation()

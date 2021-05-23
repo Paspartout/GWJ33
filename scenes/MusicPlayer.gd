@@ -3,7 +3,6 @@ extends AudioStreamPlayer
 var tracks = [
 	preload("res://music/Departure.ogg"),
 	preload("res://music/StandWithUs.ogg"),
-	preload("res://music/1-10_Rain.wav")
 ]
 
 func start_playing():

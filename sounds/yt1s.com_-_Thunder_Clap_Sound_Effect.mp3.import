@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/yt1s.com_-_Thunder_Clap_Sound_Effect.mp3-09b535ea3ffb2f33bd99f3a88bc6bef4.mp3str"
+
+[deps]
+
+source_file="res://sounds/yt1s.com_-_Thunder_Clap_Sound_Effect.mp3"
+dest_files=[ "res://.import/yt1s.com_-_Thunder_Clap_Sound_Effect.mp3-09b535ea3ffb2f33bd99f3a88bc6bef4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

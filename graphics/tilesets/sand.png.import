@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sand Tileset.png-cd7e2fb24dca941825f3b626acf0d0da.stex"
+path="res://.import/sand.png-f9815e85f1262f3ba92ee00b11ba3869.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/tilesets/Sand Tileset.png"
-dest_files=[ "res://.import/Sand Tileset.png-cd7e2fb24dca941825f3b626acf0d0da.stex" ]
+source_file="res://graphics/tilesets/sand.png"
+dest_files=[ "res://.import/sand.png-f9815e85f1262f3ba92ee00b11ba3869.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

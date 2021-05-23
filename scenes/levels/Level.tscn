@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/DialogBox.tscn" type="PackedScene" id=2]
-[ext_resource path="res://yt1s.com_-_Thunder_Clap_Sound_Effect.mp3" type="AudioStream" id=3]
+[ext_resource path="res://sounds/yt1s.com_-_Thunder_Clap_Sound_Effect.mp3" type="AudioStream" id=3]
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -101,5 +101,7 @@ color = Color( 0.215686, 0.462745, 0.713726, 1 )
 [node name="Tiles" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
 
 [connection signal="timeout" from="Effects/ColorRect/Timer" to="." method="_on_Timer_timeout"]

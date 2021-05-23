@@ -1,6 +1,6 @@
 extends Control
 
-onready var game: Game = get_tree().root.get_node("Game")
+onready var game: Game = get_tree().root.get_node_or_null("Game")
 
 func _ready():
 	set_visible(false)

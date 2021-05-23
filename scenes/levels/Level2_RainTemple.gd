@@ -2,5 +2,12 @@ tool
 extends Level
 
 func _ready():
-	var player: Player = get_tree().get_nodes_in_group("player")[0]
+	checkpoint_index += 1
+	
+	if game == null:
+		MusicPlayer.start_playing()
+		MusicPlayer.play_next()
+
+func respawn():
+	.respawn()
 	player.has_grappling_hook = true

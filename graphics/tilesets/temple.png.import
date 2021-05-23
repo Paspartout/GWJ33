@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/old stone tilable sprite.png-f0d2a8a2443517bc455e36d5359568f9.stex"
+path="res://.import/temple.png-25a5af32672b326f720addbd77d2e7ae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/tilesets/old stone tilable sprite.png"
-dest_files=[ "res://.import/old stone tilable sprite.png-f0d2a8a2443517bc455e36d5359568f9.stex" ]
+source_file="res://graphics/tilesets/temple.png"
+dest_files=[ "res://.import/temple.png-25a5af32672b326f720addbd77d2e7ae.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

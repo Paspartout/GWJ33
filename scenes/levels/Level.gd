@@ -36,7 +36,6 @@ func _ready():
 	dialog_box.connect("finished", self, "_on_dialog_finished")
 	if not game:
 		push_warning("Level run independently, no scene switching will work")
-	current_checkpoint = checkpoints.get_child(checkpoint_index)
 	respawn()
 
 func get_map_bounds() -> Rect2:
@@ -61,6 +60,7 @@ func _on_dialog_finished():
 	dialog.visible = false
 
 func respawn():
+	current_checkpoint = checkpoints.get_child(checkpoint_index)
 	player = player_scene.instance()
 	add_child(player)
 	var camera := Camera2D.new()
