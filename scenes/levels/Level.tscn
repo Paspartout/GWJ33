@@ -19,6 +19,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
 
 [node name="Level" type="Node2D" groups=[
 "level",
@@ -82,6 +94,6 @@ emission_rect_extents = Vector2( 1000, 100 )
 gravity = Vector2( -20, 98 )
 angle = 396.9
 scale_amount = 2.0
-color = Color( 0.207843, 0.603922, 0.854902, 1 )
+color = Color( 0.215686, 0.462745, 0.713726, 1 )
 
 [connection signal="timeout" from="Effects/ColorRect/Timer" to="." method="_on_Timer_timeout"]

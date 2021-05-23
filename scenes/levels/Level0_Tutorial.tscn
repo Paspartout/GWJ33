@@ -146,4 +146,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/End" index="0"]
 shape = SubResource( 1 )
 
+[node name="CPUParticles2D6" parent="Effects" index="1"]
+position = Vector2( 888.393, -225.999 )
+
 [connection signal="body_entered" from="Triggers/End" to="." method="_on_End_body_entered"]

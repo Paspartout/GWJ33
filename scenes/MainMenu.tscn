@@ -23,9 +23,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-autoplay = true
-
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
