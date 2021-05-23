@@ -20,9 +20,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( 0.965936, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 560, 318.676 ), Vector2( 560, 304 ), Vector2( 560, 318.676 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 8 ), Vector2( 0, 0 ) ]
 }
 
 [node name="DialogBox" type="Panel"]
@@ -47,13 +47,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Indicator" type="Sprite" parent="."]
-visible = false
-position = Vector2( 496, 86.637 )
+[node name="Indicator" type="Node2D" parent="."]
+position = Vector2( 488, 83 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Indicator" type="Sprite" parent="Indicator"]
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Indicator"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Indicator/Indicator"]
 autoplay = "Hover"
 anims/Hover = SubResource( 2 )
 

@@ -33,9 +33,15 @@ onready var right_bottom_wall_raycast: RayCast2D = $WallRaycasts/Right/Bottom
 onready var debug_label = $DebugLabel
 onready var kill_hint = $StealthKillHint
 onready var attack_area = $AttackArea
+onready var level: Level
 
 func _ready():
 	debug_label.visible = show_debug_info
+	var levels = get_tree().get_nodes_in_group("level")
+	if levels.size() == 1:
+		level = levels[0]
+	else:
+		push_warning("No level found! Things may break.")
 
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -167,5 +173,9 @@ func _on_AttackArea_body_exited(_body):
 	kill_hint.visible = false
 
 func _on_ItemCollectionArea_area_entered(area):
+	level.show_dialog([
+		"Congratulations! You stole the grapling hook!",
+		"Aim using the mouse and shoot using the left mouse button.",
+		])
 	has_grappling_hook = true
 	area.queue_free()
