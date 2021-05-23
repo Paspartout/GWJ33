@@ -23,3 +23,6 @@ func show_dialog(dialog_text: Array):
 func _on_dialog_finished():
 	get_tree().paused = false
 	dialog.visible = false
+
+func respawn():
+	push_warning("Not overriden!")

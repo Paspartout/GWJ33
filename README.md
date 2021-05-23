@@ -11,3 +11,11 @@ Team and Licenses:
 - **Coding:** [Paspartout](https://paspartout.itch.io) + [Drk](https://drk66.itch.io) + segallar94 - MIT License
 - **Art:** [iDLELUK](https://idleluk.itch.io/) - CC BY
 - **Music:** [fsnowdin](https://fsnowdin.itch.io/) - CC BY
+
+Other contributions:
+--------------------
+
+### Music
+
+- Depature(CC BY SA) by Trevor Lentz: https://opengameart.org/content/departure
+- Stand with us(CC BY SA) by Trevor Lentz: https://opengameart.org/content/stand-with-us

@@ -22,6 +22,7 @@ margin_top = -112.0
 margin_right = 256.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
+dialog = [ "Finally. This has to be the town guarding the temple of rain.", "They guard the artifact with all they have.", "Let's hope I can pass through it and steal the artifact." ]
 autostart = true
 
 [connection signal="finished" from="DialogBox" to="." method="_on_DialogBox_finished"]

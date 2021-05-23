@@ -1,3 +1,4 @@
+class_name ChaserGuard
 extends KinematicBody2D
 
 export var run_speed = 70

@@ -33,6 +33,7 @@ onready var right_bottom_wall_raycast: RayCast2D = $WallRaycasts/Right/Bottom
 onready var debug_label = $DebugLabel
 onready var kill_hint = $StealthKillHint
 onready var attack_area = $AttackArea
+onready var attack_area_x = attack_area.position.x
 onready var level: Level
 
 func _ready():
@@ -117,8 +118,7 @@ func _update_animation(input_x):
 	# Update animation
 	if input_x != 0:
 		sprite.flip_h = input_x < 0
-		if sprite.flip_h:
-			attack_area.position.x = -attack_area.position.x
+		attack_area.position.x = -attack_area_x if input_x < 0 else attack_area_x
 
 	if is_on_floor():
 		if input_x != 0:

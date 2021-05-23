@@ -1,0 +1,2 @@
+- Depature(CC BY SA) by Trevor Lentz: https://opengameart.org/content/departure
+- Stand with us(CC BY SA) by Trevor Lentz: https://opengameart.org/content/stand-with-us

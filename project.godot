@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "ChaserGuard",
+"language": "GDScript",
+"path": "res://scenes/enemies/ChaserGuard.gd"
+}, {
 "base": "Node",
 "class": "Game",
 "language": "GDScript",
@@ -23,11 +28,18 @@ _global_script_classes=[ {
 "class": "Level",
 "language": "GDScript",
 "path": "res://scenes/levels/Level.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PatrollerGuard",
+"language": "GDScript",
+"path": "res://scenes/enemies/PatrollerGuard.gd"
 } ]
 _global_script_class_icons={
+"ChaserGuard": "",
 "Game": "",
 "GrapplingHook": "",
-"Level": ""
+"Level": "",
+"PatrollerGuard": ""
 }
 
 [application]
