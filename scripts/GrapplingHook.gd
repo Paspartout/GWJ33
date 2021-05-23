@@ -91,7 +91,7 @@ func shoot():
 
 	if grapple_cast.is_colliding():
 		grapple_pos = grapple_cast.get_collision_point()
-		
+		$Sounds/GrappleShoot.play()
 		#print("Hit", grapple_pos)
 		grapple_indicator.global_position = grapple_pos
 		grapple_indicator.show()

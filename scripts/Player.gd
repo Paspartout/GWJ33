@@ -38,12 +38,16 @@ func _input(event):
 			velocity.y -= wall_jump_vertical_force
 			velocity.x -= wall_jump_horizontal_bounce
 			grapple.stop()
+			$Sounds/SecondJump.play()
 		elif not is_on_floor() and next_to_left_wall():
 			velocity.y -= wall_jump_vertical_force
 			velocity.x += wall_jump_horizontal_bounce
 			grapple.stop()
+			$Sounds/SecondJump.play()
 		else:
+			# TODO: find a way to know when 2nd jump is being used
 			if jumps > 0:
+				$Sounds/SecondJump.play()
 				velocity.y = -jump_strength
 				position.y -= 1 # Workaround https://godotengine.org/qa/49493/jumping-on-raising-platform
 				jumps -= 1
@@ -100,15 +104,24 @@ func _update_animation(input_x):
 		sprite.flip_h = input_x < 0
 
 	if is_on_floor():
-		sprite.animation = "Run" if input_x != 0 else "Idle"
+		if input_x != 0:
+			if not $Sounds/Walking.is_playing():
+				$Sounds/Walking.play(1)
+			sprite.animation = "Run"
+		else:
+			sprite.animation = "Idle"
+			$Sounds/Walking.stop()
 	elif next_to_right_wall():
 		sprite.animation = "WallJump"
 		sprite.flip_h = true
+		$Sounds/Walking.stop()
 	elif next_to_left_wall():
 		sprite.animation = "WallJump"
 		sprite.flip_h = false
+		$Sounds/Walking.stop()
 	else:
 		sprite.animation = "Jump"
+		$Sounds/Walking.stop()
 
 
 func next_to_wall():
@@ -125,6 +138,8 @@ func kill():
 	emit_signal("death")
 	queue_free()
 
+func get_jumps():
+	return jumps
 
 func _on_Area2D_body_entered(body):
 	last_enemy_found = body.name

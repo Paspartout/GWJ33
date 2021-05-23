@@ -21,6 +21,8 @@ func _process(delta):
 
 func load_dialog():
 	if dialog_index < dialog.size():
+		if dialog_index != 0:
+			$Sounds/DialogSound.play(1.09)
 		finished = false
 		$TextureRect/RichTextLabel.bbcode_text = dialog[dialog_index]
 		$TextureRect/RichTextLabel.percent_visible = 0
@@ -32,6 +34,8 @@ func load_dialog():
 	else:
 		queue_free()
 		game.load_next_level()
+		# FIXME: find a way for sound to play till the end, using yield crashes the game if someone presses space bar many times
+		$Sounds/DialogSound.play(1.09)
 	dialog_index += 1
 
 

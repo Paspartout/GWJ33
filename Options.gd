@@ -17,5 +17,7 @@ func _ready():
 
 
 func _on_Back_pressed():
+	$Sounds/OptionSelect.play(1.11)
+	yield($Sounds/OptionSelect, "finished")
 	get_tree().change_scene("res://scenes/MainMenu.tscn")
 
