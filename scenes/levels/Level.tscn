@@ -100,4 +100,6 @@ color = Color( 0.215686, 0.462745, 0.713726, 1 )
 
 [node name="Tiles" type="Node2D" parent="."]
 
+[node name="Items" type="Node2D" parent="."]
+
 [connection signal="timeout" from="Effects/ColorRect/Timer" to="." method="_on_Timer_timeout"]

@@ -15,5 +15,4 @@ current_level = 3
 debug_enabled = true
 
 [node name="Level" type="Node2D" parent="."]
-pause_mode = 2
 scale = Vector2( 0.995947, 0.976514 )

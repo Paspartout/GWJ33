@@ -94,7 +94,6 @@ func _on_DetectionArea_body_entered(body):
 	)
 	tween.start()
 
-
 func _on_DetectionArea_body_exited(_body):
 	sus_indicator.visible = false
 	sus_timer.stop()
