@@ -1,10 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scenes/TextBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/DialogBox.tscn" type="PackedScene" id=1]
 
-[node name="Cutscene1" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CutScene" type="ColorRect"]
 margin_right = 640.0
 margin_bottom = 360.0
 color = Color( 0.196078, 0.184314, 0.266667, 1 )
@@ -12,8 +10,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" parent="." instance=ExtResource( 1 )]
-margin_left = 320.0
-margin_top = 376.0
-margin_right = 320.0
-margin_bottom = 376.0
+[node name="DialogBox" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -256.0
+margin_top = -112.0
+margin_right = 256.0
+size_flags_horizontal = 5
+size_flags_vertical = 5

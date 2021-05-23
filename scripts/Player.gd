@@ -8,6 +8,7 @@ export var gravity: float = 15
 export var jump_strength: float = 300
 export var number_of_double_jumps: int = 1
 export var show_debug_info: bool = false
+export var has_grappling_hook: bool = false
 
 signal death
 
@@ -18,9 +19,11 @@ export var wall_jump_horizontal_bounce: float = 300
 var jumps = 1
 var movement_velocity: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
-var last_enemy_found
+var enemey_in_range: Node2D = null
 
 onready var grapple: GrapplingHook = $Items/GrapplingHook
+onready var items: Node = $Items
+
 onready var sprite: AnimatedSprite = $Sprite
 #wall jump vars
 onready var left_top_wall_raycast: RayCast2D = $WallRaycasts/Left/Top
@@ -28,6 +31,8 @@ onready var left_bottom_wall_raycast: RayCast2D = $WallRaycasts/Left/Bottom
 onready var right_top_wall_raycast: RayCast2D = $WallRaycasts/Right/Top
 onready var right_bottom_wall_raycast: RayCast2D = $WallRaycasts/Right/Bottom
 onready var debug_label = $DebugLabel
+onready var kill_hint = $StealthKillHint
+onready var attack_area = $AttackArea
 
 func _ready():
 	debug_label.visible = show_debug_info
@@ -56,6 +61,8 @@ func _input(event):
 			# Cancel jump if releasing jump key
 			if event.is_action_released("jump") and velocity.y < -jump_strength/2:
 				velocity.y = -jump_strength/2
+	if has_grappling_hook and event.is_action_pressed("graple"):
+		grapple.shoot()
 
 var walk_velocity: Vector2 = Vector2.ZERO
 
@@ -82,8 +89,10 @@ func _physics_process(delta):
 		jumps = number_of_double_jumps
 	else:
 		velocity.y += gravity
-	#debug_label.text = "j: %d, g: %s" % [jumps, "true" if is_on_floor() else "false"]
-	debug_label.text = "vel: (%d, %d)" % [velocity.x, velocity.y]
+	
+	if show_debug_info:
+		#debug_label.text = "j: %d, g: %s" % [jumps, "true" if is_on_floor() else "false"]
+		debug_label.text = "vel: (%d, %d)" % [velocity.x, velocity.y]
 	
 	if is_on_ceiling():
 		velocity.y = 0
@@ -92,17 +101,18 @@ func _physics_process(delta):
 	
 	_update_animation(input_x)
 	
-	if Input.is_action_pressed("Action") && $KillOptions/RichTextLabel.visible == true:
-		var enemy_to_kill = get_parent().get_node("Enemies").get_node(last_enemy_found)
-		if enemy_to_kill.is_in_group("enemies"):
+	if enemey_in_range and Input.is_action_pressed("Action"):
+		if enemey_in_range.is_in_group("enemies"):
 			$Sounds/Kill.play()
-			enemy_to_kill.death()
+			enemey_in_range.kill()
 
 
 func _update_animation(input_x):
 	# Update animation
 	if input_x != 0:
 		sprite.flip_h = input_x < 0
+		if sprite.flip_h:
+			attack_area.position.x = -attack_area.position.x
 
 	if is_on_floor():
 		if input_x != 0:
@@ -148,14 +158,14 @@ func kill():
 func get_jumps():
 	return jumps
 
-func _on_Area2D_body_entered(body):
-	last_enemy_found = body.name
-	$KillOptions/RichTextLabel.visible = true
-	$"KillOptions/Action Key".visible = true
-	debug_label.visible = false
+func _on_AttackArea_body_entered(body):
+	enemey_in_range = body
+	kill_hint.visible = true
 
+func _on_AttackArea_body_exited(_body):
+	enemey_in_range = null
+	kill_hint.visible = false
 
-func _on_Area2D_body_exited(body):
-	$KillOptions/RichTextLabel.visible = false
-	$"KillOptions/Action Key".visible = false
-	debug_label.visible = show_debug_info
+func _on_ItemCollectionArea_area_entered(area):
+	has_grappling_hook = true
+	area.queue_free()

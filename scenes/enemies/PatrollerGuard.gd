@@ -62,7 +62,7 @@ func _on_IdleTimer_timeout():
 	idleTimer.stop()
 	patroller_state = PatrollerState.Walk
 
-func death():
+func kill():
 	patroller_state = PatrollerState.Death
 
 
@@ -77,7 +77,6 @@ func _on_SuspicionTimer_timeout():
 	
 func _on_DetectionArea_body_exited(body):
 	$SuspicionTimer.stop()
-
 
 func _on_Sprite_animation_finished():
 	if patroller_state == PatrollerState.Death:

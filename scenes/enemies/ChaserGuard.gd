@@ -5,6 +5,8 @@ var velocity = Vector2.ZERO
 var player = null
 export var gravity =  30
 
+signal death
+
 func _physics_process(delta):
 	if player:
 		var player_direction = global_position.direction_to(player.global_position) * run_speed
@@ -24,7 +26,7 @@ func _on_Detection_body_exited(body):
 	velocity = Vector2.ZERO
 	$SuspicionTimer.stop()
 	
-func death():
+func kill():
 	emit_signal("death")
 	queue_free()
 
