@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud artifact.png-d95542c91d5c59b5558360b0b61f4a53.stex"
+path="res://.import/cube.jpg-41f2ddbcaaa79f8a7c2df1acbadb6212.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/cloud artifact.png"
-dest_files=[ "res://.import/cloud artifact.png-d95542c91d5c59b5558360b0b61f4a53.stex" ]
+source_file="res://graphics/cube.jpg"
+dest_files=[ "res://.import/cube.jpg-41f2ddbcaaa79f8a7c2df1acbadb6212.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
