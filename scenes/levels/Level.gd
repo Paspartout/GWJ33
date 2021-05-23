@@ -31,4 +31,5 @@ func respawn():
 func _on_Timer_timeout():
 	$Effects/ColorRect.visible = true
 	$Effects/ColorRect/AnimationPlayer.play("Lightning")
+	$Effects/ColorRect/AudioStreamPlayer.play()
 
