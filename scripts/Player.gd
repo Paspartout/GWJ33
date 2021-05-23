@@ -93,9 +93,9 @@ func _physics_process(delta):
 	_update_animation(input_x)
 	
 	if Input.is_action_pressed("Action") && $KillOptions/RichTextLabel.visible == true:
-		# FIXME: if there's a wall between player and enemy, the enemy is still killed
 		var enemy_to_kill = get_parent().get_node("Enemies").get_node(last_enemy_found)
 		if enemy_to_kill.is_in_group("enemies"):
+			$Sounds/Kill.play()
 			enemy_to_kill.queue_free()
 
 
@@ -136,7 +136,9 @@ func next_to_left_wall():
 
 
 func kill():
+	$Sounds/Death.play()
 	emit_signal("death")
+	yield($Sounds/Death, "finished")
 	queue_free()
 
 func get_jumps():
