@@ -42,6 +42,7 @@ pause_mode = 2
 layer = 2
 
 [node name="Pause" parent="UI" instance=ExtResource( 4 )]
+visible = false
 
 [node name="DialogBackground" type="ColorRect" parent="UI"]
 margin_right = 640.0
@@ -63,7 +64,6 @@ margin_right = 256.0
 [node name="Effects" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Effects"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -95,5 +95,9 @@ gravity = Vector2( -20, 98 )
 angle = 396.9
 scale_amount = 2.0
 color = Color( 0.215686, 0.462745, 0.713726, 1 )
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Tiles" type="Node2D" parent="."]
 
 [connection signal="timeout" from="Effects/ColorRect/Timer" to="." method="_on_Timer_timeout"]

@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/GrapplingHook.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "Level",
 "language": "GDScript",
 "path": "res://scenes/levels/Level.gd"
@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GWJ33"
-run/main_scene="res://scenes/MainMenu.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/icon="res://icon.png"
 
 [autoload]

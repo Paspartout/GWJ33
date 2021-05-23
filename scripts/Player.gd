@@ -35,7 +35,7 @@ onready var debug_label = $DebugLabel
 onready var kill_hint = $StealthKillHint
 onready var attack_area = $AttackArea
 onready var attack_area_x = attack_area.position.x
-onready var level: Level
+onready var level
 
 func _ready():
 	debug_label.visible = show_debug_info
@@ -154,7 +154,6 @@ func next_to_right_wall():
 
 func next_to_left_wall():
 	return left_top_wall_raycast.is_colliding() or left_bottom_wall_raycast.is_colliding()
-
 
 func kill():
 	return

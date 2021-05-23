@@ -11,6 +11,7 @@
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 levels = [ ExtResource( 5 ), ExtResource( 16 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 3 ) ]
+current_level = 1
 debug_enabled = true
 
 [node name="Level" type="Node2D" parent="."]
