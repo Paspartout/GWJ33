@@ -8,9 +8,10 @@ This is our game for the [Godot Wild Jam #33](https://itch.io/jam/godot-wild-jam
 Team and Licenses:
 ------------------
 
-- **Coding:** [Paspartout](https://paspartout.itch.io) + [Drk](https://drk66.itch.io) + segallar94 - MIT License
+- **Coding:** [Paspartout](https://paspartout.itch.io) + [Drk](https://drk66.itch.io) + [Tewa](https://iguessimadev.itch.io/) - MIT License
 - **Art:** [iDLELUK](https://idleluk.itch.io/) - CC BY
 - **Music:** [fsnowdin](https://fsnowdin.itch.io/) - CC BY
+- **Sound Effects:** [Tewa](https://iguessimadev.itch.io/) - CC BY
 
 Other contributions:
 --------------------
