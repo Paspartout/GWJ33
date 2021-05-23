@@ -17,6 +17,7 @@ signal death
 export var wall_jump_vertical_force: float = 180
 export var wall_jump_horizontal_bounce: float = 300
 
+var alive = true
 var jumps = 1
 var movement_velocity: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
@@ -75,6 +76,8 @@ func _input(event):
 var walk_velocity: Vector2 = Vector2.ZERO
 
 func _physics_process(delta):
+	if not alive:
+		return
 	var input_x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
 	if input_x != 0.0:
@@ -156,11 +159,12 @@ func next_to_left_wall():
 	return left_top_wall_raycast.is_colliding() or left_bottom_wall_raycast.is_colliding()
 
 func kill():
-	return
-	# $Sounds/Death.play()
-	#emit_signal("death")
-	#yield($Sounds/Death, "finished")
-	#queue_free()
+	if alive:
+		alive = false
+		visible = false
+		$Sounds/Death.play()
+		yield($Sounds/Death, "finished")
+		emit_signal("death")
 
 func get_jumps():
 	return jumps

@@ -3,6 +3,7 @@ class_name Level
 extends Node2D
 
 var game: Game
+var player
 
 export var player_scene: PackedScene = preload("res://scenes/Player.tscn")
 export var level_bounds: Rect2 = Rect2()
@@ -60,20 +61,26 @@ func _on_dialog_finished():
 	dialog.visible = false
 
 func respawn():
-	var player = player_scene.instance()
+	player = player_scene.instance()
 	add_child(player)
 	var camera := Camera2D.new()
 	camera.current = true
 	camera.drag_margin_h_enabled = true
 	camera.drag_margin_v_enabled = true
 	
-	camera.limit_bottom = level_bounds.size.y
+	camera.limit_bottom = level_bounds.size.y - 16
 	camera.limit_top = level_bounds.position.y
 	camera.limit_left = level_bounds.position.x
 	camera.limit_right = level_bounds.size.x - 64
 
 	player.add_child(camera)
 	player.position = current_checkpoint.position
+	player.connect("death", self, "_on_player_died")
+
+func _on_player_died():
+	yield(get_tree().create_timer(2.0), "timeout")
+	player.queue_free()
+	respawn()
 
 func _on_Timer_timeout():
 	$Effects/ColorRect.visible = true
