@@ -33,5 +33,4 @@ func lighting():
 
 func thunder_finished(_anim):
 	timer.wait_time = randi() % (max_delay-min_delay) + min_delay
-	print(timer.wait_time)
 	timer.start()

@@ -17,7 +17,7 @@ var active = false
 
 onready var indicator = $Indicator
 onready var label = $RichTextLabel
-onready var tween = $Tween
+onready var tween: Tween = $Tween
 onready var sound = $Sounds/DialogSound
 
 func _ready():
@@ -27,7 +27,10 @@ func _ready():
 
 func _input(event):
 	if active and event.is_action_pressed("ui_accept"):
-		advance_line()
+		if tween.is_active():
+			tween.playback_speed = 10
+		else:
+			advance_line()
 
 func start():
 	dialog_index = 0
@@ -53,4 +56,5 @@ func advance_line():
 	dialog_index += 1
 
 func _on_tween_completed():
+	tween.playback_speed = 1
 	indicator.visible = true
