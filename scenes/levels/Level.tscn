@@ -1,36 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/DialogBox.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sounds/yt1s.com_-_Thunder_Clap_Sound_Effect.mp3" type="AudioStream" id=3]
+[ext_resource path="res://scenes/LightingFx.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=4]
-
-[sub_resource type="Animation" id=1]
-resource_name = "Lightning"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.1, 0.3, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 1,
-"values": [  ]
-}
 
 [node name="Level" type="Node2D" groups=[
 "level",
@@ -63,28 +36,9 @@ margin_bottom = -6.0
 
 [node name="Effects" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Effects"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 0.333313
-margin_right = 0.333313
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="LightingFx" parent="Effects" instance=ExtResource( 3 )]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Effects/ColorRect"]
-autoplay = "Lightning"
-anims/Lightning = SubResource( 1 )
-
-[node name="Timer" type="Timer" parent="Effects/ColorRect"]
-wait_time = 8.0
-autostart = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Effects/ColorRect"]
-stream = ExtResource( 3 )
-volume_db = 0.5
-
-[node name="CPUParticles2D6" type="CPUParticles2D" parent="Effects"]
+[node name="RainParticles" type="CPUParticles2D" parent="Effects"]
 position = Vector2( 320, -128 )
 amount = 300
 lifetime = 4.0
@@ -105,5 +59,3 @@ color = Color( 0.215686, 0.462745, 0.713726, 1 )
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[connection signal="timeout" from="Effects/ColorRect/Timer" to="." method="_on_Timer_timeout"]

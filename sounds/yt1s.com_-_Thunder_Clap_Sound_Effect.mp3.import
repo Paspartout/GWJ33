@@ -11,5 +11,5 @@ dest_files=[ "res://.import/yt1s.com_-_Thunder_Clap_Sound_Effect.mp3-09b535ea3ff
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

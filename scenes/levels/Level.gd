@@ -89,7 +89,5 @@ func _reset_items():
 			item.visible = true
 			item.set_deferred("monitorable", true)
 
-func _on_Timer_timeout():
-	$Effects/ColorRect.visible = true
+func _on_LightingTimer_timeout():
 	$Effects/ColorRect/AnimationPlayer.play("Lightning")
-	$Effects/ColorRect/AudioStreamPlayer.play()

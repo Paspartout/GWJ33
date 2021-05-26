@@ -142,12 +142,6 @@ __meta__ = {
 position = Vector2( 620.051, 298.941 )
 texture = ExtResource( 2 )
 
-[node name="ColorRect" parent="Effects" index="0"]
-visible = false
-
-[node name="Timer" parent="Effects/ColorRect" index="1"]
-wait_time = 12.0
-
 [node name="Triggers" type="Node2D" parent="." index="3"]
 
 [node name="End" type="Area2D" parent="Triggers" index="0"]
@@ -161,10 +155,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/End" index="0"]
 shape = SubResource( 1 )
 
-[node name="Spawn2" type="Position2D" parent="Checkpoints" index="0"]
-position = Vector2( 1730.68, -1643.7 )
-
-[node name="Spawn" type="Position2D" parent="Checkpoints" index="1"]
+[node name="Spawn" type="Position2D" parent="Checkpoints" index="0"]
 position = Vector2( 47.2785, 187.517 )
 
 [node name="TempleBackground" type="TileMap" parent="Tiles" index="0"]
@@ -201,7 +192,7 @@ __meta__ = {
 
 [node name="Sprite" type="AnimatedSprite" parent="Items/FinalItem" index="0"]
 frames = SubResource( 7 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/FinalItem" index="1"]
