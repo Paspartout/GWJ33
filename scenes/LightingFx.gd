@@ -26,7 +26,6 @@ func _set_enabled(new_enabled):
 	else:
 		anim.stop()
 		timer.stop()
-	
 
 func lighting():
 	anim.play("Lightning")
