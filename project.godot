@@ -56,7 +56,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="The rain thief"
+config/name="The Rain Thief"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
@@ -81,8 +81,8 @@ collision=false
 [gui]
 
 theme/use_hidpi=true
-theme/custom="res://UI/theme.tres"
-theme/custom_font="res://UI/FontSmall16.tres"
+theme/custom="res://graphics/ui/theme.tres"
+theme/custom_font="res://graphics/ui/FontMid32.tres"
 
 [input]
 

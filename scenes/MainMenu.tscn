@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://UI/theme.tres" type="Theme" id=1]
+[ext_resource path="res://graphics/ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/MainMenu.gd" type="Script" id=2]
-[ext_resource path="res://UI/FontBig48.tres" type="DynamicFont" id=3]
+[ext_resource path="res://graphics/ui/FontMid32.tres" type="DynamicFont" id=3]
 [ext_resource path="res://sounds/menu_sound.WAV" type="AudioStream" id=4]
 [ext_resource path="res://scenes/Options.tscn" type="PackedScene" id=5]
 [ext_resource path="res://graphics/background/Solid Greenish Sky.png" type="Texture" id=6]
 [ext_resource path="res://graphics/background/cloud 3.png" type="Texture" id=7]
 [ext_resource path="res://graphics/background/Cloud 2.png" type="Texture" id=8]
-[ext_resource path="res://UI/EquipmentPro.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://graphics/ui/FontBig48.tres" type="DynamicFont" id=9]
+[ext_resource path="res://sounds/1-10_Rain.wav" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hover"
@@ -39,7 +40,7 @@ tracks/1/keys = {
 "values": [ Vector2( 496, 280 ), Vector2( 496, 264 ), Vector2( 496, 280 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("cloud 4:position")
+tracks/2/path = NodePath("Cloud 4:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -63,128 +64,131 @@ tracks/3/keys = {
 "values": [ Vector2( 144, 280 ), Vector2( 144, 264 ), Vector2( 144, 280 ) ]
 }
 
-[sub_resource type="DynamicFont" id=2]
-size = 22
-font_data = ExtResource( 9 )
+[sub_resource type="Animation" id=2]
+resource_name = "Start"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RainSound:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, -20.0 ]
+}
 
 [node name="MainMenu" type="Control"]
+rect_min_size = Vector2( 640, 360 )
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
 
-[node name="Solid Greenish Sky" type="Sprite" parent="Node2D"]
+[node name="Solid Greenish Sky" type="Sprite" parent="Background"]
 position = Vector2( 320, 180 )
 scale = Vector2( 0.401003, 0.146639 )
 texture = ExtResource( 6 )
 
-[node name="Cloud 2" type="Sprite" parent="Node2D"]
-position = Vector2( 160, 92.4893 )
+[node name="Cloud 2" type="Sprite" parent="Background"]
+position = Vector2( 160, 96 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 8 )
 
-[node name="Cloud 3" type="Sprite" parent="Node2D"]
-position = Vector2( 496, 276.489 )
+[node name="Cloud 3" type="Sprite" parent="Background"]
+position = Vector2( 496, 280 )
 rotation = -1.74846e-07
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 8 )
 
-[node name="cloud 4" type="Sprite" parent="Node2D"]
-position = Vector2( 448, 92.4893 )
+[node name="Cloud 4" type="Sprite" parent="Background"]
+position = Vector2( 448, 96 )
 scale = Vector2( 0.871134, 0.892157 )
 texture = ExtResource( 7 )
 
-[node name="cloud 3" type="Sprite" parent="Node2D"]
-position = Vector2( 144, 276.489 )
+[node name="cloud 3" type="Sprite" parent="Background"]
+position = Vector2( 144, 280 )
 texture = ExtResource( 7 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+[node name="HoverAnim" type="AnimationPlayer" parent="Background"]
 autoplay = "hover"
 anims/hover = SubResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Background"]
+position = Vector2( 352, -8 )
+emitting = false
+amount = 300
+lifetime = 3.0
+emission_shape = 2
+emission_rect_extents = Vector2( 350, 1 )
+gravity = Vector2( -20, 98 )
+scale_amount = 2.0
+color = Color( 0.176471, 0.458824, 0.858824, 1 )
+
+[node name="Timer" type="Timer" parent="Background/CPUParticles2D"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RainSound" type="AudioStreamPlayer" parent="Background"]
+stream = ExtResource( 10 )
+volume_db = -80.0
+autoplay = true
+bus = "Sounds"
+
+[node name="StartAnimation" type="AnimationPlayer" parent="Background"]
+autoplay = "Start"
+anims/Start = SubResource( 2 )
+
+[node name="MainMenu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterMenu" type="CenterContainer" parent="MainMenu"]
+margin_top = -0.396393
 margin_right = 640.0
-margin_bottom = 360.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color( 0, 0, 0, 0.784314 )
+margin_bottom = 359.604
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 176.0
-margin_top = 96.0
-margin_right = 476.0
-margin_bottom = 342.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterMenu"]
+margin_left = 220.0
+margin_top = 53.0
+margin_right = 420.0
+margin_bottom = 307.0
 
-[node name="MenuPanel" type="PanelContainer" parent="CenterContainer"]
-margin_right = 300.0
-margin_bottom = 246.0
-rect_min_size = Vector2( 300, 0 )
-size_flags_horizontal = 4
-size_flags_stretch_ratio = 2.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MenuPanel"]
-margin_left = 6.0
-margin_top = 4.0
-margin_right = 294.0
-margin_bottom = 242.0
-size_flags_vertical = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Play" type="Button" parent="CenterContainer/MenuPanel/VBoxContainer"]
-margin_right = 288.0
-margin_bottom = 74.0
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 3 )
-text = "  Play  "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Options" type="Button" parent="CenterContainer/MenuPanel/VBoxContainer"]
-margin_top = 82.0
-margin_right = 288.0
-margin_bottom = 156.0
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 3 )
-text = "Options"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Exit" type="Button" parent="CenterContainer/MenuPanel/VBoxContainer"]
-margin_top = 164.0
-margin_right = 288.0
-margin_bottom = 238.0
-custom_fonts/font = ExtResource( 3 )
-text = "  Exit  "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-margin_left = 224.0
-margin_right = 416.0
-margin_bottom = 99.0
+[node name="Title" type="Label" parent="MainMenu/CenterMenu/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 102.0
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "The
 Rain Thief"
@@ -193,49 +197,79 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 449.342
-margin_top = -2.34424
-margin_right = 696.342
-margin_bottom = 45.6558
-custom_fonts/font = SubResource( 2 )
+[node name="MenuPanel" type="PanelContainer" parent="MainMenu/CenterMenu/VBoxContainer"]
+margin_top = 110.0
+margin_right = 200.0
+margin_bottom = 254.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 2.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterMenu/VBoxContainer/MenuPanel"]
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 194.0
+margin_bottom = 140.0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer"]
+margin_right = 188.0
+margin_bottom = 40.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "  Play  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer"]
+margin_top = 48.0
+margin_right = 188.0
+margin_bottom = 88.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer"]
+margin_top = 96.0
+margin_right = 188.0
+margin_bottom = 136.0
+custom_fonts/font = ExtResource( 3 )
+text = "  Exit  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicCredits" type="Label" parent="MainMenu"]
+margin_left = 372.0
+margin_right = 640.0
+margin_bottom = 32.0
+size_flags_horizontal = 8
 text = "Music By Trevor Lentz"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Options" parent="." instance=ExtResource( 5 )]
+visible = false
+
 [node name="Sounds" type="Node" parent="."]
 
 [node name="OptionSelect" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 4 )
+bus = "Sounds"
 
-[node name="Options" parent="." instance=ExtResource( 5 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 320.0
-margin_top = 360.0
-margin_right = 320.0
-margin_bottom = 360.0
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2( 352, -8 )
-emitting = false
-amount = 300
-lifetime = 3.0
-preprocess = 5.0
-emission_shape = 2
-emission_rect_extents = Vector2( 350, 1 )
-gravity = Vector2( -20, 98 )
-scale_amount = 2.0
-color = Color( 0.176471, 0.458824, 0.858824, 1 )
-
-[node name="Timer" type="Timer" parent="CPUParticles2D"]
-wait_time = 3.0
-one_shot = true
-autostart = true
-
-[connection signal="pressed" from="CenterContainer/MenuPanel/VBoxContainer/Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="CenterContainer/MenuPanel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="CenterContainer/MenuPanel/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="timeout" from="CPUParticles2D/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Background/CPUParticles2D/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

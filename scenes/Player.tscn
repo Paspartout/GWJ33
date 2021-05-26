@@ -4,7 +4,7 @@
 [ext_resource path="res://graphics/character/thief_animations.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://scenes/GrapplingHook.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tempassets/luz_circular_gigante_2.png" type="Texture" id=4]
-[ext_resource path="res://UI/EquipmentPro.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://graphics/ui/EquipmentPro.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://graphics/other/Action Key.png" type="Texture" id=6]
 [ext_resource path="res://sounds/player_walk_2.wav.tres" type="AudioStream" id=7]
 [ext_resource path="res://sounds/first_jump.WAV" type="AudioStream" id=8]
@@ -42,6 +42,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Landing"
+frame = 2
 playing = true
 
 [node name="Items" type="Node2D" parent="."]
@@ -128,6 +129,7 @@ collision_mask = 2
 shape = SubResource( 3 )
 
 [node name="ItemCollectionArea" type="Area2D" parent="."]
+monitorable = false
 collision_layer = 0
 collision_mask = 8
 

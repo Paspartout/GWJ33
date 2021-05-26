@@ -2,7 +2,8 @@
 
 [ext_resource path="res://music/Departure.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/MusicPlayer.gd" type="Script" id=2]
-[ext_resource path="res://music/1-10_Rain.wav" type="AudioStream" id=3]
+[ext_resource path="res://sounds/1-10_Rain.wav" type="AudioStream" id=3]
+
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 pause_mode = 2

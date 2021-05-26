@@ -59,7 +59,7 @@ margin_top = -112.0
 margin_right = 250.0
 margin_bottom = -6.0
 
-[node name="Pause" parent="." instance=ExtResource( 4 )]
+[node name="Pause" parent="UI" instance=ExtResource( 4 )]
 
 [node name="Effects" type="CanvasLayer" parent="."]
 

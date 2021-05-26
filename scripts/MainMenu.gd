@@ -1,10 +1,13 @@
 extends Control
 
-onready var options = $Options
-onready var main_menu = $CenterContainer/MenuPanel
+onready var options := $Options
+onready var main_menu := $MainMenu
+onready var rain_particles := $Background/CPUParticles2D
 
 func _ready():
-	$CPUParticles2D.emitting = false
+	rain_particles.emitting = false
+	options.connect("quit", self, "_on_options_quit")
+	MusicPlayer.play()
 
 func _on_Play_pressed() -> void:
 	$Sounds/OptionSelect.play(1.11)
@@ -20,6 +23,9 @@ func _on_Options_pressed():
 	main_menu.hide()
 	$Sounds/OptionSelect.play(1.11)
 
+func _on_options_quit():
+	options.hide()
+	main_menu.show()
 
 func _on_Timer_timeout():
-	$CPUParticles2D.emitting = true
+	rain_particles.emitting = true

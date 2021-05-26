@@ -30,6 +30,7 @@ func _input(event):
 		advance_line()
 
 func start():
+	dialog_index = 0
 	active = true
 	advance_line()
 

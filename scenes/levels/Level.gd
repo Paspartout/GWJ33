@@ -63,6 +63,7 @@ func respawn():
 	current_checkpoint = checkpoints.get_child(checkpoint_index)
 	player = player_scene.instance()
 	add_child(player)
+	_reset_items()
 	var camera := Camera2D.new()
 	camera.current = true
 	camera.drag_margin_h_enabled = true
@@ -81,6 +82,12 @@ func _on_player_died():
 	yield(get_tree().create_timer(2.0), "timeout")
 	player.queue_free()
 	respawn()
+
+func _reset_items():
+	for item in $Items.get_children():
+		if item is Area2D:
+			item.visible = true
+			item.set_deferred("monitorable", true)
 
 func _on_Timer_timeout():
 	$Effects/ColorRect.visible = true

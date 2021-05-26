@@ -1,21 +1,20 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=9 format=2]
 
-[ext_resource path="res://UI/EquipmentPro.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://UI/box_normal.tres" type="StyleBox" id=2]
-[ext_resource path="res://UI/box_hover.tres" type="StyleBox" id=3]
-[ext_resource path="res://UI/box_focus.tres" type="StyleBox" id=4]
-[ext_resource path="res://UI/box_pressed.tres" type="StyleBox" id=5]
-[ext_resource path="res://UI/FontMid32.tres" type="DynamicFont" id=6]
-[ext_resource path="res://UI/grabber.tres" type="Texture" id=7]
+[ext_resource path="res://graphics/ui/box_normal.tres" type="StyleBox" id=2]
+[ext_resource path="res://graphics/ui/box_hover.tres" type="StyleBox" id=3]
+[ext_resource path="res://graphics/ui/box_focus.tres" type="StyleBox" id=4]
+[ext_resource path="res://graphics/ui/box_pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://graphics/ui/FontMid32.tres" type="DynamicFont" id=6]
+[ext_resource path="res://graphics/ui/grabber.tres" type="Texture" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="DynamicFont" id=2]
-size = 48
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxLine" id=2]
+color = Color( 1, 1, 1, 1 )
+thickness = 2
 
 [resource]
-default_font = SubResource( 2 )
+default_font = ExtResource( 6 )
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -27,6 +26,8 @@ Button/styles/focus = ExtResource( 4 )
 Button/styles/hover = ExtResource( 3 )
 Button/styles/normal = ExtResource( 2 )
 Button/styles/pressed = ExtResource( 5 )
+HSeparator/constants/separation = 8
+HSeparator/styles/separator = SubResource( 2 )
 HSlider/icons/grabber = ExtResource( 7 )
 HSlider/icons/grabber_disabled = ExtResource( 7 )
 HSlider/icons/grabber_highlight = ExtResource( 7 )

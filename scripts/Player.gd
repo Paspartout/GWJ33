@@ -177,14 +177,15 @@ func _on_AttackArea_body_exited(_body):
 	enemey_in_range = null
 	kill_hint.visible = false
 
-func _on_ItemCollectionArea_area_entered(area):
+func _on_ItemCollectionArea_area_entered(item: Area2D):
 	$Sounds/Pickup.play()
 	level.show_dialog([
 		"Congratulations! You stole the grapling hook!",
 		"Aim using the mouse and shoot using the left mouse button.",
 		])
 	self.has_grappling_hook = true
-	area.queue_free()
+	item.visible = false
+	item.set_deferred("monitorable", false)
 
 func _set_has_grappling_hook(is_equipped: bool):
 	has_grappling_hook = is_equipped

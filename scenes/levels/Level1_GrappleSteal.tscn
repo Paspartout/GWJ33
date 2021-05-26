@@ -23,9 +23,6 @@ extents = Vector2( 29.106, 165.218 )
 script = ExtResource( 15 )
 level_bounds = Rect2( -16, -48, 5184, 640 )
 
-[node name="Pause" parent="UI" index="0"]
-visible = true
-
 [node name="DialogBox" parent="UI/DialogBackground" index="0"]
 margin_left = -225.0
 margin_right = 225.0
