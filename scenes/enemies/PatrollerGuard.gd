@@ -5,6 +5,7 @@ var velocity: Vector2 = Vector2.ZERO
 var idle = false
 export var speed = 50
 export var gravity: float = 10
+export(float) var patroller_wait_time = 10
 
 onready var move_timer = $MoveTimer
 onready var idle_timer = $IdleTimer
@@ -22,6 +23,7 @@ var player
 
 func _ready():
 	sus_indicator.visible = false
+	move_timer.wait_time = patroller_wait_time
 
 func _physics_process(_delta):
 	_update_animation()

@@ -115,12 +115,6 @@ __meta__ = {
 position = Vector2( 620.051, 298.941 )
 texture = ExtResource( 6 )
 
-[node name="ColorRect" parent="Effects" index="0"]
-visible = false
-
-[node name="CPUParticles2D6" parent="Effects" index="1"]
-position = Vector2( 888.393, -225.999 )
-
 [node name="Spawn" type="Position2D" parent="Checkpoints" index="0"]
 position = Vector2( 15.3155, 273.578 )
 
