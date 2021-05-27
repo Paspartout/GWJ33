@@ -59,3 +59,5 @@ color = Color( 0.215686, 0.462745, 0.713726, 1 )
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="TestCamera" type="Camera2D" parent="."]

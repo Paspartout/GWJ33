@@ -6,26 +6,42 @@ var game: Game
 var player
 
 export var player_scene: PackedScene = preload("res://scenes/Player.tscn")
-export var level_bounds: Rect2 = Rect2()
-export var bounds_from_tilemap: bool setget set_bounds_from_tilemap
+export var level_bounds: Rect2 = Rect2() setget set_level_bounds
+export var level_bounds_offset: Rect2 = Rect2(0, 0, 0, 0)
+export var make_bounds_from_tilemap = false setget set_bounds_from_tilemap
+export var draw_level_bounds = false setget set_draw_level_bounds
 
 onready var dialog = $UI/DialogBackground
 onready var dialog_box = $UI/DialogBackground/DialogBox
 onready var checkpoints = $Checkpoints
 onready var tiles = $Tiles
+onready var test_cam := $TestCamera
 
 var checkpoint_index = 0
 var current_checkpoint: Node2D
 
 func _draw():
-	if Engine.editor_hint:
+	if Engine.editor_hint and draw_level_bounds:
 		if level_bounds != null:
 			draw_rect(level_bounds, Color.chocolate, false, 3)
 
 func set_bounds_from_tilemap(enabled: bool):
-	bounds_from_tilemap = enabled
 	if enabled and Engine.editor_hint:
-		level_bounds = get_map_bounds()
+		self.level_bounds = get_map_bounds()
+
+		test_cam.limit_bottom = level_bounds.position.y + level_bounds.size.y
+		test_cam.limit_top = level_bounds.position.y
+		test_cam.limit_left = level_bounds.position.x
+		test_cam.limit_right = level_bounds.position.x + level_bounds.size.x
+
+func set_draw_level_bounds(value: bool):
+	draw_level_bounds = value
+	update()
+
+func set_level_bounds(value: Rect2):
+	level_bounds = value
+	if Engine.editor_hint:
+		print("setting_level_bounds")
 		update()
 
 func _ready():
@@ -42,8 +58,9 @@ func get_map_bounds() -> Rect2:
 	var rect := Rect2()
 	for tilemap in tiles.get_children():
 		rect = rect.merge(tilemap.get_used_rect())
-	rect.position += Vector2(1, 1)
-	rect.size -= Vector2(2, 1)
+	rect.position += level_bounds_offset.position
+	rect.size += level_bounds_offset.size
+
 	rect.position *= 16
 	rect.size *= 16
 	return rect
@@ -69,10 +86,10 @@ func respawn():
 	camera.drag_margin_h_enabled = true
 	camera.drag_margin_v_enabled = true
 	
-	camera.limit_bottom = level_bounds.size.y - 16
+	camera.limit_bottom = level_bounds.position.y + level_bounds.size.y
 	camera.limit_top = level_bounds.position.y
 	camera.limit_left = level_bounds.position.x
-	camera.limit_right = level_bounds.size.x - 64
+	camera.limit_right = level_bounds.position.x + level_bounds.size.x
 
 	player.add_child(camera)
 	player.position = current_checkpoint.position
