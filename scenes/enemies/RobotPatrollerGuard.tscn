@@ -13,7 +13,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
 frames = ExtResource( 2 )
-frame = 7
+frame = 11
 
 [node name="SusLabel" parent="." index="4"]
 margin_top = -46.0646

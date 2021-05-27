@@ -41,7 +41,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Landing"
-frame = 4
+frame = 5
 playing = true
 
 [node name="Items" type="Node2D" parent="."]
@@ -58,13 +58,13 @@ max_grapple_distance = 250.0
 position = Vector2( -8, -11 )
 rotation = 1.5708
 enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 4 )
 
 [node name="Bottom" type="RayCast2D" parent="WallRaycasts/Left"]
 position = Vector2( -8, 15 )
 rotation = 1.5708
 enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 4 )
 
 [node name="Right" type="Node2D" parent="WallRaycasts"]
 
@@ -72,13 +72,13 @@ cast_to = Vector2( 0, 10 )
 position = Vector2( 8, -11 )
 rotation = -1.57081
 enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 4 )
 
 [node name="Bottom" type="RayCast2D" parent="WallRaycasts/Right"]
 position = Vector2( 8, 15 )
 rotation = -1.57081
 enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 4 )
 
 [node name="DebugLabel" type="Label" parent="."]
 margin_left = -20.167
