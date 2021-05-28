@@ -132,7 +132,7 @@ autoplay = "hover"
 anims/hover = SubResource( 1 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Background"]
-position = Vector2( 352, -8 )
+position = Vector2( 365, -23 )
 emitting = false
 amount = 300
 lifetime = 3.0
