@@ -9,6 +9,7 @@
 "level",
 ]]
 script = ExtResource( 1 )
+draw_level_bounds = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 pause_mode = 2

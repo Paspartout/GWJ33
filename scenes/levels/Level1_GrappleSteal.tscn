@@ -21,9 +21,8 @@ extents = Vector2( 29.106, 165.218 )
 
 [node name="Level1_GrappleSteal" instance=ExtResource( 11 )]
 script = ExtResource( 15 )
-level_bounds = Rect2( -16, -224, 5184, 816 )
-level_bounds_offset = Rect2( 1, -10, -2, 10 )
-draw_level_bounds = true
+level_bounds = Rect2( -16, -400, 5168, 992 )
+level_bounds_offset = Rect2( 1, -10, -3, 10 )
 
 [node name="DialogBox" parent="UI/DialogBackground" index="0"]
 margin_left = -225.0
@@ -231,8 +230,8 @@ patroller_wait_time = 3.0
 
 [node name="TestCamera" parent="." index="8"]
 limit_left = -16
-limit_top = -224
-limit_right = 5168
+limit_top = -400
+limit_right = 5152
 limit_bottom = 592
 
 [connection signal="body_entered" from="Triggers/End" to="." method="_on_End_body_entered"]
