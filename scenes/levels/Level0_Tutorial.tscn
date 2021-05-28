@@ -17,6 +17,7 @@ extents = Vector2( 29.106, 165.218 )
 
 [node name="Level0_Tutorial" instance=ExtResource( 11 )]
 script = ExtResource( 10 )
+level_bounds = Rect2( -16, 0, 1824, 400 )
 level_bounds_offset = Rect2( 1, 1, -2, -1 )
 draw_level_bounds = true
 
