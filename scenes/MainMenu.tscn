@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://graphics/ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/MainMenu.gd" type="Script" id=2]
@@ -6,66 +6,34 @@
 [ext_resource path="res://sounds/menu_sound.WAV" type="AudioStream" id=4]
 [ext_resource path="res://scenes/Options.tscn" type="PackedScene" id=5]
 [ext_resource path="res://graphics/background/Solid Greenish Sky.png" type="Texture" id=6]
-[ext_resource path="res://graphics/background/cloud 3.png" type="Texture" id=7]
-[ext_resource path="res://graphics/background/Cloud 2.png" type="Texture" id=8]
 [ext_resource path="res://graphics/ui/FontBig48.tres" type="DynamicFont" id=9]
 [ext_resource path="res://sounds/1-10_Rain.wav" type="AudioStream" id=10]
+[ext_resource path="res://Cloud 1.png" type="Texture" id=11]
+[ext_resource path="res://scenes/movingbg.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hover"
 length = 15.0
 loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Cloud 2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 10, 15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 160, 96 ), Vector2( 160, 80 ), Vector2( 160, 96 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Cloud 3:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 10, 15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 496, 280 ), Vector2( 496, 264 ), Vector2( 496, 280 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Cloud 4:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 10, 15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 448, 96 ), Vector2( 448, 80 ), Vector2( 448, 96 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("cloud 3:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 10, 15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 144, 280 ), Vector2( 144, 264 ), Vector2( 144, 280 ) ]
-}
 
-[sub_resource type="Animation" id=2]
-resource_name = "Start"
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform float scroll_speed;
+
+void fragment(){
+	vec2 shifteduv = UV;
+	shifteduv.x += TIME * scroll_speed;
+	vec4 col = texture(TEXTURE, shifteduv);
+	COLOR = col;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/scroll_speed = null
+
+[sub_resource type="Animation" id=4]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CPUParticles2D:emitting")
@@ -93,6 +61,8 @@ tracks/1/keys = {
 }
 
 [node name="MainMenu" type="Control"]
+margin_right = 640.0
+margin_bottom = 360.0
 rect_min_size = Vector2( 640, 360 )
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
@@ -107,29 +77,22 @@ position = Vector2( 320, 180 )
 scale = Vector2( 0.401003, 0.146639 )
 texture = ExtResource( 6 )
 
-[node name="Cloud 2" type="Sprite" parent="Background"]
-position = Vector2( 160, 96 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 8 )
-
-[node name="Cloud 3" type="Sprite" parent="Background"]
-position = Vector2( 496, 280 )
-rotation = -1.74846e-07
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 8 )
-
-[node name="Cloud 4" type="Sprite" parent="Background"]
-position = Vector2( 448, 96 )
-scale = Vector2( 0.871134, 0.892157 )
-texture = ExtResource( 7 )
-
-[node name="cloud 3" type="Sprite" parent="Background"]
-position = Vector2( 144, 280 )
-texture = ExtResource( 7 )
-
 [node name="HoverAnim" type="AnimationPlayer" parent="Background"]
 autoplay = "hover"
 anims/hover = SubResource( 1 )
+
+[node name="movingbg" type="TextureRect" parent="Background"]
+material = SubResource( 3 )
+margin_right = 640.0
+margin_bottom = 360.0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 2
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scroll_speed = 0.06
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Background"]
 position = Vector2( 365, -23 )
@@ -162,7 +125,7 @@ bus = "Sounds"
 
 [node name="StartAnimation" type="AnimationPlayer" parent="Background"]
 autoplay = "Start"
-anims/Start = SubResource( 2 )
+anims/Start = SubResource( 4 )
 
 [node name="MainMenu" type="Control" parent="."]
 margin_right = 40.0

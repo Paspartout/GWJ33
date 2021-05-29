@@ -6,7 +6,7 @@ var idle = false
 export var speed = 50
 export var gravity: float = 10
 export(float) var patroller_wait_time = 10
-export(float) var patroller_sus_time = 0.2
+export(float) var patroller_sus_time = 0.5
 
 onready var move_timer = $MoveTimer
 onready var idle_timer = $IdleTimer
