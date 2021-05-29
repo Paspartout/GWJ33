@@ -193,3 +193,6 @@ func _on_ItemCollectionArea_area_entered(item: Area2D):
 func _set_has_grappling_hook(is_equipped: bool):
 	has_grappling_hook = is_equipped
 	grapple.enabled = is_equipped
+
+func _on_HurtBox_body_entered(body):
+	kill()

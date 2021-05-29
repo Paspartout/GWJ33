@@ -165,6 +165,7 @@ pause={
 2d_physics/layer_3="player"
 2d_physics/layer_4="items"
 2d_physics/layer_5="ungrappable"
+2d_physics/layer_6="spikes"
 
 [physics]
 

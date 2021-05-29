@@ -95,7 +95,7 @@ func respawn():
 	camera.drag_margin_top = 0.07
 	camera.drag_margin_left = 0.2
 	camera.drag_margin_right= 0.2
-	camera.smoothing_enabled = true
+	camera.smoothing_enabled = false
 	camera.smoothing_speed = 6
 
 	player.add_child(camera)
@@ -103,7 +103,7 @@ func respawn():
 	player.connect("death", self, "_on_player_died")
 
 func _on_player_died():
-	yield(get_tree().create_timer(2.0), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	player.queue_free()
 	respawn()
 

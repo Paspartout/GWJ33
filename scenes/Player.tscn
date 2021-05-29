@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://graphics/character/thief_animations.tres" type="SpriteFrames" id=2]
@@ -25,12 +25,15 @@ extents = Vector2( 27.5837, 16.2448 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 20, 20 )
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 12 )
+
 [node name="Player" type="KinematicBody2D" groups=[
 "Players",
 "player",
 ]]
 collision_layer = 4
-collision_mask = 27
+collision_mask = 11
 collision/safe_margin = 0.01
 script = ExtResource( 1 )
 
@@ -41,6 +44,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Landing"
+frame = 5
 playing = true
 
 [node name="Items" type="Node2D" parent="."]
@@ -50,6 +54,7 @@ player_path = NodePath("../..")
 max_grapple_distance = 250.0
 
 [node name="WallRaycasts" type="Node2D" parent="."]
+visible = false
 
 [node name="Left" type="Node2D" parent="WallRaycasts"]
 
@@ -111,20 +116,32 @@ __meta__ = {
 }
 
 [node name="AttackArea" type="Area2D" parent="."]
+visible = false
 position = Vector2( 38, 0 )
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+visible = false
 shape = SubResource( 3 )
 
 [node name="ItemCollectionArea" type="Area2D" parent="."]
+visible = false
 monitorable = false
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemCollectionArea"]
+visible = false
 shape = SubResource( 4 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2( 0, 2 )
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 5 )
 
 [node name="Sounds" type="Node" parent="."]
 
@@ -155,3 +172,4 @@ stream = ExtResource( 12 )
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
 [connection signal="area_entered" from="ItemCollectionArea" to="." method="_on_ItemCollectionArea_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]

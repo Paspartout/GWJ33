@@ -15,4 +15,3 @@ levels = [ ExtResource( 5 ), ExtResource( 16 ), ExtResource( 4 ), ExtResource( 1
 debug_enabled = true
 
 [node name="Level" type="Node2D" parent="."]
-scale = Vector2( 0.995947, 0.976514 )
