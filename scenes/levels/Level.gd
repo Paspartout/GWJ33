@@ -91,7 +91,7 @@ func respawn():
 	camera.limit_left = level_bounds.position.x
 	camera.limit_right = level_bounds.position.x + level_bounds.size.x
 
-	camera.drag_margin_bottom = 0.3
+	camera.drag_margin_bottom = 0.2
 	camera.drag_margin_top = 0.07
 	camera.drag_margin_left = 0.2
 	camera.drag_margin_right= 0.2
