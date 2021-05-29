@@ -41,7 +41,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Landing"
-frame = 5
+frame = 3
 playing = true
 
 [node name="Items" type="Node2D" parent="."]
@@ -131,7 +131,7 @@ shape = SubResource( 4 )
 
 [node name="Walking" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 7 )
-volume_db = -2.0
+volume_db = 3.0
 
 [node name="FirstJump" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 8 )
@@ -143,11 +143,11 @@ volume_db = -2.0
 
 [node name="Kill" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 11 )
-volume_db = 6.0
+volume_db = 20.0
 
 [node name="Death" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 10 )
-volume_db = 15.0
+volume_db = 24.0
 
 [node name="Pickup" type="AudioStreamPlayer" parent="Sounds"]
 pause_mode = 2

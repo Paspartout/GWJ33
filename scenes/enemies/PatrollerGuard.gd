@@ -6,6 +6,7 @@ var idle = false
 export var speed = 50
 export var gravity: float = 10
 export(float) var patroller_wait_time = 10
+export(float) var patroller_sus_time = 0.2
 
 onready var move_timer = $MoveTimer
 onready var idle_timer = $IdleTimer
@@ -24,6 +25,7 @@ var player
 func _ready():
 	sus_indicator.visible = false
 	move_timer.wait_time = patroller_wait_time
+	sus_timer.wait_time = patroller_sus_time
 
 func _physics_process(_delta):
 	_update_animation()
@@ -58,6 +60,9 @@ func _update_animation():
 		PatrollerState.Death:
 			idle = true
 			sprite.animation = "Death"
+			$CollisionShape2D.disabled = true
+			$DetectionArea.hide()
+			$SusLabel.hide()
 			move_timer.stop()
 			idle_timer.stop()
 			sus_timer.stop()

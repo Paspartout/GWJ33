@@ -9,7 +9,10 @@ onready var current_level_node = $Level
 
 func _ready():
 	load_next_level()
-	MusicPlayer.start_playing()
+	# this is to avoid first level to restart music
+	if (current_level > 1):
+		MusicPlayer.start_playing()
+
 
 func _input(event):
 	if debug_enabled:
