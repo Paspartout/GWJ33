@@ -11,7 +11,6 @@ export var grapple_acceleration: float = 100
 export var grapple_speed: float = 50
 export var enabled: bool = false setget set_enabled
 
-
 enum GrappleState {Loose, Shooting, Hooked, Pulling}
 var grapple_state = GrappleState.Loose
 var grapple_pos: Vector2
@@ -50,6 +49,10 @@ func _ready():
 	direction_indicator.texture = CROSHAIR
 	direction_indicator.visible = enabled
 	call_deferred("add_child", direction_indicator)
+
+func _exit_tree():
+	if grapple_indicator:
+		grapple_indicator.queue_free()
 
 func _input(event):
 	# Toggle between mouse and joypad aiming based on latest input

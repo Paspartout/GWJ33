@@ -8,6 +8,9 @@ var player
 export var player_scene: PackedScene = preload("res://scenes/Player.tscn")
 export var level_bounds: Rect2 = Rect2() setget set_level_bounds
 export var level_bounds_offset: Rect2 = Rect2(0, 0, 0, 0)
+
+export(Array, Rect2) var camera_boundaries = []
+
 export var make_bounds_from_tilemap = false setget set_bounds_from_tilemap
 export var draw_level_bounds = false setget set_draw_level_bounds
 
@@ -19,6 +22,7 @@ onready var test_cam := $TestCamera
 
 var checkpoint_index = 0
 var current_checkpoint: Node2D
+var camera: Camera2D
 
 func _draw():
 	if Engine.editor_hint and draw_level_bounds:
@@ -76,20 +80,24 @@ func _on_dialog_finished():
 	get_tree().paused = false
 	dialog.visible = false
 
+func _set_camera_bounds(bounds: Rect2):
+	camera.limit_bottom = bounds.position.y + bounds.size.y
+	camera.limit_top = bounds.position.y
+	camera.limit_left = bounds.position.x
+	camera.limit_right = bounds.position.x + bounds.size.x
+
 func respawn():
 	current_checkpoint = checkpoints.get_child(checkpoint_index)
 	player = player_scene.instance()
 	add_child(player)
 	_reset_items()
-	var camera := Camera2D.new()
+
+	camera = Camera2D.new()
 	camera.current = true
 	camera.drag_margin_h_enabled = true
 	camera.drag_margin_v_enabled = true
 	
-	camera.limit_bottom = level_bounds.position.y + level_bounds.size.y
-	camera.limit_top = level_bounds.position.y
-	camera.limit_left = level_bounds.position.x
-	camera.limit_right = level_bounds.position.x + level_bounds.size.x
+	_set_camera_bounds(level_bounds)
 
 	camera.drag_margin_bottom = 0.2
 	camera.drag_margin_top = 0.07
