@@ -17,27 +17,22 @@
 extents = Vector2( 59.0209, 46.7629 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 128, 0, 32, 32 )
 
@@ -197,7 +192,6 @@ __meta__ = {
 
 [node name="Sprite" type="AnimatedSprite" parent="Items/FinalItem" index="0"]
 frames = SubResource( 7 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/FinalItem" index="1"]
@@ -206,19 +200,24 @@ shape = SubResource( 8 )
 [node name="PatrollerGuard2" parent="Enemies" index="0" instance=ExtResource( 10 )]
 position = Vector2( 1481.18, -403.457 )
 patroller_wait_time = 1.4
+patroller_sus_time = 0.2
 
 [node name="PatrollerGuard" parent="Enemies" index="1" instance=ExtResource( 10 )]
 position = Vector2( 1376, -592 )
 patroller_wait_time = 1.8
+patroller_sus_time = 0.2
 
 [node name="PatrollerGuard3" parent="Enemies" index="2" instance=ExtResource( 10 )]
 position = Vector2( 1963.68, -403.373 )
 patroller_wait_time = 2.0
+patroller_sus_time = 0.2
 
 [node name="RobotPatrollerGuard" parent="Enemies" index="3" instance=ExtResource( 10 )]
 position = Vector2( 1760.63, -1171.11 )
+patroller_sus_time = 0.2
 
 [node name="RobotPatrollerGuard2" parent="Enemies" index="4" instance=ExtResource( 10 )]
 position = Vector2( 1765.87, -1330.92 )
+patroller_sus_time = 0.2
 
 [connection signal="body_entered" from="Triggers/End" to="." method="_on_End_body_entered"]

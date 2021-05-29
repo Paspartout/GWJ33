@@ -70,8 +70,11 @@ func _input(event):
 			# Cancel jump if releasing jump key
 			if event.is_action_released("jump") and velocity.y < -jump_strength/2:
 				velocity.y = -jump_strength/2
-	if has_grappling_hook and event.is_action_pressed("graple"):
-		grapple.shoot()
+	if has_grappling_hook:
+		if event.is_action_pressed("grapple"):
+			grapple.shoot()
+		elif event.is_action_released("grapple"):
+			grapple.stop()
 
 var walk_velocity: Vector2 = Vector2.ZERO
 
@@ -91,7 +94,7 @@ func _physics_process(delta):
 		velocity = velocity.clamped(700)
 	else:
 		velocity.x = clamp(velocity.x, -max_speed, max_speed)
-		velocity.y = clamp(velocity.y, -500, 500)	
+		velocity.y = clamp(velocity.y, -500, 500)
 
 	if next_to_wall() and velocity.y > 30:
 		velocity.y = 30

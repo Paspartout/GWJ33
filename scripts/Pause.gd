@@ -6,9 +6,11 @@ func _ready():
 	hide()
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("pause"):
 		get_tree().paused = !get_tree().paused
 		visible = !visible
+		if visible:
+			$CenterContainer/Panel/VBoxContainer/Continue.grab_focus()
 
 func _on_Continue_pressed():
 	get_tree().paused = false

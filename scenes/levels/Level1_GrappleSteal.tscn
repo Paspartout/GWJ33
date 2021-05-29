@@ -217,7 +217,7 @@ position = Vector2( 1320, 384 )
 patroller_wait_time = 2.0
 
 [node name="PatrollerGuard5" parent="Enemies" index="8" instance=ExtResource( 12 )]
-position = Vector2( 773.252, 426.072 )
+position = Vector2( 766.513, 430.432 )
 patroller_wait_time = 1.2
 
 [node name="PatrollerGuard4" parent="Enemies" index="9" instance=ExtResource( 12 )]

@@ -8,6 +8,7 @@ func _ready():
 	rain_particles.emitting = false
 	options.connect("quit", self, "_on_options_quit")
 	MusicPlayer.play()
+	$MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer/Play.grab_focus()
 
 func _on_Play_pressed() -> void:
 	$Sounds/OptionSelect.play(1.11)
@@ -26,6 +27,7 @@ func _on_Options_pressed():
 func _on_options_quit():
 	options.hide()
 	main_menu.show()
+	$MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer/Play.grab_focus()
 
 func _on_Timer_timeout():
 	rain_particles.emitting = true

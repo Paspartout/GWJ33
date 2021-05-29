@@ -17,6 +17,11 @@ func _ready():
 	music_slider.connect("value_changed", self, "_on_MusicSlider_value_changed")
 	sound_slider.connect("value_changed", self, "_on_SoundSlider_value_changed")
 	_update_slider()
+	connect("visibility_changed", self, "_on_visibility_changed")
+
+func _on_visibility_changed():
+	if visible:
+		master_slider.grab_focus()
 	
 func _update_slider():
 	master_volume = db2linear(AudioServer.get_bus_volume_db(MASTER_BUS))

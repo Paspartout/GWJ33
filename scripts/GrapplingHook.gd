@@ -11,6 +11,7 @@ export var grapple_acceleration: float = 100
 export var grapple_speed: float = 50
 export var enabled: bool = false setget set_enabled
 
+
 enum GrappleState {Loose, Shooting, Hooked, Pulling}
 var grapple_state = GrappleState.Loose
 var grapple_pos: Vector2
@@ -20,6 +21,7 @@ var grapple_direction: Vector2 = Vector2.ZERO
 var grapple_indicator: Node2D
 var direction_indicator: Node2D
 var grapple_valid: bool = false
+var joypad_control: bool = false
 
 onready var player = get_node(player_path)
 
@@ -41,7 +43,7 @@ func _ready():
 	grapple_indicator.texture = CROSHAIR
 	grapple_indicator.visible = enabled
 	player.get_parent().call_deferred("add_child", grapple_indicator)
-	
+
 	direction_indicator = Sprite.new()
 	direction_indicator.hframes = 2
 	direction_indicator.frame = 0
@@ -49,17 +51,42 @@ func _ready():
 	direction_indicator.visible = enabled
 	call_deferred("add_child", direction_indicator)
 
+func _input(event):
+	# Toggle between mouse and joypad aiming based on latest input
+	# TODO: Maybe move this into a singleton so we can show differnt button prompts and reuse this code
+	if event is InputEventMouse:
+		joypad_control = false
+	elif event is InputEventJoypadMotion:
+		if event.axis_value > 0.2:
+			joypad_control = true
+	elif event is InputEventJoypadButton:
+		joypad_control = true
+
 func _physics_process(_delta):
-	grapple_direction = get_local_mouse_position().normalized()
+	if !enabled:
+		return
+
+	if joypad_control and Input.is_joy_known(0):
+		var joy_direction := Vector2(
+			Input.get_joy_axis(0, 2),
+			Input.get_joy_axis(0, 3)
+		)
+		if joy_direction.length() > 0.5:
+			grapple_direction = joy_direction.normalized()
+	else:
+		grapple_direction = get_local_mouse_position().normalized()
 
 	grapple_cast.cast_to = grapple_direction * max_grapple_distance
 	direction_indicator.position = grapple_direction.normalized() * 20
-	
+
 	if grapple_cast.is_colliding():
 		var collider: TileMap = grapple_cast.get_collider()
+		# check if we hit something that is grappable, layber 4 is ungrappable
 		if !collider.get_collision_layer_bit(4):
 			direction_indicator.frame = 1
 			grapple_indicator.frame = 1
+			if !grapple_valid and joypad_control:
+				Input.start_joy_vibration(0, 0.05, 0, 0.1)
 			grapple_valid = true
 		else:
 			grapple_valid = false
@@ -93,9 +120,10 @@ func shoot():
 		return
 
 	if grapple_valid:
+		if joypad_control:
+			Input.start_joy_vibration(0, 0, 0.3, 0.05)
 		grapple_pos = grapple_cast.get_collision_point()
 		$Sounds/GrappleShoot.play()
-		#print("Hit", grapple_pos)
 		grapple_indicator.global_position = grapple_pos
 		grapple_indicator.show()
 		rope.show()

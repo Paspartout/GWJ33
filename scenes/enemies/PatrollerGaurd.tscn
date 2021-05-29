@@ -17,6 +17,7 @@ extents = Vector2( 64, 32 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 2 )
+patroller_sus_time = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.47161, 1.65663 )

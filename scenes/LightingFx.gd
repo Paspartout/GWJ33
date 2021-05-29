@@ -4,11 +4,12 @@ export var min_delay: int = 3
 export var max_delay: int = 10
 export var randomize_seed: bool = true
 export var raondom_seed: int = 42
+export var enabled: bool = true setget _set_enabled
 
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var timer: Timer = $LightingTimer
 
-var enabled: bool = true setget _set_enabled
+var _is_ready = false
 
 func _ready():
 	anim.connect("animation_finished", self, "thunder_finished")
@@ -17,15 +18,18 @@ func _ready():
 		randomize()
 	else:
 		rand_seed(randomize_seed)
-	thunder_finished(null)
+	if enabled:
+		thunder_finished(null)
+	_is_ready = true
 
 func _set_enabled(new_enabled):
 	enabled = new_enabled
-	if enabled:
-		thunder_finished(null)
-	else:
-		anim.stop()
-		timer.stop()
+	if _is_ready:
+		if enabled:
+			thunder_finished(null)
+		else:
+			anim.stop()
+			timer.stop()
 
 func lighting():
 	anim.play("Lightning")

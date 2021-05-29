@@ -14,8 +14,10 @@ func _input(event):
 
 func show():
 	visible = true
+	
 
 func _on_Back_pressed():
-	$Options/Sounds/OptionSelect.play(1.11)
+	if visible: 
+		$Options/Sounds/OptionSelect.play(1.11)
 	visible = false
 	emit_signal("quit")

@@ -42,7 +42,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer8" index="0"]
-position = Vector2( 668.938, 219.055 )
+position = Vector2( 670.938, 219.055 )
 texture = ExtResource( 3 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
