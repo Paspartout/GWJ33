@@ -161,7 +161,7 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Spawn" type="Position2D" parent="Checkpoints" index="0"]
-position = Vector2( 47.2785, 187.517 )
+position = Vector2( 200, 352 )
 
 [node name="TempleBackground" type="TileMap" parent="Tiles" index="0"]
 modulate = Color( 0.337255, 0.337255, 0.337255, 1 )
@@ -197,7 +197,7 @@ __meta__ = {
 
 [node name="Sprite" type="AnimatedSprite" parent="Items/FinalItem" index="0"]
 frames = SubResource( 7 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Items/FinalItem" index="1"]

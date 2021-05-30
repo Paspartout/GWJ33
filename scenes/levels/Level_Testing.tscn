@@ -4,14 +4,13 @@
 [ext_resource path="res://graphics/tilesets/stone.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/levels/Level_Testing.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31, 36 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 158.872, 10 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Move"
+[sub_resource type="Animation" id=3]
 length = 11.0
 loop = true
 step = 1.0
@@ -67,6 +66,9 @@ visible = false
 [node name="LightingFx" parent="Effects" index="0"]
 enabled = false
 
+[node name="RainParticles" parent="Effects" index="1"]
+emitting = false
+
 [node name="Spawn" type="Position2D" parent="Checkpoints" index="0"]
 position = Vector2( 32.3587, 301.688 )
 
@@ -80,7 +82,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/FirstCheckpoint" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="SecondCheckpoint" type="Area2D" parent="Checkpoints" index="2"]
 position = Vector2( 1864, 128 )
@@ -92,7 +94,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/SecondCheckpoint" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Foreground" type="TileMap" parent="Tiles" index="0"]
 tile_set = ExtResource( 2 )
@@ -123,7 +125,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraSwitch" index="0"]
 position = Vector2( 2033.83, 317.849 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Platforms" type="Node2D" parent="." index="8"]
 __meta__ = {
@@ -131,7 +133,7 @@ __meta__ = {
 }
 
 [node name="Platform1" type="Node2D" parent="Platforms" index="0"]
-position = Vector2( 1902, 576 )
+position = Vector2( 1403, 574 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -146,7 +148,7 @@ format = 1
 tile_data = PoolIntArray( 65534, 0, 196608, 65535, 0, 196609, 0, 0, 196609, 1, 0, 196610 )
 
 [node name="Platform2" type="Node2D" parent="Platforms" index="1"]
-position = Vector2( 746, 574 )
+position = Vector2( 1211, 574 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -162,7 +164,7 @@ tile_data = PoolIntArray( 65534, 0, 196608, 65535, 0, 196609, 0, 0, 196609, 1, 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms" index="2"]
 autoplay = "Move"
-anims/Move = SubResource( 2 )
+anims/Move = SubResource( 3 )
 
 [connection signal="body_entered" from="Checkpoints/FirstCheckpoint" to="." method="_on_FirstCheckpoint_body_entered"]
 [connection signal="body_entered" from="Checkpoints/SecondCheckpoint" to="." method="_on_SecondCheckpoint_body_entered"]
