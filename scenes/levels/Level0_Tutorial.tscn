@@ -17,7 +17,7 @@ extents = Vector2( 29.106, 165.218 )
 
 [node name="Level0_Tutorial" instance=ExtResource( 11 )]
 script = ExtResource( 10 )
-level_bounds = Rect2( -32, -16, 1856, 416 )
+camera_boundaries = [ Rect2( -16, -1648, 4800, 2240 ) ]
 
 [node name="DialogBackground" parent="UI" index="0"]
 visible = false
@@ -114,9 +114,6 @@ __meta__ = {
 position = Vector2( 620.051, 298.941 )
 texture = ExtResource( 6 )
 
-[node name="Spawn" type="Position2D" parent="Checkpoints" index="0"]
-position = Vector2( 15.3155, 273.578 )
-
 [node name="Background" type="TileMap" parent="Tiles" index="0"]
 modulate = Color( 0.243137, 0.243137, 0.243137, 1 )
 tile_set = ExtResource( 8 )
@@ -189,11 +186,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TestCamera" parent="." index="11"]
-limit_left = -32
-limit_top = -16
-limit_right = 1824
-limit_bottom = 400
-editor_draw_limits = true
+[node name="Spawn" type="Position2D" parent="Checkpoints" index="0"]
+position = Vector2( 15.3155, 273.578 )
 
 [connection signal="body_entered" from="Triggers/End" to="." method="_on_End_body_entered"]

@@ -26,6 +26,7 @@ extents = Vector2( 76.8389, 209.775 )
 [node name="Level1_GrappleSteal" instance=ExtResource( 11 )]
 script = ExtResource( 15 )
 level_bounds_tile_offset = Rect2( 1, 1, -2, -1 )
+camera_boundaries = [ Rect2( -16, -1648, 4800, 2240 ) ]
 
 [node name="DialogBox" parent="UI/DialogBackground" index="0"]
 margin_left = -225.0
