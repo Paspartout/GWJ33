@@ -17,7 +17,8 @@ extents = Vector2( 29.106, 165.218 )
 
 [node name="Level0_Tutorial" instance=ExtResource( 11 )]
 script = ExtResource( 10 )
-camera_boundaries = [ Rect2( -16, -1648, 4800, 2240 ) ]
+level_bounds_tile_offset = Rect2( 1, 1, -2, -1 )
+camera_boundaries = [ Rect2( -16, 0, 1824, 400 ) ]
 
 [node name="DialogBackground" parent="UI" index="0"]
 visible = false
