@@ -9,6 +9,7 @@
 "level",
 ]]
 script = ExtResource( 1 )
+camera_boundaries = [ Rect2( -16, -224, 5184, 816 ) ]
 draw_level_bounds = true
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -53,12 +54,10 @@ angle = 396.9
 scale_amount = 2.0
 color = Color( 0.215686, 0.462745, 0.713726, 1 )
 
-[node name="Checkpoints" type="Node" parent="."]
-
 [node name="Tiles" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="TestCamera" type="Camera2D" parent="."]
+[node name="Checkpoints" type="Node2D" parent="."]

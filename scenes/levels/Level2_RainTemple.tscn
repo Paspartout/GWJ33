@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/levels/Level2_RainTemple.gd" type="Script" id=1]
 [ext_resource path="res://graphics/background/cloud 5.png" type="Texture" id=2]
@@ -12,32 +12,28 @@
 [ext_resource path="res://scenes/enemies/RobotPatrollerGuard.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/levels/Level.tscn" type="PackedScene" id=11]
 [ext_resource path="res://graphics/cube outlined.png" type="Texture" id=12]
+[ext_resource path="res://scenes/Checkpoint.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.0209, 46.7629 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 128, 0, 32, 32 )
 
@@ -51,9 +47,12 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=8]
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 40.9468, 70.1797 )
+
 [node name="Level2_RainTemple" instance=ExtResource( 11 )]
 script = ExtResource( 1 )
-level_bounds = Rect2( 0, -1832, 4768, 2224 )
+camera_boundaries = [ Rect2( -16, -1648, 4800, 2240 ) ]
 
 [node name="DialogBackground" parent="UI" index="0"]
 visible = false
@@ -160,9 +159,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/End" index="0"]
 shape = SubResource( 1 )
 
-[node name="Spawn" type="Position2D" parent="Checkpoints" index="0"]
-position = Vector2( 47.2785, 187.517 )
-
 [node name="TempleBackground" type="TileMap" parent="Tiles" index="0"]
 modulate = Color( 0.337255, 0.337255, 0.337255, 1 )
 tile_set = ExtResource( 9 )
@@ -226,4 +222,29 @@ patroller_sus_time = 0.2
 position = Vector2( 1765.87, -1330.92 )
 patroller_sus_time = 0.2
 
+[node name="Spawn" type="Position2D" parent="Checkpoints" index="0"]
+position = Vector2( 47.2785, 187.517 )
+
+[node name="Checkpoint" parent="Checkpoints" index="1" instance=ExtResource( 13 )]
+position = Vector2( 1271.12, -757.918 )
+
+[node name="CollisionShape2D" parent="Checkpoints/Checkpoint" index="0"]
+shape = SubResource( 9 )
+
+[node name="Checkpoint2" parent="Checkpoints" index="2" instance=ExtResource( 13 )]
+position = Vector2( 2266.15, -35.0906 )
+
+[node name="CollisionShape2D" parent="Checkpoints/Checkpoint2" index="0"]
+shape = SubResource( 9 )
+
+[node name="Checkpoint3" parent="Checkpoints" index="3" instance=ExtResource( 13 )]
+position = Vector2( 2217.21, -778.251 )
+
+[node name="CollisionShape2D" parent="Checkpoints/Checkpoint3" index="0"]
+shape = SubResource( 9 )
+
 [connection signal="body_entered" from="Triggers/End" to="." method="_on_End_body_entered"]
+
+[editable path="Checkpoints/Checkpoint"]
+[editable path="Checkpoints/Checkpoint2"]
+[editable path="Checkpoints/Checkpoint3"]

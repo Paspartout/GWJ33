@@ -6,8 +6,8 @@ func _ready():
 		MusicPlayer.start_playing()
 		MusicPlayer.play_next()
 
-func respawn():
-	.respawn()
+func _respawn():
+	._respawn()
 	player.has_grappling_hook = true
 
 func _on_End_body_entered(body):

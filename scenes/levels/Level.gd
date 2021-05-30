@@ -2,51 +2,24 @@ tool
 class_name Level
 extends Node2D
 
+const PLAYER_SCENE: PackedScene = preload("res://scenes/Player.tscn")
+const BOUNDARY_COLORS: Array = [Color.coral, Color.greenyellow, Color.aqua]
+
+export(Rect2) var level_bounds_tile_offset: Rect2 = Rect2(0, 0, 0, 0)
+export(Array, Rect2) var camera_boundaries = [] setget _set_camera_boundaries
+export var make_bounds_from_tilemap = false setget _set_bounds_from_tilemap
+export var draw_level_bounds = false setget _set_draw_level_bounds
+
+export var current_checkpoint_index = 0
+
+var camera: Camera2D
 var game: Game
 var player
 
-export var player_scene: PackedScene = preload("res://scenes/Player.tscn")
-export var level_bounds: Rect2 = Rect2() setget set_level_bounds
-export var level_bounds_offset: Rect2 = Rect2(0, 0, 0, 0)
-
-export(Array, Rect2) var camera_boundaries = []
-
-export var make_bounds_from_tilemap = false setget set_bounds_from_tilemap
-export var draw_level_bounds = false setget set_draw_level_bounds
-
-onready var dialog = $UI/DialogBackground
-onready var dialog_box = $UI/DialogBackground/DialogBox
-onready var checkpoints = $Checkpoints
-onready var tiles = $Tiles
-onready var test_cam := $TestCamera
-
-var checkpoint_index = 0
-var current_checkpoint: Node2D
-var camera: Camera2D
-
-func _draw():
-	if Engine.editor_hint and draw_level_bounds:
-		if level_bounds != null:
-			draw_rect(level_bounds, Color.chocolate, false, 3)
-
-func set_bounds_from_tilemap(enabled: bool):
-	if enabled and Engine.editor_hint:
-		self.level_bounds = get_map_bounds()
-
-		test_cam.limit_bottom = level_bounds.position.y + level_bounds.size.y
-		test_cam.limit_top = level_bounds.position.y
-		test_cam.limit_left = level_bounds.position.x
-		test_cam.limit_right = level_bounds.position.x + level_bounds.size.x
-
-func set_draw_level_bounds(value: bool):
-	draw_level_bounds = value
-	update()
-
-func set_level_bounds(value: Rect2):
-	level_bounds = value
-	if Engine.editor_hint:
-		print("setting_level_bounds")
-		update()
+onready var dialog := $UI/DialogBackground
+onready var dialog_box := $UI/DialogBackground/DialogBox
+onready var checkpoints := $Checkpoints
+onready var tiles := $Tiles
 
 func _ready():
 	if Engine.editor_hint:
@@ -56,14 +29,54 @@ func _ready():
 	dialog_box.connect("finished", self, "_on_dialog_finished")
 	if not game:
 		push_warning("Level run independently, no scene switching will work")
-	respawn()
+	_respawn()
 
-func get_map_bounds() -> Rect2:
+	for checkpoint in checkpoints.get_children():
+		if checkpoint is Checkpoint:
+			checkpoint.connect("cleared", self, "_checkpoint_cleared", [checkpoint.get_index()], CONNECT_ONESHOT)
+
+func _draw():
+	# Draw the camera bounds if enabled
+	if Engine.editor_hint and draw_level_bounds:
+		var i := 0
+		for bounds in camera_boundaries:
+			draw_rect(bounds, BOUNDARY_COLORS[i % 3], false, 3)
+			i += 1
+
+func _get_configuration_warning():
+	# This functions checks the level setup and warns the user about misconfiguration
+	if checkpoints and checkpoints.get_child_count() < 1:
+		return "No checkpoints setup yet!"
+	return ""
+
+func _set_bounds_from_tilemap(enabled: bool):
+	if enabled and Engine.editor_hint:
+		if camera_boundaries.size() < 1:
+			camera_boundaries.append(Rect2())
+		self.camera_boundaries[0] = _calculate_map_bounds()
+
+func _set_draw_level_bounds(value: bool):
+	draw_level_bounds = value
+	update()
+
+func _set_level_bounds(value: Rect2):
+	camera_boundaries = value
+	update()
+
+func _set_camera_boundaries(value: Array):
+	camera_boundaries = value
+	update()
+
+func _checkpoint_cleared(index: int):
+	print("Hit checkpoint ", index)
+	current_checkpoint_index = index
+
+func _calculate_map_bounds() -> Rect2:
 	var rect := Rect2()
 	for tilemap in tiles.get_children():
 		rect = rect.merge(tilemap.get_used_rect())
-	rect.position += level_bounds_offset.position
-	rect.size += level_bounds_offset.size
+	rect.position += level_bounds_tile_offset.position
+	rect.size += level_bounds_tile_offset.size
 
 	rect.position *= 16
 	rect.size *= 16
@@ -86,18 +99,23 @@ func _set_camera_bounds(bounds: Rect2):
 	camera.limit_left = bounds.position.x
 	camera.limit_right = bounds.position.x + bounds.size.x
 
-func respawn():
-	current_checkpoint = checkpoints.get_child(checkpoint_index)
-	player = player_scene.instance()
+func _on_player_died():
+	yield(get_tree().create_timer(0.5), "timeout")
+	player.queue_free()
+	_respawn()
+
+func _respawn():
+	# Create the player scene and the corresponding camera at the current checkpoint
+	var current_checkpoint = checkpoints.get_child(current_checkpoint_index)
+	player = PLAYER_SCENE.instance()
 	add_child(player)
-	_reset_items()
 
 	camera = Camera2D.new()
 	camera.current = true
 	camera.drag_margin_h_enabled = true
 	camera.drag_margin_v_enabled = true
-	
-	_set_camera_bounds(level_bounds)
+
+	_set_camera_bounds(camera_boundaries[0])
 
 	camera.drag_margin_bottom = 0.2
 	camera.drag_margin_top = 0.07
@@ -109,17 +127,11 @@ func respawn():
 	player.add_child(camera)
 	player.position = current_checkpoint.position
 	player.connect("death", self, "_on_player_died")
-
-func _on_player_died():
-	yield(get_tree().create_timer(0.5), "timeout")
-	player.queue_free()
-	respawn()
+	
+	_reset_items()
 
 func _reset_items():
 	for item in $Items.get_children():
 		if item is Area2D:
 			item.visible = true
 			item.set_deferred("monitorable", true)
-
-func _on_LightingTimer_timeout():
-	$Effects/ColorRect/AnimationPlayer.play("Lightning")

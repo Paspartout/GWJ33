@@ -17,8 +17,8 @@ extents = Vector2( 29.106, 165.218 )
 
 [node name="Level0_Tutorial" instance=ExtResource( 11 )]
 script = ExtResource( 10 )
-level_bounds = Rect2( -16, 0, 1824, 384 )
-level_bounds_offset = Rect2( 1, 1, -2, -2 )
+level_bounds_tile_offset = Rect2( 1, 1, -2, -1 )
+camera_boundaries = [ Rect2( -16, 0, 1824, 400 ) ]
 
 [node name="DialogBackground" parent="UI" index="0"]
 visible = false
@@ -189,12 +189,5 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TestCamera" parent="." index="11"]
-limit_left = -16
-limit_top = 0
-limit_right = 1808
-limit_bottom = 384
-editor_draw_limits = true
 
 [connection signal="body_entered" from="Triggers/End" to="." method="_on_End_body_entered"]
