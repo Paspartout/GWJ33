@@ -12,6 +12,7 @@ export var max_grapple_distance: float = 100
 export var grapple_acceleration: float = 100
 export var grapple_speed: float = 50
 export var enabled: bool = false setget set_enabled
+export var grapple_shot_speed: float = 30
 
 var grapple_state = GrappleState.Loose
 var grapple_pos: Vector2
@@ -28,7 +29,6 @@ var joypad_control: bool = false
 
 onready var player = get_node(player_path)
 
-onready var grapple_timer: Timer = $Timer
 onready var grapple_cast: RayCast2D = $GrappleRayCast
 onready var rope: Line2D = $Rope
 
@@ -39,8 +39,6 @@ func set_enabled(new_enabled):
 	direction_indicator.visible = enabled
 
 func _ready():
-	grapple_timer.connect("timeout", self, "stop", [], CONNECT_ONESHOT)
-
 	hook_end = HOOK_END.instance()
 	hook_end.global_position = global_position
 	grapple_indicator = hook_end.get_node("Sprite")
@@ -106,25 +104,22 @@ func pull() -> Vector2:
 		GrappleState.Loose:
 			pass # Do nothing
 		GrappleState.Shooting:
-			# TODO: Play/lerp shooting animation
 			var grapple_direction = (grapple_pos - player.position).normalized()
-			var grapple_velocity = grapple_direction * 70
+			var grapple_velocity = grapple_direction * grapple_shot_speed
 			var collision = hook_end.move_and_collide(grapple_velocity)
 			if collision:
 				hooking_velocity = grapple_velocity
 				grapple_state = GrappleState.Pulling
+				$Sounds/GrappleHit.play()
 			rope.points[1] = to_local(hook_end.position)
 		GrappleState.Pulling:
 			var grapple_direction = (hook_end.position - player.position).normalized()
 			var grapple_velocity = grapple_direction * grapple_speed
 			rope.points[1] = to_local(hook_end.position)
-		
 			# TODO: Finetune for side hooking?
 			if hooking_velocity.y < 0:
-				print("Shooting up")
 				hook_end.move_and_slide_with_snap(Vector2.UP, Vector2.UP, Vector2.DOWN)
 			else:
-				print("Shooting down")
 				hook_end.move_and_slide_with_snap(Vector2.DOWN, Vector2.DOWN, Vector2.UP)
 
 			return grapple_velocity
@@ -147,11 +142,9 @@ func shoot():
 			Input.start_joy_vibration(0, 0, 0.3, 0.05)
 		grapple_pos = grapple_cast.get_collision_point()
 		$Sounds/GrappleShoot.play()
-		#grapple_indicator.global_position = grapple_pos
 		grapple_indicator.show()
 		rope.show()
 		grapple_state = GrappleState.Shooting
-		grapple_timer.start()
 
 func is_in_use():
 	return grapple_state != GrappleState.Loose 

@@ -31,3 +31,6 @@ func _on_options_quit():
 
 func _on_Timer_timeout():
 	rain_particles.emitting = true
+
+func _on_Testing_pressed():
+	get_tree().change_scene("res://scenes/levels/Level_Testing.tscn")

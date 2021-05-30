@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/GrapplingHook.gd" type="Script" id=1]
 [ext_resource path="res://sounds/Grapple_shot.WAV" type="AudioStream" id=2]
+[ext_resource path="res://sounds/grapple_hit.wav" type="AudioStream" id=3]
 
 [node name="GrapplingHook" type="Node2D"]
 script = ExtResource( 1 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
 
 [node name="GrappleRayCast" type="RayCast2D" parent="."]
 enabled = true
@@ -24,4 +22,7 @@ default_color = Color( 0.337255, 0.223529, 0.223529, 1 )
 [node name="GrappleShoot" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 2 )
 volume_db = -5.0
-pitch_scale = 0.7
+
+[node name="GrappleHit" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 3 )
+volume_db = -5.0

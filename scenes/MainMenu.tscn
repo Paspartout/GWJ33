@@ -144,9 +144,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterMenu"]
 margin_left = 220.0
-margin_top = 53.0
+margin_top = 29.0
 margin_right = 420.0
-margin_bottom = 307.0
+margin_bottom = 331.0
 
 [node name="Title" type="Label" parent="MainMenu/CenterMenu/VBoxContainer"]
 margin_right = 200.0
@@ -163,7 +163,7 @@ __meta__ = {
 [node name="MenuPanel" type="PanelContainer" parent="MainMenu/CenterMenu/VBoxContainer"]
 margin_top = 110.0
 margin_right = 200.0
-margin_bottom = 254.0
+margin_bottom = 302.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 2.0
@@ -176,7 +176,7 @@ __meta__ = {
 margin_left = 6.0
 margin_top = 4.0
 margin_right = 194.0
-margin_bottom = 140.0
+margin_bottom = 188.0
 size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -192,10 +192,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Button" parent="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer"]
+[node name="Testing" type="Button" parent="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer"]
 margin_top = 48.0
 margin_right = 188.0
 margin_bottom = 88.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Testing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer"]
+margin_top = 96.0
+margin_right = 188.0
+margin_bottom = 136.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Options"
@@ -204,9 +215,9 @@ __meta__ = {
 }
 
 [node name="Exit" type="Button" parent="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer"]
-margin_top = 96.0
+margin_top = 144.0
 margin_right = 188.0
-margin_bottom = 136.0
+margin_bottom = 184.0
 custom_fonts/font = ExtResource( 3 )
 text = "  Exit  "
 __meta__ = {
@@ -234,5 +245,6 @@ bus = "Sounds"
 
 [connection signal="timeout" from="Background/CPUParticles2D/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer/Testing" to="." method="_on_Testing_pressed"]
 [connection signal="pressed" from="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="MainMenu/CenterMenu/VBoxContainer/MenuPanel/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
