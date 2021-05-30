@@ -11,11 +11,13 @@ export var make_bounds_from_tilemap = false setget _set_bounds_from_tilemap
 export var draw_level_bounds = false setget _set_draw_level_bounds
 
 export var current_checkpoint_index = 0
+export var current_camera_bounds_index = 0 setget _set_current_camera_bounds_index
 
-var camera: Camera2D
 var game: Game
 var player
+var camera_player_attachement: RemoteTransform2D
 
+onready var camera: Camera2D = $Camera
 onready var dialog := $UI/DialogBackground
 onready var dialog_box := $UI/DialogBackground/DialogBox
 onready var checkpoints := $Checkpoints
@@ -68,8 +70,12 @@ func _set_camera_boundaries(value: Array):
 	update()
 
 func _checkpoint_cleared(index: int):
-	print("Hit checkpoint ", index)
 	current_checkpoint_index = index
+
+func _set_current_camera_bounds_index(index: int):
+	current_camera_bounds_index = index
+	if !Engine.editor_hint and is_inside_tree():
+		_update_camera_bounds(camera_boundaries[current_camera_bounds_index])
 
 func _calculate_map_bounds() -> Rect2:
 	var rect := Rect2()
@@ -93,7 +99,7 @@ func _on_dialog_finished():
 	get_tree().paused = false
 	dialog.visible = false
 
-func _set_camera_bounds(bounds: Rect2):
+func _update_camera_bounds(bounds: Rect2):
 	camera.limit_bottom = bounds.position.y + bounds.size.y
 	camera.limit_top = bounds.position.y
 	camera.limit_left = bounds.position.x
@@ -109,25 +115,19 @@ func _respawn():
 	var current_checkpoint = checkpoints.get_child(current_checkpoint_index)
 	player = PLAYER_SCENE.instance()
 	add_child(player)
-
-	camera = Camera2D.new()
-	camera.current = true
-	camera.drag_margin_h_enabled = true
-	camera.drag_margin_v_enabled = true
-
-	_set_camera_bounds(camera_boundaries[0])
-
-	camera.drag_margin_bottom = 0.2
-	camera.drag_margin_top = 0.07
-	camera.drag_margin_left = 0.2
-	camera.drag_margin_right= 0.2
-	camera.smoothing_enabled = false
-	camera.smoothing_speed = 6
-
-	player.add_child(camera)
 	player.position = current_checkpoint.position
-	player.connect("death", self, "_on_player_died")
 	
+	# Attach the camera to the player by using RemoteTransform2D
+	# This can be disabled for e.g. cutscenes by setting update_position=false
+	camera_player_attachement = RemoteTransform2D.new()
+	player.add_child(camera_player_attachement)
+	camera_player_attachement.remote_path = camera.get_path()
+	camera_player_attachement.update_rotation = false
+	camera_player_attachement.update_scale = false
+	
+	_update_camera_bounds(camera_boundaries[current_camera_bounds_index])
+	player.connect("death", self, "_on_player_died")
+
 	_reset_items()
 
 func _reset_items():

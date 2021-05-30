@@ -53,9 +53,8 @@ tracks/2/keys = {
 
 [node name="Level" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-level_bounds = Rect2( 0, 0, 2272, 352 )
-level_bounds_offset = Rect2( 1, 1, 0, -28 )
-camera_boundaries = [ Rect2( 0, 0, 2272, 352 ), Rect2( 0, 416, 2272, 352 ) ]
+level_bounds_tile_offset = Rect2( 1, 0, 0, 0 )
+camera_boundaries = [ Rect2( 0, 0, 2256, 352 ), Rect2( 0, 416, 2256, 352 ) ]
 
 [node name="DialogBackground" parent="UI" index="0"]
 visible = false
@@ -166,6 +165,8 @@ tile_data = PoolIntArray( 65534, 0, 196608, 65535, 0, 196609, 0, 0, 196609, 1, 0
 autoplay = "Move"
 anims/Move = SubResource( 3 )
 
-[connection signal="body_entered" from="Checkpoints/FirstCheckpoint" to="." method="_on_FirstCheckpoint_body_entered"]
-[connection signal="body_entered" from="Checkpoints/SecondCheckpoint" to="." method="_on_SecondCheckpoint_body_entered"]
+[node name="Camera" parent="." index="8"]
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+
 [connection signal="body_entered" from="CameraSwitch" to="." method="_on_CameraSwitch_body_entered"]
