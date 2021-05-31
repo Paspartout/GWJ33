@@ -93,6 +93,8 @@ position = Vector2( 687, 144 )
 
 [node name="Checkpoint2" parent="Checkpoints" index="2" instance=ExtResource( 4 )]
 position = Vector2( 2098, 541 )
+has_camera_bounds = true
+camera_bounds = 1
 
 [node name="CollisionShape2D" parent="Checkpoints/Checkpoint2" index="0"]
 shape = SubResource( 1 )

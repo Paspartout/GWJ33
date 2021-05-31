@@ -65,3 +65,5 @@ color = Color( 0.215686, 0.462745, 0.713726, 1 )
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
+
+[node name="RespawnTween" type="Tween" parent="."]

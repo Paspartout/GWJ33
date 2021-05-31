@@ -12,6 +12,7 @@ export var show_debug_info: bool = false
 export var has_grappling_hook: bool = false setget _set_has_grappling_hook
 
 signal death
+signal item_pickup(item)
 
 # wall_jump_vertical_force is the pushback and wall_jump_vertical_force is the actual jump height
 export var wall_jump_vertical_force: float = 180
@@ -36,15 +37,9 @@ onready var debug_label = $DebugLabel
 onready var kill_hint = $StealthKillHint
 onready var attack_area = $AttackArea
 onready var attack_area_x = attack_area.position.x
-onready var level
 
 func _ready():
 	debug_label.visible = show_debug_info
-	var levels = get_tree().get_nodes_in_group("level")
-	if levels.size() == 1:
-		level = levels[0]
-	else:
-		push_warning("No level found! Things may break.")
 
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -182,13 +177,7 @@ func _on_AttackArea_body_exited(_body):
 
 func _on_ItemCollectionArea_area_entered(item: Area2D):
 	$Sounds/Pickup.play()
-	level.show_dialog([
-		"Congratulations! You stole the grapling hook!",
-		"Aim using the mouse and shoot using the left mouse button.",
-		])
-	self.has_grappling_hook = true
-	item.visible = false
-	item.set_deferred("monitorable", false)
+	emit_signal("item_pickup", item)
 
 func _set_has_grappling_hook(is_equipped: bool):
 	has_grappling_hook = is_equipped

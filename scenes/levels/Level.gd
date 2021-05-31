@@ -14,7 +14,7 @@ export var current_checkpoint_index = 0
 export var current_camera_bounds_index = 0 setget _set_current_camera_bounds_index
 
 var game: Game
-var player
+var player: Player
 var camera_player_attachement: RemoteTransform2D
 
 onready var camera: Camera2D = $Camera
@@ -22,6 +22,7 @@ onready var dialog := $UI/DialogBackground
 onready var dialog_box := $UI/DialogBackground/DialogBox
 onready var checkpoints := $Checkpoints
 onready var tiles := $Tiles
+onready var tween: Tween = $RespawnTween
 
 func _ready():
 	if Engine.editor_hint:
@@ -35,7 +36,7 @@ func _ready():
 
 	for checkpoint in checkpoints.get_children():
 		if checkpoint is Checkpoint:
-			checkpoint.connect("cleared", self, "_checkpoint_cleared", [checkpoint.get_index()], CONNECT_ONESHOT)
+			checkpoint.connect("cleared", self, "_checkpoint_cleared", [checkpoint], CONNECT_ONESHOT)
 
 func _draw():
 	# Draw the camera bounds if enabled
@@ -69,8 +70,11 @@ func _set_camera_boundaries(value: Array):
 	camera_boundaries = value
 	update()
 
-func _checkpoint_cleared(index: int):
-	current_checkpoint_index = index
+func _checkpoint_cleared(checkpoint: Checkpoint):
+	current_checkpoint_index = checkpoint.get_index()
+	if checkpoint.has_camera_bounds:
+		current_camera_bounds_index = checkpoint.camera_bounds
+		_update_camera_bounds(camera_boundaries[current_camera_bounds_index])
 
 func _set_current_camera_bounds_index(index: int):
 	current_camera_bounds_index = index
@@ -106,13 +110,18 @@ func _update_camera_bounds(bounds: Rect2):
 	camera.limit_right = bounds.position.x + bounds.size.x
 
 func _on_player_died():
-	yield(get_tree().create_timer(0.5), "timeout")
 	player.queue_free()
-	_respawn()
+	_respawn(true)
 
-func _respawn():
+func _respawn(animate=false):
 	# Create the player scene and the corresponding camera at the current checkpoint
 	var current_checkpoint = checkpoints.get_child(current_checkpoint_index)
+
+	if animate:
+		tween.interpolate_property(camera, "position", null, current_checkpoint.position, 0.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+		tween.start()
+		yield(tween, "tween_all_completed")
+
 	player = PLAYER_SCENE.instance()
 	add_child(player)
 	player.position = current_checkpoint.position
@@ -120,18 +129,28 @@ func _respawn():
 	# Attach the camera to the player by using RemoteTransform2D
 	# This can be disabled for e.g. cutscenes by setting update_position=false
 	camera_player_attachement = RemoteTransform2D.new()
-	player.add_child(camera_player_attachement)
+
 	camera_player_attachement.remote_path = camera.get_path()
 	camera_player_attachement.update_rotation = false
 	camera_player_attachement.update_scale = false
-	
+	player.add_child(camera_player_attachement)
+
 	_update_camera_bounds(camera_boundaries[current_camera_bounds_index])
 	player.connect("death", self, "_on_player_died")
+	player.connect("item_pickup", self, "_on_item_pickup")
 
+	# TODO: Clean this up
 	_reset_items()
+	_post_respawn()
+
+func _on_item_pickup(item: Area2D):
+	push_warning("Player picked up %s. No action designated yet." % item.name)
 
 func _reset_items():
 	for item in $Items.get_children():
 		if item is Area2D:
 			item.visible = true
 			item.set_deferred("monitorable", true)
+
+func _post_respawn():
+	pass
