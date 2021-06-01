@@ -1,16 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://tempassets/Terrain/Terrain (16x16).png" type="Texture" id=1]
 [ext_resource path="res://scripts/Platform.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
 region = Rect2( 0.798233, 0.806998, 46.3929, 7.83924 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 43.8584, 12.7497 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Horizontal"
 length = 5.0
 loop = true
@@ -27,8 +25,7 @@ tracks/0/keys = {
 "values": [ Vector2( -4.1993, -11.2704 ), Vector2( 120, -11.27 ), Vector2( -4.1993, -11.2704 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Vertical"
+[sub_resource type="Animation" id=4]
 length = 5.0
 loop = true
 tracks/0/type = "value"
@@ -65,5 +62,5 @@ shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
 autoplay = "Vertical"
-anims/Horizontal = SubResource( 4 )
-anims/Vertical = SubResource( 3 )
+anims/Horizontal = SubResource( 3 )
+anims/Vertical = SubResource( 4 )

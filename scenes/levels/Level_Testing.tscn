@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://graphics/tilesets/stone.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/levels/Level_Testing.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Checkpoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/FallingPlatform.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 161, 36 )
@@ -155,6 +156,15 @@ tile_data = PoolIntArray( 65534, 0, 196608, 65535, 0, 196609, 0, 0, 196609, 1, 0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms" index="2"]
 autoplay = "Move"
 anims/Move = SubResource( 3 )
+
+[node name="FallingPlatform" parent="." index="11" instance=ExtResource( 5 )]
+position = Vector2( 229, 615 )
+
+[node name="FallingPlatform2" parent="." index="12" instance=ExtResource( 5 )]
+position = Vector2( 326, 651 )
+
+[node name="FallingPlatform3" parent="." index="13" instance=ExtResource( 5 )]
+position = Vector2( 125, 574 )
 
 [connection signal="body_entered" from="CameraSwitchDown" to="." method="_on_CameraSwitchDown_body_entered"]
 [connection signal="body_entered" from="CameraSwitchUp" to="." method="_on_CameraSwitchUp_body_entered"]
