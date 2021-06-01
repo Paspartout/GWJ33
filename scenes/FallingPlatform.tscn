@@ -30,8 +30,16 @@ texture = SubResource( 2 )
 position = Vector2( -0.0883865, -1.59099 )
 shape = SubResource( 3 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="BreakTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
+
+[node name="Respawn" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="BreakTimer" to="." method="_on_BreakTimer_timeout"]
+[connection signal="timeout" from="Respawn" to="." method="_on_Respawn_timeout"]

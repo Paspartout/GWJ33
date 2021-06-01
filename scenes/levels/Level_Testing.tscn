@@ -161,7 +161,7 @@ anims/Move = SubResource( 3 )
 position = Vector2( 229, 615 )
 
 [node name="FallingPlatform2" parent="." index="12" instance=ExtResource( 5 )]
-position = Vector2( 326, 651 )
+position = Vector2( 402, 254 )
 
 [node name="FallingPlatform3" parent="." index="13" instance=ExtResource( 5 )]
 position = Vector2( 125, 574 )
