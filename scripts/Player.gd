@@ -10,6 +10,7 @@ export var jump_strength: float = 300
 export var number_of_double_jumps: int = 1
 export var show_debug_info: bool = false
 export var has_grappling_hook: bool = false setget _set_has_grappling_hook
+export var controllable: bool = true
 
 signal death
 signal item_pickup(item)
@@ -42,6 +43,8 @@ func _ready():
 	debug_label.visible = show_debug_info
 
 func _input(event):
+	if not controllable:
+		return
 	if event.is_action_pressed("jump"):
 		if not is_on_floor() and next_to_right_wall():
 			velocity.y -= wall_jump_vertical_force
@@ -76,7 +79,10 @@ var walk_velocity: Vector2 = Vector2.ZERO
 func _physics_process(delta):
 	if not alive:
 		return
-	var input_x = Input.get_action_strength("right") - Input.get_action_strength("left")
+
+	var input_x = 0
+	if controllable:
+		input_x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
 	if input_x != 0.0:
 		velocity.x += acceleration * input_x
