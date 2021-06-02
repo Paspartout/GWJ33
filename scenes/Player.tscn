@@ -13,7 +13,7 @@
 [ext_resource path="res://sounds/1-11_Item_get.wav" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.5221, 13.9916 )
+extents = Vector2( 9.0625, 13.9916 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 21
@@ -44,7 +44,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 2 )
 animation = "Landing"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Items" type="Node2D" parent="."]
@@ -54,7 +54,6 @@ player_path = NodePath("../..")
 max_grapple_distance = 250.0
 
 [node name="WallRaycasts" type="Node2D" parent="."]
-visible = false
 
 [node name="Left" type="Node2D" parent="WallRaycasts"]
 

@@ -7,7 +7,7 @@ export var decelleartion: float = 0.7
 export var air_resistance: float = 0.6
 export var gravity: float = 15
 export var jump_strength: float = 300
-export var number_of_double_jumps: int = 1
+export var number_of_double_jumps: int = 2
 export var show_debug_info: bool = false
 export var has_grappling_hook: bool = false setget _set_has_grappling_hook
 
@@ -15,8 +15,8 @@ signal death
 signal item_pickup(item)
 
 # wall_jump_vertical_force is the pushback and wall_jump_vertical_force is the actual jump height
-export var wall_jump_vertical_force: float = 180
-export var wall_jump_horizontal_bounce: float = 300
+export var wall_jump_vertical_force: float = 300
+export var wall_jump_horizontal_bounce: float = 200
 
 var alive = true
 var jumps = 1
@@ -42,29 +42,6 @@ func _ready():
 	debug_label.visible = show_debug_info
 
 func _input(event):
-	if event.is_action_pressed("jump"):
-		if not is_on_floor() and next_to_right_wall():
-			velocity.y -= wall_jump_vertical_force
-			velocity.x -= wall_jump_horizontal_bounce
-			grapple.stop()
-			$Sounds/SecondJump.play()
-		elif not is_on_floor() and next_to_left_wall():
-			velocity.y -= wall_jump_vertical_force
-			velocity.y -= wall_jump_vertical_force
-			velocity.x += wall_jump_horizontal_bounce
-			grapple.stop()
-			$Sounds/SecondJump.play()
-		else:
-			# TODO: find a way to know when 2nd jump is being used
-			if jumps > 0:
-				$Sounds/SecondJump.play()
-				velocity.y = -jump_strength
-				position.y -= 1 # Workaround https://godotengine.org/qa/49493/jumping-on-raising-platform
-				jumps -= 1
-
-			# Cancel jump if releasing jump key
-			if event.is_action_released("jump") and velocity.y < -jump_strength/2:
-				velocity.y = -jump_strength/2
 	if has_grappling_hook:
 		if event.is_action_pressed("grapple"):
 			grapple.shoot()
@@ -89,7 +66,7 @@ func _physics_process(delta):
 		velocity = velocity.clamped(700)
 	else:
 		velocity.x = clamp(velocity.x, -max_speed, max_speed)
-		velocity.y = clamp(velocity.y, -500, 500)
+		velocity.y = clamp(velocity.y, -500, 500)	
 
 	if next_to_wall() and velocity.y > 30:
 		velocity.y = 30
@@ -99,12 +76,35 @@ func _physics_process(delta):
 	else:
 		velocity.y += gravity
 	
-	if show_debug_info:
-		#debug_label.text = "j: %d, g: %s" % [jumps, "true" if is_on_floor() else "false"]
-		debug_label.text = "vel: (%d, %d)" % [velocity.x, velocity.y]
+	if show_debug_info:	
+		debug_label.text = "j: %d, g: %s" % [jumps, "true" if is_on_floor() else "false"]
+#		debug_label.text = "vel: (%d, %d)" % [velocity.x, velocity.y]
 	
 	if is_on_ceiling():
 		velocity.y = 0
+		
+	if Input.is_action_just_pressed("jump"):
+		if not is_on_floor() and next_to_right_wall():
+			velocity.y -= wall_jump_vertical_force
+			velocity.x -= wall_jump_horizontal_bounce
+			grapple.stop()
+			$Sounds/SecondJump.play()
+		elif not is_on_floor() and next_to_left_wall():
+			velocity.y -= wall_jump_vertical_force
+			velocity.x += wall_jump_horizontal_bounce
+			grapple.stop()
+			$Sounds/SecondJump.play()
+		else:
+			# TODO: find a way to know when 2nd jump is being used
+			if jumps > 0:
+				$Sounds/SecondJump.play()
+				velocity.y = -jump_strength
+				position.y -= 1 # Workaround https://godotengine.org/qa/49493/jumping-on-raising-platform
+				jumps -= 1
+
+			# Cancel jump if releasing jump key
+			if Input.action_release("jump") and velocity.y < -jump_strength/2:
+				velocity.y = -jump_strength/2
 		
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
 	
@@ -163,9 +163,6 @@ func kill():
 		$Sounds/Death.play()
 		yield($Sounds/Death, "finished")
 		emit_signal("death")
-
-func get_jumps():
-	return jumps
 
 func _on_AttackArea_body_entered(body):
 	enemey_in_range = body

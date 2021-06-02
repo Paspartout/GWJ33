@@ -25,7 +25,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "Idle"
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
@@ -61,8 +61,8 @@ shape = SubResource( 2 )
 
 [node name="LightCone" type="Sprite" parent="DetectionArea"]
 modulate = Color( 1, 1, 1, 0.45098 )
+rotation = 3.14159
 texture = ExtResource( 3 )
-flip_h = true
 
 [node name="Tween" type="Tween" parent="."]
 
