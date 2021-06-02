@@ -84,7 +84,7 @@ func _physics_process(_delta):
 	direction_indicator.position = grapple_direction.normalized() * 20
 
 	if grapple_cast.is_colliding():
-		var collider: TileMap = grapple_cast.get_collider()
+		var collider = grapple_cast.get_collider()
 		# check if we hit something that is grappable, layber 4 is ungrappable
 		if !collider.get_collision_layer_bit(4):
 			direction_indicator.frame = 1

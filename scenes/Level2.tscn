@@ -1,8 +1,7 @@
-[gd_scene load_steps=113 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://graphics/tilesets/grass_leaves.tres" type="TileSet" id=1]
 [ext_resource path="res://graphics/tilesets/wood.tres" type="TileSet" id=2]
-[ext_resource path="res://tempassets/Idle.png" type="Texture" id=3]
 [ext_resource path="res://scenes/enemies/PatrollerGaurd.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/enemies/ChaserGuard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
@@ -686,37 +685,30 @@ texture = ExtResource( 17 )
 visible = false
 position = Vector2( 703.56, -60.9757 )
 scale = Vector2( 0.5, 0.464286 )
-texture = ExtResource( 3 )
 
 [node name="Idle3" type="Sprite" parent="Enviroment"]
 position = Vector2( 696, -9.31892 )
 scale = Vector2( 0.5, 0.0705604 )
-texture = ExtResource( 3 )
 
 [node name="Idle4" type="Sprite" parent="Enviroment"]
 position = Vector2( 695.055, -18.1384 )
 scale = Vector2( 0.5, 0.0705604 )
-texture = ExtResource( 3 )
 
 [node name="Idle2" type="Sprite" parent="Enviroment"]
 position = Vector2( 704, -32 )
 scale = Vector2( 0.152174, 1 )
-texture = ExtResource( 3 )
 
 [node name="Idle5" type="Sprite" parent="Enviroment"]
 position = Vector2( 778.461, 313.528 )
 scale = Vector2( 1.75426, 2.00924 )
-texture = ExtResource( 3 )
 
 [node name="Idle6" type="Sprite" parent="Enviroment"]
 position = Vector2( 1254.56, -184.525 )
 scale = Vector2( 1.60823, 1.97767 )
-texture = ExtResource( 3 )
 
 [node name="Idle7" type="Sprite" parent="Enviroment"]
 position = Vector2( 560.928, -182.305 )
 scale = Vector2( 1.60823, 1.97767 )
-texture = ExtResource( 3 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
