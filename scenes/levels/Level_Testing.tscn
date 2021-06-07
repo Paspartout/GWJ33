@@ -1,18 +1,28 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://graphics/tilesets/stone.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/levels/Level_Testing.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Checkpoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/FallingPlatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://graphics/tilesets/rocky.png" type="Texture" id=6]
+[ext_resource path="res://FallingPlatform.gd" type="Script" id=7]
+[ext_resource path="res://graphics/tilesets/dry_grass.tres" type="TileSet" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 161, 36 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 158.872, 10 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 50, 14 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 27.5479, 9.63846 )
+
+[sub_resource type="Animation" id=8]
 length = 11.0
 loop = true
 step = 1.0
@@ -57,6 +67,7 @@ tracks/2/keys = {
 script = ExtResource( 3 )
 level_bounds_tile_offset = Rect2( 1, 0, 0, 0 )
 camera_boundaries = [ Rect2( 0, 0, 2256, 352 ), Rect2( 0, 416, 2256, 352 ) ]
+current_checkpoint_index = 2
 
 [node name="DialogBackground" parent="UI" index="0"]
 visible = false
@@ -86,6 +97,12 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 65539, 1, 1, 65540, 1, 1, 65541, 1, 1, 65542, 1, 1, 65543, 1, 1, 65544, 1, 1, 65545, 1, 1, 65546, 1, 1, 65547, 1, 1, 65548, 1, 1, 65549, 1, 1, 65550, 1, 1, 65551, 1, 1, 65552, 1, 1, 65553, 1, 1, 65554, 1, 1, 65555, 1, 1, 65556, 1, 1, 65557, 1, 1, 65558, 1, 1, 65559, 1, 1, 65560, 1, 1, 65567, 1, 1, 65568, 1, 1, 65569, 1, 1, 65570, 1, 1, 65571, 1, 1, 65572, 1, 1, 65573, 1, 1, 65581, 1, 1, 65582, 1, 1, 65583, 1, 1, 65584, 1, 1, 65585, 1, 1, 65586, 1, 1, 65587, 1, 1, 65588, 1, 1, 65589, 1, 1, 65590, 1, 1, 65591, 1, 1, 65592, 1, 1, 65593, 1, 1, 65594, 1, 1, 65595, 1, 1, 65596, 1, 1, 65597, 1, 1, 65598, 1, 1, 65604, 1, 1, 65605, 1, 1, 65606, 1, 1, 65607, 1, 1, 65608, 1, 1, 65609, 1, 1, 65610, 1, 1, 65611, 1, 1, 65612, 1, 1, 65613, 1, 1, 65614, 1, 1, 65615, 1, 1, 65616, 1, 1, 65617, 1, 1, 65624, 1, 1, 65625, 1, 1, 65626, 1, 1, 65627, 1, 1, 65628, 1, 1, 65629, 1, 1, 65630, 1, 1, 65631, 1, 1, 65632, 1, 1, 65633, 1, 1, 65634, 1, 1, 65635, 1, 1, 65636, 1, 1, 65637, 1, 1, 65638, 1, 1, 65639, 1, 1, 65640, 1, 1, 65641, 1, 1, 65642, 1, 1, 65643, 1, 1, 65644, 1, 1, 65645, 1, 1, 65646, 1, 1, 65647, 1, 1, 65648, 1, 1, 65649, 1, 1, 65650, 1, 1, 131110, 1, 65536, 196646, 1, 65536, 262182, 1, 65536, 655397, 1, 65536, 720933, 1, 65536, 721006, 1, 65536, 786469, 1, 65536, 786542, 1, 65536, 852005, 1, 65536, 852079, 1, 65536, 917541, 1, 65536, 917615, 1, 65536, 983077, 1, 65536, 983150, 1, 65536, 1048613, 1, 65536, 1048686, 1, 65536, 1114149, 1, 65536, 1114222, 1, 65536, 1179685, 1, 65536, 1179757, 1, 65536, 1245221, 1, 65536, 1245293, 1, 65536, 1310829, 1, 65536, 1376300, 1, 0, 1376301, 1, 0, 1376302, 1, 0, 1376303, 1, 0, 1376304, 1, 0, 1376305, 1, 0, 1376306, 1, 0, 1376307, 1, 0, 1376308, 1, 0, 1376309, 1, 0, 1376310, 1, 0, 1376311, 1, 0, 1376312, 1, 0, 1376313, 1, 0, 1376314, 1, 0, 1376315, 1, 0, 1376316, 1, 0, 1376317, 1, 0, 1376318, 1, 0, 1376319, 1, 0, 1376320, 1, 0, 1376321, 1, 0, 1376322, 1, 0, 1376323, 1, 0, 1376324, 1, 0, 1376325, 1, 0, 1376326, 1, 0, 1376327, 1, 0, 1376328, 1, 0, 1376329, 1, 0, 1376330, 1, 0, 1376343, 1, 0, 1376344, 1, 0, 1376345, 1, 0, 1376346, 1, 0, 1376347, 1, 0, 1376348, 1, 0, 1376349, 1, 0, 1376350, 1, 0, 1376351, 1, 0, 1376352, 1, 0, 1376353, 1, 0, 1376354, 1, 0, 1376355, 1, 0, 1376356, 1, 0, 1376357, 1, 0, 1376358, 1, 0, 1376359, 1, 0, 1376360, 1, 0, 1376361, 1, 0, 1376362, 1, 0, 1376363, 1, 0, 1376364, 1, 0, 1507370, 1, 1, 1507371, 1, 1, 1507372, 1, 1, 1507373, 1, 1, 1507374, 1, 1, 1507375, 1, 1, 1507376, 1, 1, 1507377, 1, 1, 1507378, 1, 1, 1507379, 1, 1, 1507380, 1, 1, 1507381, 1, 1, 1507395, 1, 1, 1507396, 1, 1, 1507397, 1, 1, 1507398, 1, 1, 1507399, 1, 1, 1507400, 1, 1, 1507401, 1, 1, 1507402, 1, 1, 1507403, 1, 65536, 1507414, 1, 65537, 1507415, 1, 1, 1507416, 1, 1, 1507417, 1, 1, 1507418, 1, 1, 1507419, 1, 1, 1507430, 1, 1, 1507431, 1, 1, 1507432, 1, 1, 1507433, 1, 1, 1507434, 1, 1, 1507435, 1, 1, 1507436, 1, 1, 1507437, 1, 1, 1507438, 1, 1, 1507439, 1, 1, 1572918, 1, 1, 1572930, 1, 1, 1572941, 1, 65536, 1572948, 1, 65537, 1572956, 1, 1, 1572976, 1, 1, 1638455, 1, 1, 1638478, 1, 65536, 1638484, 1, 65537, 1638500, 1, 1, 1638501, 1, 1, 1638513, 1, 1, 1703992, 1, 1, 1704000, 1, 1, 1704001, 1, 1, 1704014, 1, 65536, 1704019, 1, 65537, 1704029, 1, 1, 1704030, 1, 1, 1769529, 1, 1, 1769533, 1, 1, 1769534, 1, 1, 1769535, 1, 1, 1769551, 1, 1, 1769552, 1, 1, 1769553, 1, 1, 1769554, 1, 1, 1769567, 1, 1, 1769570, 1, 1, 1769571, 1, 1, 1835066, 1, 1, 1835067, 1, 1, 1835068, 1, 1, 1835104, 1, 1, 1835105, 1, 1, 2228304, 1, 0, 2228305, 1, 0, 2228306, 1, 0, 2293839, 1, 65536, 2293843, 1, 65537, 2359375, 1, 65536, 2359379, 1, 65537, 2424911, 1, 65536, 2424915, 1, 65537, 2490448, 1, 1, 2490449, 1, 1, 2490450, 1, 1, 2818145, 1, 0, 2818146, 1, 0, 2818147, 1, 0, 2818148, 1, 0, 2818149, 1, 0, 2883630, 1, 0, 2883631, 1, 0, 2883632, 1, 0, 2883633, 1, 0, 2883634, 1, 0, 2883678, 1, 0, 2883679, 1, 0, 2883680, 1, 0, 2883686, 1, 0, 2883687, 1, 0, 2883688, 1, 0, 2883689, 1, 0, 2883690, 1, 0, 2883691, 1, 0, 2883692, 1, 0, 2949161, 1, 0, 2949162, 1, 0, 2949163, 1, 0, 2949164, 1, 0, 2949165, 1, 0, 2949171, 1, 0, 2949172, 1, 0, 2949173, 1, 0, 2949174, 1, 0, 2949175, 1, 0, 2949176, 1, 0, 2949177, 1, 0, 2949178, 1, 0, 2949179, 1, 0, 2949180, 1, 0, 2949181, 1, 0, 2949182, 1, 0, 2949183, 1, 0, 2949201, 1, 0, 2949202, 1, 0, 2949203, 1, 0, 2949204, 1, 0, 2949205, 1, 0, 2949206, 1, 0, 2949207, 1, 0, 2949208, 1, 0, 2949209, 1, 0, 2949210, 1, 0, 2949211, 1, 0, 2949212, 1, 0, 2949213, 1, 0, 2949229, 1, 0, 2949230, 1, 0, 2949231, 1, 0, 2949232, 1, 0, 3014720, 1, 0, 3014721, 1, 0, 3014722, 1, 0, 3014723, 1, 0, 3014724, 1, 0, 3014725, 1, 0, 3014726, 1, 0, 3014727, 1, 0, 3014728, 1, 0, 3014729, 1, 0, 3014730, 1, 0, 3014731, 1, 0, 3014732, 1, 0, 3014733, 1, 0, 3014734, 1, 0, 3014735, 1, 0, 3014736, 1, 0, 3014769, 1, 0, 3014770, 1, 0, 3014771, 1, 0, 3014772, 1, 0, 3014773, 1, 0, 3014774, 1, 0, 3014775, 1, 0, 3014776, 1, 0, 3014777, 1, 0, 3014778, 1, 0, 3014779, 1, 0, 3014780, 1, 0, 3014781, 1, 0, 3014782, 1, 0, 3014783, 1, 0 )
 
+[node name="Sand" type="TileMap" parent="Tiles" index="2"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 12, 12 )
+format = 1
+tile_data = PoolIntArray( 1245210, 0, 720896, 1245211, 0, 1, 1245212, 0, 3, 1245213, 0, 2, 1245214, 0, 786433, 1245217, 0, 720896, 1245218, 0, 0, 1245219, 0, 3, 1245220, 0, 0, 1245221, 0, 786433, 1310746, 0, 131074, 1310747, 0, 786437, 1310748, 0, 196613, 1310749, 0, 131077, 1310750, 0, 196611, 1310753, 0, 131074, 1310754, 0, 589829, 1310755, 0, 917512, 1310756, 0, 917512, 1310757, 0, 196611, 1376282, 0, 131075, 1376283, 0, 524293, 1376284, 0, 786437, 1376285, 0, 5, 1376286, 0, 196611, 1376289, 0, 131073, 1376290, 0, 1179656, 1376291, 0, 786440, 1376292, 0, 65541, 1376293, 0, 196609, 1441818, 0, 851970, 1441819, 0, 65539, 1441820, 0, 65539, 1441821, 0, 65536, 1441822, 0, 917507, 1441825, 0, 851970, 1441826, 0, 65536, 1441827, 0, 65537, 1441828, 0, 65538, 1441829, 0, 917507 )
+
 [node name="Spawn" type="Position2D" parent="Checkpoints" index="0"]
 position = Vector2( 56, 302 )
 
@@ -98,7 +115,7 @@ has_camera_bounds = true
 camera_bounds = 1
 
 [node name="CollisionShape2D" parent="Checkpoints/Checkpoint2" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="CameraSwitchDown" type="Area2D" parent="." index="7"]
 position = Vector2( 39, 47 )
@@ -107,7 +124,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraSwitchDown" index="0"]
 position = Vector2( 2033.83, 317.849 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="CameraSwitchUp" type="Area2D" parent="." index="8"]
 position = Vector2( 39, 21 )
@@ -116,7 +133,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraSwitchUp" index="0"]
 position = Vector2( 2033.83, 317.849 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Platforms" type="Node2D" parent="." index="9"]
 __meta__ = {
@@ -129,14 +146,21 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Tiles" type="TileMap" parent="Platforms/Platform1" index="0"]
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 16, 16 )
-show_collision = true
-collision_use_kinematic = true
-collision_mask = 0
-format = 1
-tile_data = PoolIntArray( 65534, 0, 196608, 65535, 0, 196609, 0, 0, 196609, 1, 0, 196610 )
+[node name="FallingPlatform" type="KinematicBody2D" parent="Platforms/Platform1" index="0"]
+collision_mask = 4
+motion/sync_to_physics = true
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Platforms/Platform1/FallingPlatform" index="0"]
+position = Vector2( -5.96046e-08, 0 )
+scale = Vector2( 1.10511, 1.36038 )
+texture = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform1/FallingPlatform" index="1"]
+shape = SubResource( 7 )
+
+[node name="Timer" type="Timer" parent="Platforms/Platform1/FallingPlatform" index="2"]
+wait_time = 2.0
 
 [node name="Platform2" type="Node2D" parent="Platforms" index="1"]
 position = Vector2( 746, 574 )
@@ -144,18 +168,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Tiles" type="TileMap" parent="Platforms/Platform2" index="0"]
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 16, 16 )
-show_collision = true
-collision_use_kinematic = true
-collision_mask = 0
-format = 1
-tile_data = PoolIntArray( 65534, 0, 196608, 65535, 0, 196609, 0, 0, 196609, 1, 0, 196610 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms" index="2"]
 autoplay = "Move"
-anims/Move = SubResource( 3 )
+anims/Move = SubResource( 8 )
 
 [node name="FallingPlatform" parent="." index="11" instance=ExtResource( 5 )]
 position = Vector2( 229, 615 )
@@ -168,5 +183,6 @@ position = Vector2( 125, 574 )
 
 [connection signal="body_entered" from="CameraSwitchDown" to="." method="_on_CameraSwitchDown_body_entered"]
 [connection signal="body_entered" from="CameraSwitchUp" to="." method="_on_CameraSwitchUp_body_entered"]
+[connection signal="timeout" from="Platforms/Platform1/FallingPlatform/Timer" to="Platforms/Platform1/FallingPlatform" method="_on_Timer_timeout"]
 
 [editable path="Checkpoints/Checkpoint2"]

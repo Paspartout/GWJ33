@@ -108,7 +108,7 @@ func pull() -> Vector2:
 			var grapple_velocity = grapple_direction * grapple_shot_speed
 			var collision = hook_end.move_and_collide(grapple_velocity)
 			if collision:
-				hooking_velocity = grapple_velocity
+				hooking_velocity = grapple_velocity.normalized()
 				grapple_state = GrappleState.Pulling
 				$Sounds/GrappleHit.play()
 			rope.points[1] = to_local(hook_end.position)
@@ -117,10 +117,16 @@ func pull() -> Vector2:
 			var grapple_velocity = grapple_direction * grapple_speed
 			rope.points[1] = to_local(hook_end.position)
 			# TODO: Finetune for side hooking?
-			if hooking_velocity.y < 0:
-				hook_end.move_and_slide_with_snap(Vector2.UP, Vector2.UP, Vector2.DOWN)
+			if abs(hooking_velocity.y) >= 0.5:
+				if hooking_velocity.y < 0:
+					hook_end.move_and_slide_with_snap(Vector2.UP, Vector2.UP, Vector2.DOWN, false, 4, rad2deg(90))
+				else:
+					hook_end.move_and_slide_with_snap(Vector2.DOWN, Vector2.DOWN, Vector2.UP, false, 4, rad2deg(90))
 			else:
-				hook_end.move_and_slide_with_snap(Vector2.DOWN, Vector2.DOWN, Vector2.UP)
+				if hooking_velocity.x < 0:
+					hook_end.move_and_slide_with_snap(Vector2.LEFT * 64, Vector2.LEFT, Vector2.RIGHT, 4, rad2deg(90))
+				else:
+					hook_end.move_and_slide_with_snap(Vector2.RIGHT * 64, Vector2.RIGHT, Vector2.LEFT, 4, rad2deg(90))
 
 			return grapple_velocity
 	return Vector2.ZERO
