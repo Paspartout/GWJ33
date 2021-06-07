@@ -42,9 +42,10 @@ position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
+light_mask = 4
 frames = ExtResource( 2 )
 animation = "Landing"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Items" type="Node2D" parent="."]

@@ -92,7 +92,7 @@ script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scroll_speed = 0.07
+scroll_speed = 0.06
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Background"]
 position = Vector2( 376, -40 )
@@ -135,8 +135,9 @@ __meta__ = {
 }
 
 [node name="CenterMenu" type="CenterContainer" parent="MainMenu"]
+margin_top = -0.396393
 margin_right = 640.0
-margin_bottom = 360.0
+margin_bottom = 359.604
 __meta__ = {
 "_edit_use_anchors_": false
 }

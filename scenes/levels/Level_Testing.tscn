@@ -9,20 +9,20 @@
 [ext_resource path="res://FallingPlatform.gd" type="Script" id=7]
 [ext_resource path="res://graphics/tilesets/dry_grass.tres" type="TileSet" id=8]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 161, 36 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 158.872, 10 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 50, 14 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 27.5479, 9.63846 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 length = 11.0
 loop = true
 step = 1.0
@@ -101,7 +101,7 @@ tile_data = PoolIntArray( 65539, 1, 1, 65540, 1, 1, 65541, 1, 1, 65542, 1, 1, 65
 tile_set = ExtResource( 8 )
 cell_size = Vector2( 12, 12 )
 format = 1
-tile_data = PoolIntArray( 1245210, 0, 720896, 1245211, 0, 1, 1245212, 0, 3, 1245213, 0, 2, 1245214, 0, 786433, 1245217, 0, 720896, 1245218, 0, 0, 1245219, 0, 3, 1245220, 0, 0, 1245221, 0, 786433, 1310746, 0, 131074, 1310747, 0, 786437, 1310748, 0, 196613, 1310749, 0, 131077, 1310750, 0, 196611, 1310753, 0, 131074, 1310754, 0, 589829, 1310755, 0, 917512, 1310756, 0, 917512, 1310757, 0, 196611, 1376282, 0, 131075, 1376283, 0, 524293, 1376284, 0, 786437, 1376285, 0, 5, 1376286, 0, 196611, 1376289, 0, 131073, 1376290, 0, 1179656, 1376291, 0, 786440, 1376292, 0, 65541, 1376293, 0, 196609, 1441818, 0, 851970, 1441819, 0, 65539, 1441820, 0, 65539, 1441821, 0, 65536, 1441822, 0, 917507, 1441825, 0, 851970, 1441826, 0, 65536, 1441827, 0, 65537, 1441828, 0, 65538, 1441829, 0, 917507 )
+tile_data = PoolIntArray( 655394, 0, 720898, 655395, 0, 3, 655396, 0, 3, 655397, 0, 0, 655398, 0, 1, 655399, 0, 786432, 720930, 0, 131072, 720931, 0, 786437, 720932, 0, 458757, 720933, 0, 393221, 720934, 0, 786437, 720935, 0, 196609, 786466, 0, 131072, 786467, 0, 786437, 786468, 0, 655365, 786469, 0, 786437, 786470, 0, 786437, 786471, 0, 196609, 851997, 0, 720897, 851998, 0, 0, 851999, 0, 786433, 852002, 0, 131072, 852003, 0, 786437, 852004, 0, 786437, 852005, 0, 786437, 852006, 0, 786437, 852007, 0, 196608, 917533, 0, 131075, 917534, 0, 786437, 917535, 0, 196609, 917538, 0, 131074, 917539, 0, 786437, 917540, 0, 786437, 917541, 0, 5, 917542, 0, 786437, 917543, 0, 196609, 983069, 0, 851968, 983070, 0, 65537, 983071, 0, 917505, 983074, 0, 851970, 983075, 0, 65538, 983076, 0, 65538, 983077, 0, 65539, 983078, 0, 65536, 983079, 0, 917507, 1048601, 0, 720896, 1048602, 0, 786432, 1114137, 0, 131073, 1114138, 0, 262148, 1114139, 0, 589827, 1179673, 0, 851968, 1179674, 0, 917505, 1179678, 0, 720897, 1179679, 0, 786435, 1245214, 0, 851968, 1245215, 0, 851972, 1245216, 0, 786433, 1310745, 0, 720899, 1310746, 0, 786434, 1310751, 0, 851968, 1310752, 0, 917504, 1376281, 0, 131074, 1376282, 0, 65540, 1376283, 0, 786435, 1441817, 0, 851970, 1441818, 0, 65538, 1441819, 0, 917505 )
 
 [node name="Spawn" type="Position2D" parent="Checkpoints" index="0"]
 position = Vector2( 56, 302 )
@@ -115,7 +115,7 @@ has_camera_bounds = true
 camera_bounds = 1
 
 [node name="CollisionShape2D" parent="Checkpoints/Checkpoint2" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="CameraSwitchDown" type="Area2D" parent="." index="7"]
 position = Vector2( 39, 47 )
@@ -124,7 +124,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraSwitchDown" index="0"]
 position = Vector2( 2033.83, 317.849 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="CameraSwitchUp" type="Area2D" parent="." index="8"]
 position = Vector2( 39, 21 )
@@ -133,7 +133,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraSwitchUp" index="0"]
 position = Vector2( 2033.83, 317.849 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="Platforms" type="Node2D" parent="." index="9"]
 __meta__ = {
@@ -154,10 +154,10 @@ script = ExtResource( 7 )
 [node name="Sprite" type="Sprite" parent="Platforms/Platform1/FallingPlatform" index="0"]
 position = Vector2( -5.96046e-08, 0 )
 scale = Vector2( 1.10511, 1.36038 )
-texture = SubResource( 6 )
+texture = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform1/FallingPlatform" index="1"]
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="Platforms/Platform1/FallingPlatform" index="2"]
 wait_time = 2.0
@@ -170,7 +170,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms" index="2"]
 autoplay = "Move"
-anims/Move = SubResource( 8 )
+anims/Move = SubResource( 5 )
 
 [node name="FallingPlatform" parent="." index="11" instance=ExtResource( 5 )]
 position = Vector2( 229, 615 )
